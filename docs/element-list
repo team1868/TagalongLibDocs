@@ -4,6 +4,7 @@ tagalong.commands.aim
 tagalong.commands.base
 tagalong.controls
 tagalong.devices
+tagalong.logging
 tagalong.math
 tagalong.measurements
 tagalong.subsystems

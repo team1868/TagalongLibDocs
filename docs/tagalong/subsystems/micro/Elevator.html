@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-28">Elevator</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-29">Elevator</a></span>
 <span class="extends-implements">extends <a href="Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></span></div>
 <div class="block">Elevator Microsystem</div>
 </section>
@@ -105,7 +105,7 @@ loadScripts(document, 'script');</script>
  Default upper tolerance of the elevator in meters</div>
 </div>
 <div class="col-first even-row-color"><code>protected <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></code></div>
-<div class="col-second even-row-color"><code><a href="#_elevatorBaseStage" class="member-name-link">_elevatorBaseStage</a></code></div>
+<div class="col-second even-row-color"><code><a href="#_elevatorBaseStageLigament" class="member-name-link">_elevatorBaseStageLigament</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">Base stage ligament</div>
 </div>
@@ -137,7 +137,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Simulation for the elevator</div>
 </div>
 <div class="col-first even-row-color"><code>protected <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></code></div>
-<div class="col-second even-row-color"><code><a href="#_elevatorStage1" class="member-name-link">_elevatorStage1</a></code></div>
+<div class="col-second even-row-color"><code><a href="#_elevatorStage1Ligament" class="member-name-link">_elevatorStage1Ligament</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">Stage 1 ligament</div>
 </div>
@@ -199,7 +199,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(tagalong.subsystems.micro.confs.ElevatorConf)" class="member-name-link">Elevator</a><wbr>(<a href="confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a>&nbsp;conf)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Constructor that creates an elevator microsystem with the below configurations</div>
+<div class="block">Constructs an elevator microsystem with the below configurations</div>
 </div>
 </div>
 </section>
@@ -210,8 +210,8 @@ loadScripts(document, 'script');</script>
 <h2>Method Summary</h2>
 <div id="method-summary-table">
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
-<div id="method-summary-table.tabpanel" role="tabpanel">
-<div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
+<div id="method-summary-table.tabpanel" role="tabpanel" aria-labelledby="method-summary-table-tab0">
+<div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
@@ -236,10 +236,20 @@ loadScripts(document, 'script');</script>
 <div class="block">Calculates the next state according to the trapezoidal profile and requests the elevator
  motor(s) to arrive at the next position with feedforward</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getElevatorHeightM()" class="member-name-link">getElevatorHeightM</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getElevatorBaseStageLigament()" class="member-name-link">getElevatorBaseStageLigament</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves base stage ligament attached to elevator Mechanism2d</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getElevatorHeightM()" class="member-name-link">getElevatorHeightM</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Gets the height of the elevator in meters</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getElevatorStage1Ligament()" class="member-name-link">getElevatorStage1Ligament</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves stage 1 ligament attached to elevator Mechanism2d</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getElevatorVelocityMPS()" class="member-name-link">getElevatorVelocityMPS</a>()</code></div>
@@ -296,34 +306,74 @@ loadScripts(document, 'script');</script>
 <div class="block">Sets the position of the elevator in meters</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
- double&nbsp;goalVelocityMPS)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Creates a new trapezoidal profile for the elevator</div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double,double)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
- double&nbsp;goalVelocityMPS,
- double&nbsp;maxVelocityMPS)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
+ double&nbsp;goalVelocityMPS)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Creates a new trapezoidal profile for the elevator</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double,double,double)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double,double)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
  double&nbsp;goalVelocityMPS,
- double&nbsp;maxVelocityMPS,
- double&nbsp;maxAccelerationMPS2)</code></div>
+ double&nbsp;maxVelocityMPS)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Creates a new trapezoidal profile for the elevator</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double,double,double,boolean)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double,double,double)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
+ double&nbsp;goalVelocityMPS,
+ double&nbsp;maxVelocityMPS,
+ double&nbsp;maxAccelerationMPS2)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the elevator</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(double,double,double,double,boolean)" class="member-name-link">setElevatorProfile</a><wbr>(double&nbsp;goalPositionM,
+ double&nbsp;goalVelocityMPS,
+ double&nbsp;maxVelocityMPS,
+ double&nbsp;maxAccelerationMPS2,
+ boolean&nbsp;setCurrentState)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the elevator</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(tagalong.measurements.Height)" class="member-name-link">setElevatorProfile</a><wbr>(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(tagalong.measurements.Height,double)" class="member-name-link">setElevatorProfile</a><wbr>(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityMPS)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(tagalong.measurements.Height,double,double)" class="member-name-link">setElevatorProfile</a><wbr>(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityMPS,
+ double&nbsp;maxVelocityMPS)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(tagalong.measurements.Height,double,double,double)" class="member-name-link">setElevatorProfile</a><wbr>(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityMPS,
+ double&nbsp;maxVelocityMPS,
+ double&nbsp;maxAccelerationMPS2)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorProfile(tagalong.measurements.Height,double,double,double,boolean)" class="member-name-link">setElevatorProfile</a><wbr>(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
  double&nbsp;goalVelocityMPS,
  double&nbsp;maxVelocityMPS,
  double&nbsp;maxAccelerationMPS2,
  boolean&nbsp;setCurrentState)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Creates a new trapezoidal profile for the elevator</div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setElevatorVelocity(double,boolean)" class="member-name-link">setElevatorVelocity</a><wbr>(double&nbsp;mps,
@@ -351,7 +401,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-tagalong.subsystems.micro.Microsystem">Methods inherited from class&nbsp;tagalong.subsystems.micro.<a href="Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></h3>
-<code><a href="Microsystem.html#checkInitStatus()">checkInitStatus</a>, <a href="Microsystem.html#checkToleranceTime(boolean,double)">checkToleranceTime</a>, <a href="Microsystem.html#configTuningModes()">configTuningModes</a>, <a href="Microsystem.html#disableMicrosystem(boolean)">disableMicrosystem</a>, <a href="Microsystem.html#getPrimaryMotor()">getPrimaryMotor</a>, <a href="Microsystem.html#getPrimaryMotorPosition()">getPrimaryMotorPosition</a>, <a href="Microsystem.html#getPrimaryMotorPower()">getPrimaryMotorPower</a>, <a href="Microsystem.html#getPrimaryMotorVelocity()">getPrimaryMotorVelocity</a>, <a href="Microsystem.html#isProfileFinished()">isProfileFinished</a>, <a href="Microsystem.html#motorResetConfig()">motorResetConfig</a>, <a href="Microsystem.html#onTeleopDisable()">onTeleopDisable</a>, <a href="Microsystem.html#resetToleranceTimer()">resetToleranceTimer</a>, <a href="Microsystem.html#setBrakeMode(boolean)">setBrakeMode</a>, <a href="Microsystem.html#setFollowProfile(boolean)">setFollowProfile</a>, <a href="Microsystem.html#setHoldPosition(boolean)">setHoldPosition</a>, <a href="Microsystem.html#setPrimaryPower(double)">setPrimaryPower</a>, <a href="Microsystem.html#updateAllPIDSGVA()">updateAllPIDSGVA</a>, <a href="Microsystem.html#waitForInitialization()">waitForInitialization</a></code></div>
+<code><a href="Microsystem.html#checkInitStatus()">checkInitStatus</a>, <a href="Microsystem.html#checkToleranceTime(boolean,double)">checkToleranceTime</a>, <a href="Microsystem.html#configTuningModes()">configTuningModes</a>, <a href="Microsystem.html#disableMicrosystem(boolean)">disableMicrosystem</a>, <a href="Microsystem.html#getPrimaryMotor()">getPrimaryMotor</a>, <a href="Microsystem.html#getPrimaryMotorPosition()">getPrimaryMotorPosition</a>, <a href="Microsystem.html#getPrimaryMotorPower()">getPrimaryMotorPower</a>, <a href="Microsystem.html#getPrimaryMotorVelocity()">getPrimaryMotorVelocity</a>, <a href="Microsystem.html#getRoot()">getRoot</a>, <a href="Microsystem.html#isProfileFinished()">isProfileFinished</a>, <a href="Microsystem.html#motorResetConfig()">motorResetConfig</a>, <a href="Microsystem.html#onTeleopDisable()">onTeleopDisable</a>, <a href="Microsystem.html#resetToleranceTimer()">resetToleranceTimer</a>, <a href="Microsystem.html#setBrakeMode(boolean)">setBrakeMode</a>, <a href="Microsystem.html#setFollowProfile(boolean)">setFollowProfile</a>, <a href="Microsystem.html#setHoldPosition(boolean)">setHoldPosition</a>, <a href="Microsystem.html#setPrimaryPower(double)">setPrimaryPower</a>, <a href="Microsystem.html#updateAllPIDSGVA()">updateAllPIDSGVA</a>, <a href="Microsystem.html#waitForInitialization()">waitForInitialization</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -369,21 +419,21 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_elevatorConf">
 <h3>_elevatorConf</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-32">_elevatorConf</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-33">_elevatorConf</a></span></div>
 <div class="block">Configuration for the elevator</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_motorToMechRatio">
 <h3>_motorToMechRatio</h3>
-<div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-40">_motorToMechRatio</a></span></div>
+<div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-41">_motorToMechRatio</a></span></div>
 <div class="block">Ratio between motor rotations and drum rotations</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_elevatorMinHeightM">
 <h3>_elevatorMinHeightM</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-45">_elevatorMinHeightM</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-46">_elevatorMinHeightM</a></span></div>
 <div class="block">Minimum height of the elevator in meters,
  Maximum height of the elevator in meters</div>
 </section>
@@ -391,7 +441,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_elevatorMaxHeightM">
 <h3>_elevatorMaxHeightM</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-45">_elevatorMaxHeightM</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-46">_elevatorMaxHeightM</a></span></div>
 <div class="block">Minimum height of the elevator in meters,
  Maximum height of the elevator in meters</div>
 </section>
@@ -399,7 +449,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_maxVelocityMPS">
 <h3>_maxVelocityMPS</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-50">_maxVelocityMPS</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-51">_maxVelocityMPS</a></span></div>
 <div class="block">Maximum velocity of the elevator in meters per second,
  Maximum acceleration of the elevator in meters per second squared</div>
 </section>
@@ -407,7 +457,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_maxAccelerationMPS2">
 <h3>_maxAccelerationMPS2</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-50">_maxAccelerationMPS2</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-51">_maxAccelerationMPS2</a></span></div>
 <div class="block">Maximum velocity of the elevator in meters per second,
  Maximum acceleration of the elevator in meters per second squared</div>
 </section>
@@ -415,7 +465,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_defaultElevatorLowerToleranceM">
 <h3>_defaultElevatorLowerToleranceM</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-55">_defaultElevatorLowerToleranceM</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-56">_defaultElevatorLowerToleranceM</a></span></div>
 <div class="block">Default lower tolerance of the elevator in meters,
  Default upper tolerance of the elevator in meters</div>
 </section>
@@ -423,7 +473,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_defaultElevatorUpperToleranceM">
 <h3>_defaultElevatorUpperToleranceM</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-55">_defaultElevatorUpperToleranceM</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-56">_defaultElevatorUpperToleranceM</a></span></div>
 <div class="block">Default lower tolerance of the elevator in meters,
  Default upper tolerance of the elevator in meters</div>
 </section>
@@ -431,63 +481,63 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_elevatorZeroingPower">
 <h3>_elevatorZeroingPower</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-59">_elevatorZeroingPower</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-60">_elevatorZeroingPower</a></span></div>
 <div class="block">Power for zeroing the elevator</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_elevatorZeroingStallToleranceM">
 <h3>_elevatorZeroingStallToleranceM</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-63">_elevatorZeroingStallToleranceM</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-64">_elevatorZeroingStallToleranceM</a></span></div>
 <div class="block">Positional tolerance in meters for zeroing the elevator</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_elevatorZeroingDurationS">
 <h3>_elevatorZeroingDurationS</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-67">_elevatorZeroingDurationS</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-68">_elevatorZeroingDurationS</a></span></div>
 <div class="block">Duration of stalling in seconds necessary for the elevator zero command to finish</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_elevatorFF">
 <h3>_elevatorFF</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ElevatorFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">ElevatorFeedforward</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-73">_elevatorFF</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ElevatorFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">ElevatorFeedforward</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-74">_elevatorFF</a></span></div>
 <div class="block">Feedforward model for the elevator</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_elevatorSim">
 <h3>_elevatorSim</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/simulation/ElevatorSim.html" title="class or interface in edu.wpi.first.wpilibj.simulation" class="external-link">ElevatorSim</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-79">_elevatorSim</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/simulation/ElevatorSim.html" title="class or interface in edu.wpi.first.wpilibj.simulation" class="external-link">ElevatorSim</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-80">_elevatorSim</a></span></div>
 <div class="block">Simulation for the elevator</div>
 </section>
 </li>
 <li>
-<section class="detail" id="_elevatorBaseStage">
-<h3>_elevatorBaseStage</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-83">_elevatorBaseStage</a></span></div>
+<section class="detail" id="_elevatorBaseStageLigament">
+<h3>_elevatorBaseStageLigament</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-84">_elevatorBaseStageLigament</a></span></div>
 <div class="block">Base stage ligament</div>
 </section>
 </li>
 <li>
-<section class="detail" id="_elevatorStage1">
-<h3>_elevatorStage1</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-87">_elevatorStage1</a></span></div>
+<section class="detail" id="_elevatorStage1Ligament">
+<h3>_elevatorStage1Ligament</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-88">_elevatorStage1Ligament</a></span></div>
 <div class="block">Stage 1 ligament</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_simVelocityMPS">
 <h3>_simVelocityMPS</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-91">_simVelocityMPS</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-92">_simVelocityMPS</a></span></div>
 <div class="block">Velocity of the simulated elevator in meters per second</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_primaryMotorInverted">
 <h3>_primaryMotorInverted</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-95">_primaryMotorInverted</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-96">_primaryMotorInverted</a></span></div>
 <div class="block">Whether or not the primary motor is inverted</div>
 </section>
 </li>
@@ -502,8 +552,8 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="&lt;init&gt;(tagalong.subsystems.micro.confs.ElevatorConf)">
 <h3>Elevator</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-102">Elevator</a></span><wbr><span class="parameters">(<a href="confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a>&nbsp;conf)</span></div>
-<div class="block">Constructor that creates an elevator microsystem with the below configurations</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-103">Elevator</a></span><wbr><span class="parameters">(<a href="confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a>&nbsp;conf)</span></div>
+<div class="block">Constructs an elevator microsystem with the below configurations</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>conf</code> - Configuration for the elevator</dd>
@@ -521,7 +571,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="configAllDevices()">
 <h3>configAllDevices</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-138">configAllDevices</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-139">configAllDevices</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#configAllDevices()">Microsystem</a></code></span></div>
 <div class="block">Configures devices</div>
 <dl class="notes">
@@ -533,15 +583,102 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="followLastProfile()">
 <h3>followLastProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-151">followLastProfile</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-152">followLastProfile</a></span>()</div>
 <div class="block">Calculates the next state according to the trapezoidal profile and requests the elevator
  motor(s) to arrive at the next position with feedforward</div>
 </section>
 </li>
 <li>
+<section class="detail" id="setElevatorProfile(tagalong.measurements.Height)">
+<h3>setElevatorProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-177">setElevatorProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition)</span></div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in meters</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setElevatorProfile(tagalong.measurements.Height,double)">
+<h3>setElevatorProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-187">setElevatorProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityMPS)</span></div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in meters</dd>
+<dd><code>goalVelocityMPS</code> - goal velocity in meters per second</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setElevatorProfile(tagalong.measurements.Height,double,double)">
+<h3>setElevatorProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-198">setElevatorProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityMPS,
+ double&nbsp;maxVelocityMPS)</span></div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in meters</dd>
+<dd><code>goalVelocityMPS</code> - goal velocity in meters per second</dd>
+<dd><code>maxVelocityMPS</code> - maximum velocity in meters per second</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setElevatorProfile(tagalong.measurements.Height,double,double,double)">
+<h3>setElevatorProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-212">setElevatorProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityMPS,
+ double&nbsp;maxVelocityMPS,
+ double&nbsp;maxAccelerationMPS2)</span></div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in meters</dd>
+<dd><code>goalVelocityMPS</code> - goal velocity in meters per second</dd>
+<dd><code>maxVelocityMPS</code> - maximum velocity in meters per second</dd>
+<dd><code>maxAccelerationMPS2</code> - maximum acceleration in meters per second squared</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setElevatorProfile(tagalong.measurements.Height,double,double,double,boolean)">
+<h3>setElevatorProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-230">setElevatorProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Height.html" title="interface in tagalong.measurements">Height</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityMPS,
+ double&nbsp;maxVelocityMPS,
+ double&nbsp;maxAccelerationMPS2,
+ boolean&nbsp;setCurrentState)</span></div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in meters</dd>
+<dd><code>goalVelocityMPS</code> - goal velocity in meters per second</dd>
+<dd><code>maxVelocityMPS</code> - maximum velocity in meters per second</dd>
+<dd><code>maxAccelerationMPS2</code> - maximum acceleration in meters per second squared</dd>
+<dd><code>setCurrentState</code> - True if the profiles current state should base itself off sensor
+     values rather than continue from the existing state</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setElevatorProfile(double)">
+<h3>setElevatorProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-251">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM)</span></div>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPositionM</code> - goal position in meters</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="setElevatorProfile(double,double)">
 <h3>setElevatorProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-181">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-261">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
  double&nbsp;goalVelocityMPS)</span></div>
 <div class="block">Creates a new trapezoidal profile for the elevator</div>
 <dl class="notes">
@@ -554,7 +691,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setElevatorProfile(double,double,double)">
 <h3>setElevatorProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-192">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-272">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
  double&nbsp;goalVelocityMPS,
  double&nbsp;maxVelocityMPS)</span></div>
 <div class="block">Creates a new trapezoidal profile for the elevator</div>
@@ -569,7 +706,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setElevatorProfile(double,double,double,double)">
 <h3>setElevatorProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-206">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-286">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
  double&nbsp;goalVelocityMPS,
  double&nbsp;maxVelocityMPS,
  double&nbsp;maxAccelerationMPS2)</span></div>
@@ -586,7 +723,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setElevatorProfile(double,double,double,double,boolean)">
 <h3>setElevatorProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-225">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-305">setElevatorProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionM,
  double&nbsp;goalVelocityMPS,
  double&nbsp;maxVelocityMPS,
  double&nbsp;maxAccelerationMPS2,
@@ -606,7 +743,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getElevatorHeightM()">
 <h3>getElevatorHeightM</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-260">getElevatorHeightM</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-340">getElevatorHeightM</a></span>()</div>
 <div class="block">Gets the height of the elevator in meters</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -617,7 +754,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getElevatorVelocityMPS()">
 <h3>getElevatorVelocityMPS</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-269">getElevatorVelocityMPS</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-349">getElevatorVelocityMPS</a></span>()</div>
 <div class="block">Gets the velocity of the elevator in meters per second</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -628,7 +765,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setElevatorVelocity(double,boolean)">
 <h3>setElevatorVelocity</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-279">setElevatorVelocity</a></span><wbr><span class="parameters">(double&nbsp;mps,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-359">setElevatorVelocity</a></span><wbr><span class="parameters">(double&nbsp;mps,
  boolean&nbsp;withFF)</span></div>
 <div class="block">Sets the velocity of the elevator in MPS</div>
 <dl class="notes">
@@ -641,7 +778,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="clampElevatorPosition(double)">
 <h3>clampElevatorPosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-295">clampElevatorPosition</a></span><wbr><span class="parameters">(double&nbsp;target)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-375">clampElevatorPosition</a></span><wbr><span class="parameters">(double&nbsp;target)</span></div>
 <div class="block">Clamps the elevator position to be within height limits</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -654,7 +791,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="onEnable()">
 <h3>onEnable</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-299">onEnable</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-379">onEnable</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#onEnable()">Microsystem</a></code></span></div>
 <div class="block">Sets break mode for all motors
  If system is in PID tuning mode is updates all PID related settings
@@ -669,7 +806,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="onDisable()">
 <h3>onDisable</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-317">onDisable</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-397">onDisable</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#onDisable()">Microsystem</a></code></span></div>
 <div class="block">returns nothing if micro system is disabled</div>
 <dl class="notes">
@@ -681,7 +818,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-326">periodic</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-406">periodic</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#periodic()">Microsystem</a></code></span></div>
 <div class="block">Periodic update function</div>
 <dl class="notes">
@@ -693,7 +830,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="simulationInit()">
 <h3>simulationInit</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-340">simulationInit</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-420">simulationInit</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#simulationInit()">Microsystem</a></code></span></div>
 <div class="block">Initializes simulation</div>
 <dl class="notes">
@@ -705,7 +842,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="simulationPeriodic()">
 <h3>simulationPeriodic</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-377">simulationPeriodic</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-458">simulationPeriodic</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#simulationPeriodic()">Microsystem</a></code></span></div>
 <div class="block">Periodic function during simulation</div>
 <dl class="notes">
@@ -717,7 +854,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="updateShuffleboard()">
 <h3>updateShuffleboard</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-409">updateShuffleboard</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-488">updateShuffleboard</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#updateShuffleboard()">Microsystem</a></code></span></div>
 <div class="block">Updates shuffleboard</div>
 <dl class="notes">
@@ -729,7 +866,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="configShuffleboard()">
 <h3>configShuffleboard</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-423">configShuffleboard</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-502">configShuffleboard</a></span>()</div>
 <div class="block">Configure shuffleboard for the elevator</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -740,7 +877,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="motorToMeters(double)">
 <h3>motorToMeters</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-437">motorToMeters</a></span><wbr><span class="parameters">(double&nbsp;rotation)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-516">motorToMeters</a></span><wbr><span class="parameters">(double&nbsp;rotation)</span></div>
 <div class="block">Converts motor rotations to elevator height</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -753,7 +890,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="metersToMotor(double)">
 <h3>metersToMotor</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-449">metersToMotor</a></span><wbr><span class="parameters">(double&nbsp;meter)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-528">metersToMotor</a></span><wbr><span class="parameters">(double&nbsp;meter)</span></div>
 <div class="block">Converts elevator height to motor rotations</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -766,7 +903,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="isSafeToMove()">
 <h3>isSafeToMove</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-459">isSafeToMove</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-538">isSafeToMove</a></span>()</div>
 <div class="block">Checks whether or not it's safe for the elevator to move</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -777,7 +914,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="isElevatorInTolerance(double,double)">
 <h3>isElevatorInTolerance</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-470">isElevatorInTolerance</a></span><wbr><span class="parameters">(double&nbsp;lowerBound,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-549">isElevatorInTolerance</a></span><wbr><span class="parameters">(double&nbsp;lowerBound,
  double&nbsp;upperBound)</span></div>
 <div class="block">Bounds checking function that uses the current elevator position</div>
 <dl class="notes">
@@ -792,7 +929,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setElevatorHeight(double)">
 <h3>setElevatorHeight</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-482">setElevatorHeight</a></span><wbr><span class="parameters">(double&nbsp;height)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-561">setElevatorHeight</a></span><wbr><span class="parameters">(double&nbsp;height)</span></div>
 <div class="block">Sets the position of the elevator in meters</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -803,12 +940,34 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="holdCurrentPosition()">
 <h3>holdCurrentPosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-489">holdCurrentPosition</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-568">holdCurrentPosition</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#holdCurrentPosition()">Microsystem</a></code></span></div>
 <div class="block">Sets the power of the primary motor to zero</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="Microsystem.html#holdCurrentPosition()">holdCurrentPosition</a></code>&nbsp;in class&nbsp;<code><a href="Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getElevatorBaseStageLigament()">
+<h3>getElevatorBaseStageLigament</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-579">getElevatorBaseStageLigament</a></span>()</div>
+<div class="block">Retrieves base stage ligament attached to elevator Mechanism2d</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>elevator base stage ligament</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getElevatorStage1Ligament()">
+<h3>getElevatorStage1Ligament</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Elevator.html#line-588">getElevatorStage1Ligament</a></span>()</div>
+<div class="block">Retrieves stage 1 ligament attached to elevator Mechanism2d</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>elevator stage 1 ligament</dd>
 </dl>
 </section>
 </li>

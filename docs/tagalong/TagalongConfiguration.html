@@ -93,9 +93,14 @@ loadScripts(document, 'script');</script>
 <div class="block">Add microsystem names to pidTuningMicrosystems list to put them into
  FeedForward tuning mode and logged on shuffleboard accordingly.</div>
 </div>
-<div class="col-first odd-row-color"><code>static double</code></div>
-<div class="col-second odd-row-color"><code><a href="#LOOP_PERIOD_S" class="member-name-link">LOOP_PERIOD_S</a></code></div>
+<div class="col-first odd-row-color"><code>static boolean</code></div>
+<div class="col-second odd-row-color"><code><a href="#isReplayMode" class="member-name-link">isReplayMode</a></code></div>
 <div class="col-last odd-row-color">
+<div class="block">Set isReplayMode to true to replay a log</div>
+</div>
+<div class="col-first even-row-color"><code>static double</code></div>
+<div class="col-second even-row-color"><code><a href="#LOOP_PERIOD_S" class="member-name-link">LOOP_PERIOD_S</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">The command schedulers loop time, the following line of code must be put into Robot.java's
  constructor if using a non-standard loop time!
 
@@ -103,15 +108,15 @@ loadScripts(document, 'script');</script>
  TagalongConfiguration.LOOP_PERIOD_S = this.getPeriod();
  ```</div>
 </div>
-<div class="col-first even-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
-<div class="col-second even-row-color"><code><a href="#pidTuningMicrosystems" class="member-name-link">pidTuningMicrosystems</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second odd-row-color"><code><a href="#pidTuningMicrosystems" class="member-name-link">pidTuningMicrosystems</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">Add microsystem names to pidTuningMicrosystems list to put them into PID
  tuning mode and logged on shuffleboard accordingly.</div>
 </div>
-<div class="col-first odd-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
-<div class="col-second odd-row-color"><code><a href="#shuffleboardMicrosystems" class="member-name-link">shuffleboardMicrosystems</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
+<div class="col-second even-row-color"><code><a href="#shuffleboardMicrosystems" class="member-name-link">shuffleboardMicrosystems</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">Add microsystem names to shuffleboardMicrosystems list if they should be
  logged via shuffleboard entries.</div>
 </div>
@@ -162,9 +167,16 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="isReplayMode">
+<h3>isReplayMode</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../src-html/tagalong/TagalongConfiguration.html#line-31">isReplayMode</a></span></div>
+<div class="block">Set isReplayMode to true to replay a log</div>
+</section>
+</li>
+<li>
 <section class="detail" id="shuffleboardMicrosystems">
 <h3>shuffleboardMicrosystems</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../src-html/tagalong/TagalongConfiguration.html#line-32">shuffleboardMicrosystems</a></span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../src-html/tagalong/TagalongConfiguration.html#line-37">shuffleboardMicrosystems</a></span></div>
 <div class="block">Add microsystem names to shuffleboardMicrosystems list if they should be
  logged via shuffleboard entries.</div>
 </section>
@@ -172,7 +184,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="pidTuningMicrosystems">
 <h3>pidTuningMicrosystems</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../src-html/tagalong/TagalongConfiguration.html#line-37">pidTuningMicrosystems</a></span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../src-html/tagalong/TagalongConfiguration.html#line-42">pidTuningMicrosystems</a></span></div>
 <div class="block">Add microsystem names to pidTuningMicrosystems list to put them into PID
  tuning mode and logged on shuffleboard accordingly.</div>
 </section>
@@ -180,7 +192,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="ffTuningMicrosystems">
 <h3>ffTuningMicrosystems</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../src-html/tagalong/TagalongConfiguration.html#line-42">ffTuningMicrosystems</a></span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../src-html/tagalong/TagalongConfiguration.html#line-47">ffTuningMicrosystems</a></span></div>
 <div class="block">Add microsystem names to pidTuningMicrosystems list to put them into
  FeedForward tuning mode and logged on shuffleboard accordingly.</div>
 </section>

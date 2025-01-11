@@ -39,686 +39,773 @@
 <span class="source-line-no">026</span><span id="line-26">import edu.wpi.first.wpilibj.util.Color8Bit;</span>
 <span class="source-line-no">027</span><span id="line-27">import tagalong.TagalongConfiguration;</span>
 <span class="source-line-no">028</span><span id="line-28">import tagalong.math.AlgebraicUtils;</span>
-<span class="source-line-no">029</span><span id="line-29">import tagalong.subsystems.micro.confs.PivotConf;</span>
-<span class="source-line-no">030</span><span id="line-30"></span>
-<span class="source-line-no">031</span><span id="line-31">/**</span>
-<span class="source-line-no">032</span><span id="line-32"> * Pivot microsystem</span>
-<span class="source-line-no">033</span><span id="line-33"> */</span>
-<span class="source-line-no">034</span><span id="line-34">public class Pivot extends Microsystem {</span>
-<span class="source-line-no">035</span><span id="line-35">  /**</span>
-<span class="source-line-no">036</span><span id="line-36">   * Configuration for the pivot</span>
-<span class="source-line-no">037</span><span id="line-37">   */</span>
-<span class="source-line-no">038</span><span id="line-38">  public final PivotConf _pivotConf;</span>
-<span class="source-line-no">039</span><span id="line-39"></span>
-<span class="source-line-no">040</span><span id="line-40">  /* -------- Hardware: motors and sensors -------- */</span>
-<span class="source-line-no">041</span><span id="line-41">  /**</span>
-<span class="source-line-no">042</span><span id="line-42">   * CANcoder device</span>
-<span class="source-line-no">043</span><span id="line-43">   */</span>
-<span class="source-line-no">044</span><span id="line-44">  public CANcoder _pivotCancoder;</span>
-<span class="source-line-no">045</span><span id="line-45">  /**</span>
-<span class="source-line-no">046</span><span id="line-46">   * Configuration for the CANcoder</span>
-<span class="source-line-no">047</span><span id="line-47">   */</span>
-<span class="source-line-no">048</span><span id="line-48">  protected CANcoderConfiguration _pivotCancoderConfiguration;</span>
-<span class="source-line-no">049</span><span id="line-49"></span>
-<span class="source-line-no">050</span><span id="line-50">  /* -------- Control: states and constants -------- */</span>
-<span class="source-line-no">051</span><span id="line-51">  /**</span>
-<span class="source-line-no">052</span><span id="line-52">   * Gear ratio from the motor to encoder (conversion g.t. 1 represents a reduction)</span>
-<span class="source-line-no">053</span><span id="line-53">   */</span>
-<span class="source-line-no">054</span><span id="line-54">  protected double _motorToEncoderRatio;</span>
-<span class="source-line-no">055</span><span id="line-55">  /**</span>
-<span class="source-line-no">056</span><span id="line-56">   * Gear ratio from the encoder to pivot mechanism (conversion g.t. 1 represents a reduction)</span>
-<span class="source-line-no">057</span><span id="line-57">   */</span>
-<span class="source-line-no">058</span><span id="line-58">  protected double _encoderToPivotRatio;</span>
-<span class="source-line-no">059</span><span id="line-59">  /**</span>
-<span class="source-line-no">060</span><span id="line-60">   * Default lower tolerance of the pivot in rotations,</span>
-<span class="source-line-no">061</span><span id="line-61">   * Default upper tolerance of the pivot in rotations</span>
-<span class="source-line-no">062</span><span id="line-62">   */</span>
-<span class="source-line-no">063</span><span id="line-63">  public final double _defaultPivotLowerToleranceRot, _defaultPivotUpperToleranceRot;</span>
-<span class="source-line-no">064</span><span id="line-64">  /**</span>
-<span class="source-line-no">065</span><span id="line-65">   * Absolute range of pivot movement in rotations</span>
-<span class="source-line-no">066</span><span id="line-66">   */</span>
-<span class="source-line-no">067</span><span id="line-67">  public final double _absoluteRangeRot;</span>
-<span class="source-line-no">068</span><span id="line-68">  /**</span>
-<span class="source-line-no">069</span><span id="line-69">   * Minimum height of the pivot in rotations,</span>
-<span class="source-line-no">070</span><span id="line-70">   * Maximum height of the pivot in rotations</span>
-<span class="source-line-no">071</span><span id="line-71">   */</span>
-<span class="source-line-no">072</span><span id="line-72">  public final double _minPositionRot, _maxPositionRot;</span>
-<span class="source-line-no">073</span><span id="line-73">  /**</span>
-<span class="source-line-no">074</span><span id="line-74">   * Maximum velocity of the pivot in rollers per second,</span>
-<span class="source-line-no">075</span><span id="line-75">   * Maximum acceleration of the rollers in rotations per second squared</span>
-<span class="source-line-no">076</span><span id="line-76">   */</span>
-<span class="source-line-no">077</span><span id="line-77">  public final double _maxVelocityRPS, _maxAccelerationRPS2;</span>
-<span class="source-line-no">078</span><span id="line-78">  /**</span>
-<span class="source-line-no">079</span><span id="line-79">   * Offset value for the target position</span>
-<span class="source-line-no">080</span><span id="line-80">   */</span>
-<span class="source-line-no">081</span><span id="line-81">  public final double _profileTargetOffset;</span>
-<span class="source-line-no">082</span><span id="line-82"></span>
-<span class="source-line-no">083</span><span id="line-83">  /* -------- Control: controllers and utilities -------- */</span>
-<span class="source-line-no">084</span><span id="line-84">  /**</span>
-<span class="source-line-no">085</span><span id="line-85">   * Feedforward model for the pivot</span>
-<span class="source-line-no">086</span><span id="line-86">   */</span>
-<span class="source-line-no">087</span><span id="line-87">  protected ArmFeedforward _pivotFF;</span>
-<span class="source-line-no">088</span><span id="line-88">  /**</span>
-<span class="source-line-no">089</span><span id="line-89">   * Offset value for the target position</span>
-<span class="source-line-no">090</span><span id="line-90">   */</span>
-<span class="source-line-no">091</span><span id="line-91">  public final double _ffCenterOfMassOffsetRad;</span>
-<span class="source-line-no">092</span><span id="line-92">  /**</span>
-<span class="source-line-no">093</span><span id="line-93">   * Positional values for safe clamp logic</span>
-<span class="source-line-no">094</span><span id="line-94">   */</span>
-<span class="source-line-no">095</span><span id="line-95">  private double[] _values;</span>
-<span class="source-line-no">096</span><span id="line-96">  /**</span>
-<span class="source-line-no">097</span><span id="line-97">   * IDs for safe clamp switch case</span>
-<span class="source-line-no">098</span><span id="line-98">   */</span>
-<span class="source-line-no">099</span><span id="line-99">  private int[] _ids;</span>
-<span class="source-line-no">100</span><span id="line-100"></span>
-<span class="source-line-no">101</span><span id="line-101">  /* -------- Sim -------- */</span>
-<span class="source-line-no">102</span><span id="line-102">  /**</span>
-<span class="source-line-no">103</span><span id="line-103">   * Single jointed arm simulation for the pivot</span>
-<span class="source-line-no">104</span><span id="line-104">   */</span>
-<span class="source-line-no">105</span><span id="line-105">  protected SingleJointedArmSim _pivotSim;</span>
-<span class="source-line-no">106</span><span id="line-106">  /**</span>
-<span class="source-line-no">107</span><span id="line-107">   * CANcoder simulation</span>
-<span class="source-line-no">108</span><span id="line-108">   */</span>
-<span class="source-line-no">109</span><span id="line-109">  protected CANcoderSimState _pivotCancoderSim;</span>
-<span class="source-line-no">110</span><span id="line-110">  /**</span>
-<span class="source-line-no">111</span><span id="line-111">   * Position of the simulated pivot in rotations</span>
-<span class="source-line-no">112</span><span id="line-112">   */</span>
-<span class="source-line-no">113</span><span id="line-113">  protected double _simRotations;</span>
-<span class="source-line-no">114</span><span id="line-114">  /**</span>
-<span class="source-line-no">115</span><span id="line-115">   * Velocity of the simulated pivot in rotations per second</span>
-<span class="source-line-no">116</span><span id="line-116">   */</span>
-<span class="source-line-no">117</span><span id="line-117">  protected double _simVeloRPS;</span>
-<span class="source-line-no">118</span><span id="line-118">  /**</span>
-<span class="source-line-no">119</span><span id="line-119">   * Acceleration of the simulated pivot in rotations per second squared</span>
-<span class="source-line-no">120</span><span id="line-120">   */</span>
-<span class="source-line-no">121</span><span id="line-121">  protected double _simAccelRPS2;</span>
-<span class="source-line-no">122</span><span id="line-122">  /**</span>
-<span class="source-line-no">123</span><span id="line-123">   * Simulated arm of the pivot</span>
-<span class="source-line-no">124</span><span id="line-124">   */</span>
-<span class="source-line-no">125</span><span id="line-125">  protected MechanismLigament2d _ligament;</span>
-<span class="source-line-no">126</span><span id="line-126"></span>
-<span class="source-line-no">127</span><span id="line-127">  /**</span>
-<span class="source-line-no">128</span><span id="line-128">   * Constructs a pivot microsystem with the below configurations</span>
-<span class="source-line-no">129</span><span id="line-129">   *</span>
-<span class="source-line-no">130</span><span id="line-130">   * @param conf Configurations for the pivot</span>
-<span class="source-line-no">131</span><span id="line-131">   */</span>
-<span class="source-line-no">132</span><span id="line-132">  public Pivot(PivotConf conf) {</span>
-<span class="source-line-no">133</span><span id="line-133">    super(conf);</span>
-<span class="source-line-no">134</span><span id="line-134">    _pivotConf = conf;</span>
-<span class="source-line-no">135</span><span id="line-135"></span>
-<span class="source-line-no">136</span><span id="line-136">    if (_configuredMicrosystemDisable) {</span>
-<span class="source-line-no">137</span><span id="line-137">      _defaultPivotLowerToleranceRot = 0.0;</span>
-<span class="source-line-no">138</span><span id="line-138">      _defaultPivotUpperToleranceRot = 0.0;</span>
-<span class="source-line-no">139</span><span id="line-139">      _absoluteRangeRot = 0.0;</span>
-<span class="source-line-no">140</span><span id="line-140">      _minPositionRot = 0.0;</span>
-<span class="source-line-no">141</span><span id="line-141">      _maxPositionRot = 0.0;</span>
-<span class="source-line-no">142</span><span id="line-142">      _maxVelocityRPS = 0.0;</span>
-<span class="source-line-no">143</span><span id="line-143">      _maxAccelerationRPS2 = 0.0;</span>
-<span class="source-line-no">144</span><span id="line-144">      _profileTargetOffset = 0.0;</span>
-<span class="source-line-no">145</span><span id="line-145">      _ffCenterOfMassOffsetRad = 0.0;</span>
-<span class="source-line-no">146</span><span id="line-146">      return;</span>
-<span class="source-line-no">147</span><span id="line-147">    }</span>
-<span class="source-line-no">148</span><span id="line-148"></span>
-<span class="source-line-no">149</span><span id="line-149">    _pivotCancoder = new CANcoder(_pivotConf.encoderDeviceID, _pivotConf.encoderCanBus);</span>
-<span class="source-line-no">150</span><span id="line-150"></span>
-<span class="source-line-no">151</span><span id="line-151">    _pivotFF = _pivotConf.feedForward;</span>
-<span class="source-line-no">152</span><span id="line-152">    _defaultPivotLowerToleranceRot = _pivotConf.defaultLowerTolerance;</span>
-<span class="source-line-no">153</span><span id="line-153">    _defaultPivotUpperToleranceRot = _pivotConf.defaultUpperTolerance;</span>
-<span class="source-line-no">154</span><span id="line-154">    _minPositionRot = _pivotConf.rotationalMin;</span>
-<span class="source-line-no">155</span><span id="line-155">    _maxPositionRot = _pivotConf.rotationalMax;</span>
-<span class="source-line-no">156</span><span id="line-156">    _absoluteRangeRot = _maxPositionRot - _minPositionRot;</span>
-<span class="source-line-no">157</span><span id="line-157">    _maxVelocityRPS = _pivotConf.trapezoidalLimitsVelocity;</span>
-<span class="source-line-no">158</span><span id="line-158">    _maxAccelerationRPS2 = _pivotConf.trapezoidalLimitsAcceleration;</span>
-<span class="source-line-no">159</span><span id="line-159">    _profileTargetOffset = _pivotConf.profileOffsetValue;</span>
-<span class="source-line-no">160</span><span id="line-160">    _ffCenterOfMassOffsetRad = _pivotConf.ffOffsetValue;</span>
-<span class="source-line-no">161</span><span id="line-161"></span>
-<span class="source-line-no">162</span><span id="line-162">    _trapProfile = new TrapezoidProfile(_pivotConf.trapezoidalLimits);</span>
-<span class="source-line-no">163</span><span id="line-163">    _curState.position = getPivotPosition();</span>
-<span class="source-line-no">164</span><span id="line-164"></span>
-<span class="source-line-no">165</span><span id="line-165">    _motorToEncoderRatio = _pivotConf.motorToEncoderRatio;</span>
-<span class="source-line-no">166</span><span id="line-166">    _encoderToPivotRatio = _pivotConf.encoderToPivotRatio;</span>
-<span class="source-line-no">167</span><span id="line-167"></span>
-<span class="source-line-no">168</span><span id="line-168">    _pivotCancoderConfiguration = _pivotConf.encoderConfig;</span>
-<span class="source-line-no">169</span><span id="line-169"></span>
-<span class="source-line-no">170</span><span id="line-170">    double minAbs = AlgebraicUtils.cppMod(_minPositionRot, 1.0);</span>
-<span class="source-line-no">171</span><span id="line-171">    double maxAbs = AlgebraicUtils.cppMod(_maxPositionRot, 1.0);</span>
-<span class="source-line-no">172</span><span id="line-172">    double halfUnusedRange = (_absoluteRangeRot) / 2.0;</span>
-<span class="source-line-no">173</span><span id="line-173">    double midUnused = maxAbs + halfUnusedRange;</span>
-<span class="source-line-no">174</span><span id="line-174"></span>
-<span class="source-line-no">175</span><span id="line-175">    if (midUnused &gt; 1.0) {</span>
-<span class="source-line-no">176</span><span id="line-176">      _values = new double[] {midUnused - 1.0, minAbs, maxAbs, 1.0};</span>
-<span class="source-line-no">177</span><span id="line-177">      _ids = new int[] {2, 0, 1, 2};</span>
-<span class="source-line-no">178</span><span id="line-178">    } else if (_minPositionRot &gt; 0.0) {</span>
-<span class="source-line-no">179</span><span id="line-179">      _values = new double[] {minAbs, maxAbs, midUnused, 1.0};</span>
-<span class="source-line-no">180</span><span id="line-180">      _ids = new int[] {0, 1, 2, 0};</span>
-<span class="source-line-no">181</span><span id="line-181">    } else {</span>
-<span class="source-line-no">182</span><span id="line-182">      _values = new double[] {maxAbs, midUnused, minAbs, 1.0};</span>
-<span class="source-line-no">183</span><span id="line-183">      _ids = new int[] {1, 2, 0, 1};</span>
-<span class="source-line-no">184</span><span id="line-184">    }</span>
-<span class="source-line-no">185</span><span id="line-185">    if (IterativeRobotBase.isReal()) {</span>
-<span class="source-line-no">186</span><span id="line-186">      int count = 0;</span>
-<span class="source-line-no">187</span><span id="line-187">      // while (!_primaryMotor.isAlive() &amp;&amp; count &lt;= 1000) {</span>
-<span class="source-line-no">188</span><span id="line-188">      // System.out.println(_pivotConf.name + " not alive " + (count++));</span>
-<span class="source-line-no">189</span><span id="line-189">      // }</span>
-<span class="source-line-no">190</span><span id="line-190">      if (count &gt;= 1000) {</span>
-<span class="source-line-no">191</span><span id="line-191">        System.out.println(_pivotConf.name + " failed to initialize!");</span>
-<span class="source-line-no">192</span><span id="line-192">      }</span>
-<span class="source-line-no">193</span><span id="line-193">    }</span>
-<span class="source-line-no">194</span><span id="line-194"></span>
-<span class="source-line-no">195</span><span id="line-195">    configCancoder();</span>
-<span class="source-line-no">196</span><span id="line-196">    configAllDevices();</span>
-<span class="source-line-no">197</span><span id="line-197">    configMotor();</span>
-<span class="source-line-no">198</span><span id="line-198">  }</span>
-<span class="source-line-no">199</span><span id="line-199"></span>
-<span class="source-line-no">200</span><span id="line-200">  /**</span>
-<span class="source-line-no">201</span><span id="line-201">   * Periodic update function</span>
-<span class="source-line-no">202</span><span id="line-202">   */</span>
-<span class="source-line-no">203</span><span id="line-203">  public void periodic() {</span>
-<span class="source-line-no">204</span><span id="line-204">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">205</span><span id="line-205">      return;</span>
-<span class="source-line-no">206</span><span id="line-206">    } else if (motorResetConfig()) {</span>
-<span class="source-line-no">207</span><span id="line-207">      setPivotProfile(getPivotPosition(), 0.0);</span>
-<span class="source-line-no">208</span><span id="line-208">      _primaryMotor.set(0.0);</span>
-<span class="source-line-no">209</span><span id="line-209">    } else if (_isFFTuningMicro &amp;&amp; _trapProfile.isFinished(_profileTimer.get())) {</span>
-<span class="source-line-no">210</span><span id="line-210">      _primaryMotor.setControl(_requestedPositionVoltage.withFeedForward(</span>
-<span class="source-line-no">211</span><span id="line-211">          _pivotFF.ks + _pivotFF.ks * Math.cos(getFFPositionRad())</span>
-<span class="source-line-no">212</span><span id="line-212">      ));</span>
-<span class="source-line-no">213</span><span id="line-213">    }</span>
-<span class="source-line-no">214</span><span id="line-214"></span>
-<span class="source-line-no">215</span><span id="line-215">    if (_followProfile) {</span>
-<span class="source-line-no">216</span><span id="line-216">      followLastProfile();</span>
-<span class="source-line-no">217</span><span id="line-217">    }</span>
-<span class="source-line-no">218</span><span id="line-218">  }</span>
-<span class="source-line-no">219</span><span id="line-219"></span>
-<span class="source-line-no">220</span><span id="line-220">  /**</span>
-<span class="source-line-no">221</span><span id="line-221">   * Gets the primary motor of the pivot</span>
-<span class="source-line-no">222</span><span id="line-222">   *</span>
-<span class="source-line-no">223</span><span id="line-223">   * @return primary motor</span>
-<span class="source-line-no">224</span><span id="line-224">   */</span>
-<span class="source-line-no">225</span><span id="line-225">  public TalonFX getMotor() {</span>
-<span class="source-line-no">226</span><span id="line-226">    return _primaryMotor;</span>
-<span class="source-line-no">227</span><span id="line-227">  }</span>
-<span class="source-line-no">228</span><span id="line-228"></span>
-<span class="source-line-no">229</span><span id="line-229">  /**</span>
-<span class="source-line-no">230</span><span id="line-230">   * Executes logic for when the robot is first enabled</span>
-<span class="source-line-no">231</span><span id="line-231">   */</span>
-<span class="source-line-no">232</span><span id="line-232">  @Override</span>
-<span class="source-line-no">233</span><span id="line-233">  public void onEnable() {</span>
-<span class="source-line-no">234</span><span id="line-234">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">235</span><span id="line-235">      return;</span>
-<span class="source-line-no">236</span><span id="line-236">    }</span>
-<span class="source-line-no">237</span><span id="line-237">    super.onEnable();</span>
-<span class="source-line-no">238</span><span id="line-238"></span>
-<span class="source-line-no">239</span><span id="line-239">    if (_isFFTuningMicro) {</span>
-<span class="source-line-no">240</span><span id="line-240">      _pivotFF = new ArmFeedforward(</span>
-<span class="source-line-no">241</span><span id="line-241">          _KSEntry.getDouble(_pivotFF.ks),</span>
-<span class="source-line-no">242</span><span id="line-242">          _KGEntry.getDouble(_pivotFF.kg),</span>
-<span class="source-line-no">243</span><span id="line-243">          _KVEntry.getDouble(_pivotFF.kv),</span>
-<span class="source-line-no">244</span><span id="line-244">          _KAEntry.getDouble(_pivotFF.ka)</span>
-<span class="source-line-no">245</span><span id="line-245">      );</span>
-<span class="source-line-no">246</span><span id="line-246">      _primaryMotor.setControl(_requestedPositionVoltage.withFeedForward(</span>
-<span class="source-line-no">247</span><span id="line-247">          _pivotFF.ks + _pivotFF.ks * Math.cos(getFFPositionRad())</span>
-<span class="source-line-no">248</span><span id="line-248">      ));</span>
-<span class="source-line-no">249</span><span id="line-249">    }</span>
-<span class="source-line-no">250</span><span id="line-250">  }</span>
-<span class="source-line-no">251</span><span id="line-251"></span>
-<span class="source-line-no">252</span><span id="line-252">  @Override</span>
-<span class="source-line-no">253</span><span id="line-253">  public void onDisable() {</span>
-<span class="source-line-no">254</span><span id="line-254">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">255</span><span id="line-255">      return;</span>
-<span class="source-line-no">256</span><span id="line-256">    }</span>
-<span class="source-line-no">257</span><span id="line-257"></span>
-<span class="source-line-no">258</span><span id="line-258">    super.onDisable();</span>
-<span class="source-line-no">259</span><span id="line-259">  }</span>
-<span class="source-line-no">260</span><span id="line-260"></span>
-<span class="source-line-no">261</span><span id="line-261">  /**</span>
-<span class="source-line-no">262</span><span id="line-262">   * Updates shuffleboard with the pivot's current position and velocity</span>
-<span class="source-line-no">263</span><span id="line-263">   */</span>
-<span class="source-line-no">264</span><span id="line-264">  @Override</span>
-<span class="source-line-no">265</span><span id="line-265">  public void updateShuffleboard() {</span>
-<span class="source-line-no">266</span><span id="line-266">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">267</span><span id="line-267">      return;</span>
-<span class="source-line-no">268</span><span id="line-268">    }</span>
-<span class="source-line-no">269</span><span id="line-269">    if (_isShuffleboardMicro) {</span>
-<span class="source-line-no">270</span><span id="line-270">      _currentPositionEntry.setDouble(getPivotPosition());</span>
-<span class="source-line-no">271</span><span id="line-271">      _currentVelocityEntry.setDouble(getPivotVelocity());</span>
-<span class="source-line-no">272</span><span id="line-272">    }</span>
-<span class="source-line-no">273</span><span id="line-273">  }</span>
-<span class="source-line-no">274</span><span id="line-274"></span>
-<span class="source-line-no">275</span><span id="line-275">  /**</span>
-<span class="source-line-no">276</span><span id="line-276">   * Converts motor rotations to rotations of the pivot mechanism</span>
-<span class="source-line-no">277</span><span id="line-277">   *</span>
-<span class="source-line-no">278</span><span id="line-278">   * @param motorRot Position of the motor in rotations</span>
-<span class="source-line-no">279</span><span id="line-279">   * @return Position of the pivot in rotations</span>
-<span class="source-line-no">280</span><span id="line-280">   */</span>
-<span class="source-line-no">281</span><span id="line-281">  public double motorToPivotRot(double motorRot) {</span>
-<span class="source-line-no">282</span><span id="line-282">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">283</span><span id="line-283">      return 0.0;</span>
-<span class="source-line-no">284</span><span id="line-284">    }</span>
-<span class="source-line-no">285</span><span id="line-285">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
-<span class="source-line-no">286</span><span id="line-286">    return motorRot / (_encoderToPivotRatio * _motorToEncoderRatio);</span>
-<span class="source-line-no">287</span><span id="line-287">  }</span>
-<span class="source-line-no">288</span><span id="line-288"></span>
-<span class="source-line-no">289</span><span id="line-289">  /**</span>
-<span class="source-line-no">290</span><span id="line-290">   * Converts rotations of the pivot mechanism to motor rotations</span>
-<span class="source-line-no">291</span><span id="line-291">   *</span>
-<span class="source-line-no">292</span><span id="line-292">   * @param pivotRot Position of the pivot in rotations</span>
-<span class="source-line-no">293</span><span id="line-293">   * @return Position of the motor in rotations</span>
-<span class="source-line-no">294</span><span id="line-294">   */</span>
-<span class="source-line-no">295</span><span id="line-295">  public double pivotRotToMotor(double pivotRot) {</span>
-<span class="source-line-no">296</span><span id="line-296">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">297</span><span id="line-297">      return 0.0;</span>
-<span class="source-line-no">298</span><span id="line-298">    }</span>
-<span class="source-line-no">299</span><span id="line-299">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
-<span class="source-line-no">300</span><span id="line-300">    return pivotRot * (_encoderToPivotRatio * _motorToEncoderRatio);</span>
-<span class="source-line-no">301</span><span id="line-301">  }</span>
-<span class="source-line-no">302</span><span id="line-302"></span>
-<span class="source-line-no">303</span><span id="line-303">  /**</span>
-<span class="source-line-no">304</span><span id="line-304">   * Configure shuffleboard for the pivot</span>
-<span class="source-line-no">305</span><span id="line-305">   */</span>
-<span class="source-line-no">306</span><span id="line-306">  @Override</span>
-<span class="source-line-no">307</span><span id="line-307">  public void configShuffleboard() {</span>
-<span class="source-line-no">308</span><span id="line-308">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">309</span><span id="line-309">      return;</span>
-<span class="source-line-no">310</span><span id="line-310">    }</span>
-<span class="source-line-no">311</span><span id="line-311">    super.configShuffleboard();</span>
-<span class="source-line-no">312</span><span id="line-312">  }</span>
-<span class="source-line-no">313</span><span id="line-313"></span>
-<span class="source-line-no">314</span><span id="line-314">  /**</span>
-<span class="source-line-no">315</span><span id="line-315">   * Calculates the next state according to the trapezoidal profile and requests the pivot motor(s)</span>
-<span class="source-line-no">316</span><span id="line-316">   * to arrive at the next position with feedforward</span>
-<span class="source-line-no">317</span><span id="line-317">   */</span>
-<span class="source-line-no">318</span><span id="line-318">  public void followLastProfile() {</span>
-<span class="source-line-no">319</span><span id="line-319">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">320</span><span id="line-320">      return;</span>
-<span class="source-line-no">321</span><span id="line-321">    }</span>
-<span class="source-line-no">322</span><span id="line-322"></span>
-<span class="source-line-no">323</span><span id="line-323">    TrapezoidProfile.State nextState =</span>
-<span class="source-line-no">324</span><span id="line-324">        _trapProfile.calculate(TagalongConfiguration.LOOP_PERIOD_S, _curState, _goalState);</span>
-<span class="source-line-no">325</span><span id="line-325">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot, convert to motor units</span>
-<span class="source-line-no">326</span><span id="line-326">    _primaryMotor.setControl(</span>
-<span class="source-line-no">327</span><span id="line-327">        _requestedPositionVoltage</span>
-<span class="source-line-no">328</span><span id="line-328">            .withPosition(nextState.position)</span>
-<span class="source-line-no">329</span><span id="line-329">            // FeedForward must know the pivot rotation and other arguments in radians</span>
-<span class="source-line-no">330</span><span id="line-330">            .withFeedForward(_pivotFF.calculate(</span>
-<span class="source-line-no">331</span><span id="line-331">                getFFPositionRad(),</span>
-<span class="source-line-no">332</span><span id="line-332">                Units.rotationsToRadians(nextState.velocity),</span>
-<span class="source-line-no">333</span><span id="line-333">                Units.rotationsToRadians(</span>
-<span class="source-line-no">334</span><span id="line-334">                    (nextState.velocity - _curState.velocity) / TagalongConfiguration.LOOP_PERIOD_S</span>
-<span class="source-line-no">335</span><span id="line-335">                )</span>
-<span class="source-line-no">336</span><span id="line-336">            ))</span>
-<span class="source-line-no">337</span><span id="line-337">    );</span>
-<span class="source-line-no">338</span><span id="line-338"></span>
-<span class="source-line-no">339</span><span id="line-339">    if (_isShuffleboardMicro) {</span>
-<span class="source-line-no">340</span><span id="line-340">      _targetPositionEntry.setDouble(nextState.position);</span>
-<span class="source-line-no">341</span><span id="line-341">      _targetVelocityEntry.setDouble(nextState.velocity);</span>
-<span class="source-line-no">342</span><span id="line-342">    }</span>
+<span class="source-line-no">029</span><span id="line-29">import tagalong.measurements.Angle;</span>
+<span class="source-line-no">030</span><span id="line-30">import tagalong.subsystems.micro.confs.PivotConf;</span>
+<span class="source-line-no">031</span><span id="line-31"></span>
+<span class="source-line-no">032</span><span id="line-32">/**</span>
+<span class="source-line-no">033</span><span id="line-33"> * Pivot microsystem</span>
+<span class="source-line-no">034</span><span id="line-34"> */</span>
+<span class="source-line-no">035</span><span id="line-35">public class Pivot extends Microsystem {</span>
+<span class="source-line-no">036</span><span id="line-36">  /**</span>
+<span class="source-line-no">037</span><span id="line-37">   * Configuration for the pivot</span>
+<span class="source-line-no">038</span><span id="line-38">   */</span>
+<span class="source-line-no">039</span><span id="line-39">  public final PivotConf _pivotConf;</span>
+<span class="source-line-no">040</span><span id="line-40"></span>
+<span class="source-line-no">041</span><span id="line-41">  /* -------- Hardware: motors and sensors -------- */</span>
+<span class="source-line-no">042</span><span id="line-42">  /**</span>
+<span class="source-line-no">043</span><span id="line-43">   * CANcoder device</span>
+<span class="source-line-no">044</span><span id="line-44">   */</span>
+<span class="source-line-no">045</span><span id="line-45">  public CANcoder _pivotCancoder;</span>
+<span class="source-line-no">046</span><span id="line-46">  /**</span>
+<span class="source-line-no">047</span><span id="line-47">   * Configuration for the CANcoder</span>
+<span class="source-line-no">048</span><span id="line-48">   */</span>
+<span class="source-line-no">049</span><span id="line-49">  protected CANcoderConfiguration _pivotCancoderConfiguration;</span>
+<span class="source-line-no">050</span><span id="line-50"></span>
+<span class="source-line-no">051</span><span id="line-51">  /* -------- Control: states and constants -------- */</span>
+<span class="source-line-no">052</span><span id="line-52">  /**</span>
+<span class="source-line-no">053</span><span id="line-53">   * Gear ratio from the motor to encoder (conversion g.t. 1 represents a reduction)</span>
+<span class="source-line-no">054</span><span id="line-54">   */</span>
+<span class="source-line-no">055</span><span id="line-55">  protected double _motorToEncoderRatio;</span>
+<span class="source-line-no">056</span><span id="line-56">  /**</span>
+<span class="source-line-no">057</span><span id="line-57">   * Gear ratio from the encoder to pivot mechanism (conversion g.t. 1 represents a reduction)</span>
+<span class="source-line-no">058</span><span id="line-58">   */</span>
+<span class="source-line-no">059</span><span id="line-59">  protected double _encoderToPivotRatio;</span>
+<span class="source-line-no">060</span><span id="line-60">  /**</span>
+<span class="source-line-no">061</span><span id="line-61">   * Default lower tolerance of the pivot in rotations,</span>
+<span class="source-line-no">062</span><span id="line-62">   * Default upper tolerance of the pivot in rotations</span>
+<span class="source-line-no">063</span><span id="line-63">   */</span>
+<span class="source-line-no">064</span><span id="line-64">  public final double _defaultPivotLowerToleranceRot, _defaultPivotUpperToleranceRot;</span>
+<span class="source-line-no">065</span><span id="line-65">  /**</span>
+<span class="source-line-no">066</span><span id="line-66">   * Absolute range of pivot movement in rotations</span>
+<span class="source-line-no">067</span><span id="line-67">   */</span>
+<span class="source-line-no">068</span><span id="line-68">  public final double _absoluteRangeRot;</span>
+<span class="source-line-no">069</span><span id="line-69">  /**</span>
+<span class="source-line-no">070</span><span id="line-70">   * Minimum position of the pivot in rotations,</span>
+<span class="source-line-no">071</span><span id="line-71">   * Maximum position of the pivot in rotations</span>
+<span class="source-line-no">072</span><span id="line-72">   */</span>
+<span class="source-line-no">073</span><span id="line-73">  public final double _minPositionRot, _maxPositionRot;</span>
+<span class="source-line-no">074</span><span id="line-74">  /**</span>
+<span class="source-line-no">075</span><span id="line-75">   * Maximum velocity of the pivot in rotations per second,</span>
+<span class="source-line-no">076</span><span id="line-76">   * Maximum acceleration of the pivot in rotations per second squared</span>
+<span class="source-line-no">077</span><span id="line-77">   */</span>
+<span class="source-line-no">078</span><span id="line-78">  public final double _maxVelocityRPS, _maxAccelerationRPS2;</span>
+<span class="source-line-no">079</span><span id="line-79">  /**</span>
+<span class="source-line-no">080</span><span id="line-80">   * Offset value for the target position</span>
+<span class="source-line-no">081</span><span id="line-81">   */</span>
+<span class="source-line-no">082</span><span id="line-82">  public final double _profileTargetOffset;</span>
+<span class="source-line-no">083</span><span id="line-83"></span>
+<span class="source-line-no">084</span><span id="line-84">  /* -------- Control: controller and utilities -------- */</span>
+<span class="source-line-no">085</span><span id="line-85">  /**</span>
+<span class="source-line-no">086</span><span id="line-86">   * Feedforward model for the pivot</span>
+<span class="source-line-no">087</span><span id="line-87">   */</span>
+<span class="source-line-no">088</span><span id="line-88">  protected ArmFeedforward _pivotFF;</span>
+<span class="source-line-no">089</span><span id="line-89">  /**</span>
+<span class="source-line-no">090</span><span id="line-90">   * Offset value for the target position</span>
+<span class="source-line-no">091</span><span id="line-91">   */</span>
+<span class="source-line-no">092</span><span id="line-92">  public final double _ffCenterOfMassOffsetRad;</span>
+<span class="source-line-no">093</span><span id="line-93">  /**</span>
+<span class="source-line-no">094</span><span id="line-94">   * Positional values for safe clamp logic</span>
+<span class="source-line-no">095</span><span id="line-95">   */</span>
+<span class="source-line-no">096</span><span id="line-96">  private double[] _values;</span>
+<span class="source-line-no">097</span><span id="line-97">  /**</span>
+<span class="source-line-no">098</span><span id="line-98">   * IDs for safe clamp switch case</span>
+<span class="source-line-no">099</span><span id="line-99">   */</span>
+<span class="source-line-no">100</span><span id="line-100">  private int[] _ids;</span>
+<span class="source-line-no">101</span><span id="line-101"></span>
+<span class="source-line-no">102</span><span id="line-102">  /* -------- Sim -------- */</span>
+<span class="source-line-no">103</span><span id="line-103">  /**</span>
+<span class="source-line-no">104</span><span id="line-104">   * Single jointed arm simulation for the pivot</span>
+<span class="source-line-no">105</span><span id="line-105">   */</span>
+<span class="source-line-no">106</span><span id="line-106">  protected SingleJointedArmSim _pivotSim;</span>
+<span class="source-line-no">107</span><span id="line-107">  /**</span>
+<span class="source-line-no">108</span><span id="line-108">   * CANcoder simulation</span>
+<span class="source-line-no">109</span><span id="line-109">   */</span>
+<span class="source-line-no">110</span><span id="line-110">  protected CANcoderSimState _pivotCancoderSim;</span>
+<span class="source-line-no">111</span><span id="line-111">  /**</span>
+<span class="source-line-no">112</span><span id="line-112">   * Position of the simulated pivot in rotations</span>
+<span class="source-line-no">113</span><span id="line-113">   */</span>
+<span class="source-line-no">114</span><span id="line-114">  protected double _simRotations;</span>
+<span class="source-line-no">115</span><span id="line-115">  /**</span>
+<span class="source-line-no">116</span><span id="line-116">   * Velocity of the simulated pivot in rotations per second</span>
+<span class="source-line-no">117</span><span id="line-117">   */</span>
+<span class="source-line-no">118</span><span id="line-118">  protected double _simVeloRPS;</span>
+<span class="source-line-no">119</span><span id="line-119">  /**</span>
+<span class="source-line-no">120</span><span id="line-120">   * Acceleration of the simulated pivot in rotations per second squared</span>
+<span class="source-line-no">121</span><span id="line-121">   */</span>
+<span class="source-line-no">122</span><span id="line-122">  protected double _simAccelRPS2;</span>
+<span class="source-line-no">123</span><span id="line-123">  /**</span>
+<span class="source-line-no">124</span><span id="line-124">   * Simulated arm of the pivot</span>
+<span class="source-line-no">125</span><span id="line-125">   */</span>
+<span class="source-line-no">126</span><span id="line-126">  protected MechanismLigament2d _pivotLigament;</span>
+<span class="source-line-no">127</span><span id="line-127"></span>
+<span class="source-line-no">128</span><span id="line-128">  /**</span>
+<span class="source-line-no">129</span><span id="line-129">   * Constructs a pivot microsystem with the below configurations</span>
+<span class="source-line-no">130</span><span id="line-130">   *</span>
+<span class="source-line-no">131</span><span id="line-131">   * @param conf Configurations for the pivot</span>
+<span class="source-line-no">132</span><span id="line-132">   */</span>
+<span class="source-line-no">133</span><span id="line-133">  public Pivot(PivotConf conf) {</span>
+<span class="source-line-no">134</span><span id="line-134">    super(conf);</span>
+<span class="source-line-no">135</span><span id="line-135">    _pivotConf = conf;</span>
+<span class="source-line-no">136</span><span id="line-136"></span>
+<span class="source-line-no">137</span><span id="line-137">    if (_configuredMicrosystemDisable) {</span>
+<span class="source-line-no">138</span><span id="line-138">      _defaultPivotLowerToleranceRot = 0.0;</span>
+<span class="source-line-no">139</span><span id="line-139">      _defaultPivotUpperToleranceRot = 0.0;</span>
+<span class="source-line-no">140</span><span id="line-140">      _absoluteRangeRot = 0.0;</span>
+<span class="source-line-no">141</span><span id="line-141">      _minPositionRot = 0.0;</span>
+<span class="source-line-no">142</span><span id="line-142">      _maxPositionRot = 0.0;</span>
+<span class="source-line-no">143</span><span id="line-143">      _maxVelocityRPS = 0.0;</span>
+<span class="source-line-no">144</span><span id="line-144">      _maxAccelerationRPS2 = 0.0;</span>
+<span class="source-line-no">145</span><span id="line-145">      _profileTargetOffset = 0.0;</span>
+<span class="source-line-no">146</span><span id="line-146">      _ffCenterOfMassOffsetRad = 0.0;</span>
+<span class="source-line-no">147</span><span id="line-147">      return;</span>
+<span class="source-line-no">148</span><span id="line-148">    }</span>
+<span class="source-line-no">149</span><span id="line-149"></span>
+<span class="source-line-no">150</span><span id="line-150">    _pivotCancoder = new CANcoder(_pivotConf.encoderDeviceID, _pivotConf.encoderCanBus);</span>
+<span class="source-line-no">151</span><span id="line-151"></span>
+<span class="source-line-no">152</span><span id="line-152">    _pivotFF = _pivotConf.feedForward;</span>
+<span class="source-line-no">153</span><span id="line-153">    _defaultPivotLowerToleranceRot = _pivotConf.defaultLowerTolerance;</span>
+<span class="source-line-no">154</span><span id="line-154">    _defaultPivotUpperToleranceRot = _pivotConf.defaultUpperTolerance;</span>
+<span class="source-line-no">155</span><span id="line-155">    _minPositionRot = _pivotConf.rotationalMin;</span>
+<span class="source-line-no">156</span><span id="line-156">    _maxPositionRot = _pivotConf.rotationalMax;</span>
+<span class="source-line-no">157</span><span id="line-157">    _absoluteRangeRot = _maxPositionRot - _minPositionRot;</span>
+<span class="source-line-no">158</span><span id="line-158">    _maxVelocityRPS = _pivotConf.trapezoidalLimitsVelocity;</span>
+<span class="source-line-no">159</span><span id="line-159">    _maxAccelerationRPS2 = _pivotConf.trapezoidalLimitsAcceleration;</span>
+<span class="source-line-no">160</span><span id="line-160">    _profileTargetOffset = _pivotConf.profileOffsetValue;</span>
+<span class="source-line-no">161</span><span id="line-161">    _ffCenterOfMassOffsetRad = _pivotConf.ffOffsetValue;</span>
+<span class="source-line-no">162</span><span id="line-162"></span>
+<span class="source-line-no">163</span><span id="line-163">    _trapProfile = new TrapezoidProfile(_pivotConf.trapezoidalLimits);</span>
+<span class="source-line-no">164</span><span id="line-164">    _curState.position = getPivotPosition();</span>
+<span class="source-line-no">165</span><span id="line-165"></span>
+<span class="source-line-no">166</span><span id="line-166">    _motorToEncoderRatio = _pivotConf.motorToEncoderRatio;</span>
+<span class="source-line-no">167</span><span id="line-167">    _encoderToPivotRatio = _pivotConf.encoderToPivotRatio;</span>
+<span class="source-line-no">168</span><span id="line-168"></span>
+<span class="source-line-no">169</span><span id="line-169">    _pivotCancoderConfiguration = _pivotConf.encoderConfig;</span>
+<span class="source-line-no">170</span><span id="line-170"></span>
+<span class="source-line-no">171</span><span id="line-171">    double minAbs = AlgebraicUtils.cppMod(_minPositionRot, 1.0);</span>
+<span class="source-line-no">172</span><span id="line-172">    double maxAbs = AlgebraicUtils.cppMod(_maxPositionRot, 1.0);</span>
+<span class="source-line-no">173</span><span id="line-173">    double halfUnusedRange = (_absoluteRangeRot) / 2.0;</span>
+<span class="source-line-no">174</span><span id="line-174">    double midUnused = maxAbs + halfUnusedRange;</span>
+<span class="source-line-no">175</span><span id="line-175"></span>
+<span class="source-line-no">176</span><span id="line-176">    if (midUnused &gt; 1.0) {</span>
+<span class="source-line-no">177</span><span id="line-177">      _values = new double[] {midUnused - 1.0, minAbs, maxAbs, 1.0};</span>
+<span class="source-line-no">178</span><span id="line-178">      _ids = new int[] {2, 0, 1, 2};</span>
+<span class="source-line-no">179</span><span id="line-179">    } else if (_minPositionRot &gt; 0.0) {</span>
+<span class="source-line-no">180</span><span id="line-180">      _values = new double[] {minAbs, maxAbs, midUnused, 1.0};</span>
+<span class="source-line-no">181</span><span id="line-181">      _ids = new int[] {0, 1, 2, 0};</span>
+<span class="source-line-no">182</span><span id="line-182">    } else {</span>
+<span class="source-line-no">183</span><span id="line-183">      _values = new double[] {maxAbs, midUnused, minAbs, 1.0};</span>
+<span class="source-line-no">184</span><span id="line-184">      _ids = new int[] {1, 2, 0, 1};</span>
+<span class="source-line-no">185</span><span id="line-185">    }</span>
+<span class="source-line-no">186</span><span id="line-186">    if (IterativeRobotBase.isReal()) {</span>
+<span class="source-line-no">187</span><span id="line-187">      int count = 0;</span>
+<span class="source-line-no">188</span><span id="line-188">      // while (!_primaryMotor.isAlive() &amp;&amp; count &lt;= 1000) {</span>
+<span class="source-line-no">189</span><span id="line-189">      // System.out.println(_pivotConf.name + " not alive " + (count++));</span>
+<span class="source-line-no">190</span><span id="line-190">      // }</span>
+<span class="source-line-no">191</span><span id="line-191">      if (count &gt;= 1000) {</span>
+<span class="source-line-no">192</span><span id="line-192">        System.out.println(_pivotConf.name + " failed to initialize!");</span>
+<span class="source-line-no">193</span><span id="line-193">      }</span>
+<span class="source-line-no">194</span><span id="line-194">    }</span>
+<span class="source-line-no">195</span><span id="line-195"></span>
+<span class="source-line-no">196</span><span id="line-196">    configCancoder();</span>
+<span class="source-line-no">197</span><span id="line-197">    configAllDevices();</span>
+<span class="source-line-no">198</span><span id="line-198">    configMotor();</span>
+<span class="source-line-no">199</span><span id="line-199">  }</span>
+<span class="source-line-no">200</span><span id="line-200"></span>
+<span class="source-line-no">201</span><span id="line-201">  /**</span>
+<span class="source-line-no">202</span><span id="line-202">   * Periodic update function</span>
+<span class="source-line-no">203</span><span id="line-203">   */</span>
+<span class="source-line-no">204</span><span id="line-204">  public void periodic() {</span>
+<span class="source-line-no">205</span><span id="line-205">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">206</span><span id="line-206">      return;</span>
+<span class="source-line-no">207</span><span id="line-207">    } else if (motorResetConfig()) {</span>
+<span class="source-line-no">208</span><span id="line-208">      setPivotProfile(getPivotPosition(), 0.0);</span>
+<span class="source-line-no">209</span><span id="line-209">      _primaryMotor.set(0.0);</span>
+<span class="source-line-no">210</span><span id="line-210">    } else if (_isFFTuningMicro &amp;&amp; _trapProfile.isFinished(_profileTimer.get())) {</span>
+<span class="source-line-no">211</span><span id="line-211">      _primaryMotor.setControl(_requestedPositionVoltage.withFeedForward(</span>
+<span class="source-line-no">212</span><span id="line-212">          _pivotFF.getKs() + _pivotFF.getKs() * Math.cos(getFFPositionRad())</span>
+<span class="source-line-no">213</span><span id="line-213">      ));</span>
+<span class="source-line-no">214</span><span id="line-214">    }</span>
+<span class="source-line-no">215</span><span id="line-215"></span>
+<span class="source-line-no">216</span><span id="line-216">    if (_followProfile) {</span>
+<span class="source-line-no">217</span><span id="line-217">      followLastProfile();</span>
+<span class="source-line-no">218</span><span id="line-218">    }</span>
+<span class="source-line-no">219</span><span id="line-219">  }</span>
+<span class="source-line-no">220</span><span id="line-220"></span>
+<span class="source-line-no">221</span><span id="line-221">  /**</span>
+<span class="source-line-no">222</span><span id="line-222">   * Gets the primary motor of the pivot</span>
+<span class="source-line-no">223</span><span id="line-223">   *</span>
+<span class="source-line-no">224</span><span id="line-224">   * @return primary motor</span>
+<span class="source-line-no">225</span><span id="line-225">   */</span>
+<span class="source-line-no">226</span><span id="line-226">  public TalonFX getMotor() {</span>
+<span class="source-line-no">227</span><span id="line-227">    return _primaryMotor;</span>
+<span class="source-line-no">228</span><span id="line-228">  }</span>
+<span class="source-line-no">229</span><span id="line-229"></span>
+<span class="source-line-no">230</span><span id="line-230">  /**</span>
+<span class="source-line-no">231</span><span id="line-231">   * Executes logic for when the robot is first enabled</span>
+<span class="source-line-no">232</span><span id="line-232">   */</span>
+<span class="source-line-no">233</span><span id="line-233">  @Override</span>
+<span class="source-line-no">234</span><span id="line-234">  public void onEnable() {</span>
+<span class="source-line-no">235</span><span id="line-235">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">236</span><span id="line-236">      return;</span>
+<span class="source-line-no">237</span><span id="line-237">    }</span>
+<span class="source-line-no">238</span><span id="line-238">    super.onEnable();</span>
+<span class="source-line-no">239</span><span id="line-239"></span>
+<span class="source-line-no">240</span><span id="line-240">    if (_isFFTuningMicro) {</span>
+<span class="source-line-no">241</span><span id="line-241">      _pivotFF = new ArmFeedforward(</span>
+<span class="source-line-no">242</span><span id="line-242">          _KSEntry.getDouble(_pivotFF.getKs()),</span>
+<span class="source-line-no">243</span><span id="line-243">          _KGEntry.getDouble(_pivotFF.getKg()),</span>
+<span class="source-line-no">244</span><span id="line-244">          _KVEntry.getDouble(_pivotFF.getKv()),</span>
+<span class="source-line-no">245</span><span id="line-245">          _KAEntry.getDouble(_pivotFF.getKa())</span>
+<span class="source-line-no">246</span><span id="line-246">      );</span>
+<span class="source-line-no">247</span><span id="line-247">      _primaryMotor.setControl(_requestedPositionVoltage.withFeedForward(</span>
+<span class="source-line-no">248</span><span id="line-248">          _pivotFF.getKs() + _pivotFF.getKs() * Math.cos(getFFPositionRad())</span>
+<span class="source-line-no">249</span><span id="line-249">      ));</span>
+<span class="source-line-no">250</span><span id="line-250">    }</span>
+<span class="source-line-no">251</span><span id="line-251">  }</span>
+<span class="source-line-no">252</span><span id="line-252"></span>
+<span class="source-line-no">253</span><span id="line-253">  @Override</span>
+<span class="source-line-no">254</span><span id="line-254">  public void onDisable() {</span>
+<span class="source-line-no">255</span><span id="line-255">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">256</span><span id="line-256">      return;</span>
+<span class="source-line-no">257</span><span id="line-257">    }</span>
+<span class="source-line-no">258</span><span id="line-258"></span>
+<span class="source-line-no">259</span><span id="line-259">    super.onDisable();</span>
+<span class="source-line-no">260</span><span id="line-260">  }</span>
+<span class="source-line-no">261</span><span id="line-261"></span>
+<span class="source-line-no">262</span><span id="line-262">  /**</span>
+<span class="source-line-no">263</span><span id="line-263">   * Updates shuffleboard with the pivot's current position and velocity</span>
+<span class="source-line-no">264</span><span id="line-264">   */</span>
+<span class="source-line-no">265</span><span id="line-265">  @Override</span>
+<span class="source-line-no">266</span><span id="line-266">  public void updateShuffleboard() {</span>
+<span class="source-line-no">267</span><span id="line-267">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">268</span><span id="line-268">      return;</span>
+<span class="source-line-no">269</span><span id="line-269">    }</span>
+<span class="source-line-no">270</span><span id="line-270">    if (_isShuffleboardMicro) {</span>
+<span class="source-line-no">271</span><span id="line-271">      _currentPositionEntry.setDouble(getPivotPosition());</span>
+<span class="source-line-no">272</span><span id="line-272">      _currentVelocityEntry.setDouble(getPivotVelocity());</span>
+<span class="source-line-no">273</span><span id="line-273">    }</span>
+<span class="source-line-no">274</span><span id="line-274">  }</span>
+<span class="source-line-no">275</span><span id="line-275"></span>
+<span class="source-line-no">276</span><span id="line-276">  /**</span>
+<span class="source-line-no">277</span><span id="line-277">   * Converts motor rotations to rotations of the pivot mechanism</span>
+<span class="source-line-no">278</span><span id="line-278">   *</span>
+<span class="source-line-no">279</span><span id="line-279">   * @param motorRot position of the motor in rotations</span>
+<span class="source-line-no">280</span><span id="line-280">   * @return position of the pivot in rotations</span>
+<span class="source-line-no">281</span><span id="line-281">   */</span>
+<span class="source-line-no">282</span><span id="line-282">  public double motorToPivotRot(double motorRot) {</span>
+<span class="source-line-no">283</span><span id="line-283">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">284</span><span id="line-284">      return 0.0;</span>
+<span class="source-line-no">285</span><span id="line-285">    }</span>
+<span class="source-line-no">286</span><span id="line-286">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
+<span class="source-line-no">287</span><span id="line-287">    return motorRot / (_encoderToPivotRatio * _motorToEncoderRatio);</span>
+<span class="source-line-no">288</span><span id="line-288">  }</span>
+<span class="source-line-no">289</span><span id="line-289"></span>
+<span class="source-line-no">290</span><span id="line-290">  /**</span>
+<span class="source-line-no">291</span><span id="line-291">   * Converts rotations of the pivot mechanism to motor rotations</span>
+<span class="source-line-no">292</span><span id="line-292">   *</span>
+<span class="source-line-no">293</span><span id="line-293">   * @param pivotRot position of the pivot in rotations</span>
+<span class="source-line-no">294</span><span id="line-294">   * @return position of the motor in rotations</span>
+<span class="source-line-no">295</span><span id="line-295">   */</span>
+<span class="source-line-no">296</span><span id="line-296">  public double pivotRotToMotor(double pivotRot) {</span>
+<span class="source-line-no">297</span><span id="line-297">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">298</span><span id="line-298">      return 0.0;</span>
+<span class="source-line-no">299</span><span id="line-299">    }</span>
+<span class="source-line-no">300</span><span id="line-300">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
+<span class="source-line-no">301</span><span id="line-301">    return pivotRot * (_encoderToPivotRatio * _motorToEncoderRatio);</span>
+<span class="source-line-no">302</span><span id="line-302">  }</span>
+<span class="source-line-no">303</span><span id="line-303"></span>
+<span class="source-line-no">304</span><span id="line-304">  /**</span>
+<span class="source-line-no">305</span><span id="line-305">   * Configure shuffleboard for the pivot</span>
+<span class="source-line-no">306</span><span id="line-306">   */</span>
+<span class="source-line-no">307</span><span id="line-307">  @Override</span>
+<span class="source-line-no">308</span><span id="line-308">  public void configShuffleboard() {</span>
+<span class="source-line-no">309</span><span id="line-309">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">310</span><span id="line-310">      return;</span>
+<span class="source-line-no">311</span><span id="line-311">    }</span>
+<span class="source-line-no">312</span><span id="line-312">    super.configShuffleboard();</span>
+<span class="source-line-no">313</span><span id="line-313">  }</span>
+<span class="source-line-no">314</span><span id="line-314"></span>
+<span class="source-line-no">315</span><span id="line-315">  /**</span>
+<span class="source-line-no">316</span><span id="line-316">   * Calculates the next state according to the trapezoidal profile and requests the pivot motor(s)</span>
+<span class="source-line-no">317</span><span id="line-317">   * to arrive at the next position with feedforward</span>
+<span class="source-line-no">318</span><span id="line-318">   */</span>
+<span class="source-line-no">319</span><span id="line-319">  public void followLastProfile() {</span>
+<span class="source-line-no">320</span><span id="line-320">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">321</span><span id="line-321">      return;</span>
+<span class="source-line-no">322</span><span id="line-322">    }</span>
+<span class="source-line-no">323</span><span id="line-323"></span>
+<span class="source-line-no">324</span><span id="line-324">    TrapezoidProfile.State nextState =</span>
+<span class="source-line-no">325</span><span id="line-325">        _trapProfile.calculate(TagalongConfiguration.LOOP_PERIOD_S, _curState, _goalState);</span>
+<span class="source-line-no">326</span><span id="line-326">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot, convert to motor units</span>
+<span class="source-line-no">327</span><span id="line-327">    _primaryMotor.setControl(</span>
+<span class="source-line-no">328</span><span id="line-328">        _requestedPositionVoltage</span>
+<span class="source-line-no">329</span><span id="line-329">            .withPosition(nextState.position)</span>
+<span class="source-line-no">330</span><span id="line-330">            // FeedForward must know the pivot rotation and other arguments in radians</span>
+<span class="source-line-no">331</span><span id="line-331">            .withFeedForward(</span>
+<span class="source-line-no">332</span><span id="line-332">                _pivotFF.calculate(getFFPositionRad(), Units.rotationsToRadians(nextState.velocity))</span>
+<span class="source-line-no">333</span><span id="line-333">            )</span>
+<span class="source-line-no">334</span><span id="line-334">    );</span>
+<span class="source-line-no">335</span><span id="line-335"></span>
+<span class="source-line-no">336</span><span id="line-336">    if (_isShuffleboardMicro) {</span>
+<span class="source-line-no">337</span><span id="line-337">      _targetPositionEntry.setDouble(nextState.position);</span>
+<span class="source-line-no">338</span><span id="line-338">      _targetVelocityEntry.setDouble(nextState.velocity);</span>
+<span class="source-line-no">339</span><span id="line-339">    }</span>
+<span class="source-line-no">340</span><span id="line-340"></span>
+<span class="source-line-no">341</span><span id="line-341">    _curState = nextState;</span>
+<span class="source-line-no">342</span><span id="line-342">  }</span>
 <span class="source-line-no">343</span><span id="line-343"></span>
-<span class="source-line-no">344</span><span id="line-344">    _curState = nextState;</span>
-<span class="source-line-no">345</span><span id="line-345">  }</span>
-<span class="source-line-no">346</span><span id="line-346"></span>
-<span class="source-line-no">347</span><span id="line-347">  /**</span>
-<span class="source-line-no">348</span><span id="line-348">   * Gets the position offset for feedforward (to account for a shifted center of</span>
-<span class="source-line-no">349</span><span id="line-349">   * mass) in rotations</span>
-<span class="source-line-no">350</span><span id="line-350">   *</span>
-<span class="source-line-no">351</span><span id="line-351">   * @return offset position in rotations</span>
-<span class="source-line-no">352</span><span id="line-352">   */</span>
-<span class="source-line-no">353</span><span id="line-353">  public double getFFPositionRad() {</span>
-<span class="source-line-no">354</span><span id="line-354">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">355</span><span id="line-355">      return 0.0;</span>
-<span class="source-line-no">356</span><span id="line-356">    }</span>
-<span class="source-line-no">357</span><span id="line-357"></span>
-<span class="source-line-no">358</span><span id="line-358">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
-<span class="source-line-no">359</span><span id="line-359">    return Units.rotationsToRadians(_pivotCancoder.getPosition().getValueAsDouble())</span>
-<span class="source-line-no">360</span><span id="line-360">        + _ffCenterOfMassOffsetRad;</span>
-<span class="source-line-no">361</span><span id="line-361">  }</span>
-<span class="source-line-no">362</span><span id="line-362"></span>
-<span class="source-line-no">363</span><span id="line-363">  /**</span>
-<span class="source-line-no">364</span><span id="line-364">   * Sets the power of the primary motor</span>
-<span class="source-line-no">365</span><span id="line-365">   *</span>
-<span class="source-line-no">366</span><span id="line-366">   * @param power desired power</span>
-<span class="source-line-no">367</span><span id="line-367">   */</span>
-<span class="source-line-no">368</span><span id="line-368">  public void setPivotPower(double power) {</span>
-<span class="source-line-no">369</span><span id="line-369">    setPrimaryPower(power);</span>
-<span class="source-line-no">370</span><span id="line-370">  }</span>
-<span class="source-line-no">371</span><span id="line-371"></span>
-<span class="source-line-no">372</span><span id="line-372">  /**</span>
-<span class="source-line-no">373</span><span id="line-373">   * Gets the power of the primary motor</span>
-<span class="source-line-no">374</span><span id="line-374">   *</span>
-<span class="source-line-no">375</span><span id="line-375">   * @return the current power</span>
-<span class="source-line-no">376</span><span id="line-376">   */</span>
-<span class="source-line-no">377</span><span id="line-377">  public double getPivotPower() {</span>
-<span class="source-line-no">378</span><span id="line-378">    return getPrimaryMotorPower();</span>
-<span class="source-line-no">379</span><span id="line-379">  }</span>
-<span class="source-line-no">380</span><span id="line-380"></span>
-<span class="source-line-no">381</span><span id="line-381">  /**</span>
-<span class="source-line-no">382</span><span id="line-382">   * Sets the velocity of the pivot in RPS</span>
-<span class="source-line-no">383</span><span id="line-383">   *</span>
-<span class="source-line-no">384</span><span id="line-384">   * @param rps Desired velocity in rotations per second</span>
-<span class="source-line-no">385</span><span id="line-385">   * @param withFF with feedforward</span>
-<span class="source-line-no">386</span><span id="line-386">   */</span>
-<span class="source-line-no">387</span><span id="line-387">  public void setPivotVelocity(double rps, boolean withFF) {</span>
-<span class="source-line-no">388</span><span id="line-388">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">389</span><span id="line-389">      return;</span>
-<span class="source-line-no">390</span><span id="line-390">    }</span>
-<span class="source-line-no">391</span><span id="line-391">    setFollowProfile(false);</span>
-<span class="source-line-no">392</span><span id="line-392"></span>
-<span class="source-line-no">393</span><span id="line-393">    _primaryMotor.setControl(</span>
-<span class="source-line-no">394</span><span id="line-394">        _requestedVelocityVoltage</span>
-<span class="source-line-no">395</span><span id="line-395">            // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
-<span class="source-line-no">396</span><span id="line-396">            .withVelocity(rps)</span>
-<span class="source-line-no">397</span><span id="line-397">            .withFeedForward(</span>
-<span class="source-line-no">398</span><span id="line-398">                withFF ? _pivotFF.calculate(getFFPositionRad(), Units.rotationsToRadians(rps), 0.0)</span>
-<span class="source-line-no">399</span><span id="line-399">                       : 0.0</span>
-<span class="source-line-no">400</span><span id="line-400">            )</span>
-<span class="source-line-no">401</span><span id="line-401">    );</span>
-<span class="source-line-no">402</span><span id="line-402">  }</span>
-<span class="source-line-no">403</span><span id="line-403"></span>
-<span class="source-line-no">404</span><span id="line-404">  /**</span>
-<span class="source-line-no">405</span><span id="line-405">   * Gets the current position of the pivot in rotations</span>
-<span class="source-line-no">406</span><span id="line-406">   *</span>
-<span class="source-line-no">407</span><span id="line-407">   * @return the position of the primary motor which is the same as the position of the pivot when</span>
-<span class="source-line-no">408</span><span id="line-408">   *     they are fused</span>
-<span class="source-line-no">409</span><span id="line-409">   */</span>
-<span class="source-line-no">410</span><span id="line-410">  public double getPivotPosition() {</span>
-<span class="source-line-no">411</span><span id="line-411">    return getPrimaryMotorPosition();</span>
-<span class="source-line-no">412</span><span id="line-412">  }</span>
-<span class="source-line-no">413</span><span id="line-413"></span>
-<span class="source-line-no">414</span><span id="line-414">  /**</span>
-<span class="source-line-no">415</span><span id="line-415">   * Gets the current velocity of the pivot in rotations per second</span>
-<span class="source-line-no">416</span><span id="line-416">   *</span>
-<span class="source-line-no">417</span><span id="line-417">   * @return the velocity of the primary motor which is the same as the velocity of the pivot when</span>
-<span class="source-line-no">418</span><span id="line-418">   *     they are fused</span>
-<span class="source-line-no">419</span><span id="line-419">   */</span>
-<span class="source-line-no">420</span><span id="line-420">  public double getPivotVelocity() {</span>
-<span class="source-line-no">421</span><span id="line-421">    return getPrimaryMotorVelocity();</span>
-<span class="source-line-no">422</span><span id="line-422">  }</span>
-<span class="source-line-no">423</span><span id="line-423"></span>
-<span class="source-line-no">424</span><span id="line-424">  /**</span>
-<span class="source-line-no">425</span><span id="line-425">   * Returns the new pivot angle in the closest scope of the reference pivot angle</span>
-<span class="source-line-no">426</span><span id="line-426">   *</span>
-<span class="source-line-no">427</span><span id="line-427">   * @param scopeReferenceRot reference angle in rotations</span>
-<span class="source-line-no">428</span><span id="line-428">   * @param newAngleRot       angle to be scoped in rotations</span>
-<span class="source-line-no">429</span><span id="line-429">   * @return scoped newAngleRot</span>
-<span class="source-line-no">430</span><span id="line-430">   */</span>
-<span class="source-line-no">431</span><span id="line-431">  public double placePivotInClosestRot(double scopeReferenceRot, double newAngleRot) {</span>
-<span class="source-line-no">432</span><span id="line-432">    return AlgebraicUtils.placeInScopeRot(scopeReferenceRot, newAngleRot);</span>
-<span class="source-line-no">433</span><span id="line-433">  }</span>
-<span class="source-line-no">434</span><span id="line-434"></span>
-<span class="source-line-no">435</span><span id="line-435">  /**</span>
-<span class="source-line-no">436</span><span id="line-436">   * Creates a new trapezoidal profile for the pivot to follow</span>
-<span class="source-line-no">437</span><span id="line-437">   *</span>
-<span class="source-line-no">438</span><span id="line-438">   * @param goalPositionRot goal position in rotations</span>
-<span class="source-line-no">439</span><span id="line-439">   * @param goalVelocityRPS goal velocity in rotations per second</span>
-<span class="source-line-no">440</span><span id="line-440">   */</span>
-<span class="source-line-no">441</span><span id="line-441">  public void setPivotProfile(double goalPositionRot, double goalVelocityRPS) {</span>
-<span class="source-line-no">442</span><span id="line-442">    setPivotProfile(goalPositionRot, goalVelocityRPS, _maxVelocityRPS);</span>
-<span class="source-line-no">443</span><span id="line-443">  }</span>
-<span class="source-line-no">444</span><span id="line-444"></span>
-<span class="source-line-no">445</span><span id="line-445">  /**</span>
-<span class="source-line-no">446</span><span id="line-446">   * Creates a new trapezoidal profile for the pivot to follow</span>
-<span class="source-line-no">447</span><span id="line-447">   *</span>
-<span class="source-line-no">448</span><span id="line-448">   * @param goalPositionRot goal position in rotations</span>
-<span class="source-line-no">449</span><span id="line-449">   * @param goalVelocityRPS goal velocity in rotations per second</span>
-<span class="source-line-no">450</span><span id="line-450">   * @param maxVelocityRPS  maximum velocity in rotations per second</span>
-<span class="source-line-no">451</span><span id="line-451">   */</span>
-<span class="source-line-no">452</span><span id="line-452">  public void setPivotProfile(</span>
-<span class="source-line-no">453</span><span id="line-453">      double goalPositionRot, double goalVelocityRPS, double maxVelocityRPS</span>
-<span class="source-line-no">454</span><span id="line-454">  ) {</span>
-<span class="source-line-no">455</span><span id="line-455">    setPivotProfile(goalPositionRot, goalVelocityRPS, maxVelocityRPS, _maxAccelerationRPS2);</span>
-<span class="source-line-no">456</span><span id="line-456">  }</span>
-<span class="source-line-no">457</span><span id="line-457"></span>
-<span class="source-line-no">458</span><span id="line-458">  /**</span>
-<span class="source-line-no">459</span><span id="line-459">   * Creates a new trapezoidal profile for the pivot to follow</span>
-<span class="source-line-no">460</span><span id="line-460">   *</span>
-<span class="source-line-no">461</span><span id="line-461">   * @param goalPositionRot     goal position in rotations</span>
-<span class="source-line-no">462</span><span id="line-462">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
-<span class="source-line-no">463</span><span id="line-463">   * @param maxVelocityRPS      maximum velocity in rotations per second</span>
-<span class="source-line-no">464</span><span id="line-464">   * @param maxAccelerationRPS2 maximum acceleration in rotations per second squared</span>
-<span class="source-line-no">465</span><span id="line-465">   */</span>
-<span class="source-line-no">466</span><span id="line-466">  public void setPivotProfile(</span>
-<span class="source-line-no">467</span><span id="line-467">      double goalPositionRot,</span>
-<span class="source-line-no">468</span><span id="line-468">      double goalVelocityRPS,</span>
-<span class="source-line-no">469</span><span id="line-469">      double maxVelocityRPS,</span>
-<span class="source-line-no">470</span><span id="line-470">      double maxAccelerationRPS2</span>
+<span class="source-line-no">344</span><span id="line-344">  /**</span>
+<span class="source-line-no">345</span><span id="line-345">   * Gets the position offset for feedforward (to account for a shifted center of</span>
+<span class="source-line-no">346</span><span id="line-346">   * mass) in rotations</span>
+<span class="source-line-no">347</span><span id="line-347">   *</span>
+<span class="source-line-no">348</span><span id="line-348">   * @return offset position in rotations</span>
+<span class="source-line-no">349</span><span id="line-349">   */</span>
+<span class="source-line-no">350</span><span id="line-350">  public double getFFPositionRad() {</span>
+<span class="source-line-no">351</span><span id="line-351">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">352</span><span id="line-352">      return 0.0;</span>
+<span class="source-line-no">353</span><span id="line-353">    }</span>
+<span class="source-line-no">354</span><span id="line-354"></span>
+<span class="source-line-no">355</span><span id="line-355">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
+<span class="source-line-no">356</span><span id="line-356">    return Units.rotationsToRadians(_pivotCancoder.getPosition().getValueAsDouble())</span>
+<span class="source-line-no">357</span><span id="line-357">        + _ffCenterOfMassOffsetRad;</span>
+<span class="source-line-no">358</span><span id="line-358">  }</span>
+<span class="source-line-no">359</span><span id="line-359"></span>
+<span class="source-line-no">360</span><span id="line-360">  /**</span>
+<span class="source-line-no">361</span><span id="line-361">   * Sets the power of the primary motor</span>
+<span class="source-line-no">362</span><span id="line-362">   *</span>
+<span class="source-line-no">363</span><span id="line-363">   * @param power desired power</span>
+<span class="source-line-no">364</span><span id="line-364">   */</span>
+<span class="source-line-no">365</span><span id="line-365">  public void setPivotPower(double power) {</span>
+<span class="source-line-no">366</span><span id="line-366">    setPrimaryPower(power);</span>
+<span class="source-line-no">367</span><span id="line-367">  }</span>
+<span class="source-line-no">368</span><span id="line-368"></span>
+<span class="source-line-no">369</span><span id="line-369">  /**</span>
+<span class="source-line-no">370</span><span id="line-370">   * Gets the power of the primary motor</span>
+<span class="source-line-no">371</span><span id="line-371">   *</span>
+<span class="source-line-no">372</span><span id="line-372">   * @return the current power</span>
+<span class="source-line-no">373</span><span id="line-373">   */</span>
+<span class="source-line-no">374</span><span id="line-374">  public double getPivotPower() {</span>
+<span class="source-line-no">375</span><span id="line-375">    return getPrimaryMotorPower();</span>
+<span class="source-line-no">376</span><span id="line-376">  }</span>
+<span class="source-line-no">377</span><span id="line-377"></span>
+<span class="source-line-no">378</span><span id="line-378">  /**</span>
+<span class="source-line-no">379</span><span id="line-379">   * Sets the velocity of the pivot in RPS</span>
+<span class="source-line-no">380</span><span id="line-380">   *</span>
+<span class="source-line-no">381</span><span id="line-381">   * @param rps Desired velocity in rotations per second</span>
+<span class="source-line-no">382</span><span id="line-382">   * @param withFF with feedforward</span>
+<span class="source-line-no">383</span><span id="line-383">   */</span>
+<span class="source-line-no">384</span><span id="line-384">  public void setPivotVelocity(double rps, boolean withFF) {</span>
+<span class="source-line-no">385</span><span id="line-385">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">386</span><span id="line-386">      return;</span>
+<span class="source-line-no">387</span><span id="line-387">    }</span>
+<span class="source-line-no">388</span><span id="line-388">    setFollowProfile(false);</span>
+<span class="source-line-no">389</span><span id="line-389"></span>
+<span class="source-line-no">390</span><span id="line-390">    _primaryMotor.setControl(</span>
+<span class="source-line-no">391</span><span id="line-391">        _requestedVelocityVoltage</span>
+<span class="source-line-no">392</span><span id="line-392">            // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
+<span class="source-line-no">393</span><span id="line-393">            .withVelocity(rps)</span>
+<span class="source-line-no">394</span><span id="line-394">            .withFeedForward(</span>
+<span class="source-line-no">395</span><span id="line-395">                withFF ? _pivotFF.calculate(getFFPositionRad(), Units.rotationsToRadians(rps)) : 0.0</span>
+<span class="source-line-no">396</span><span id="line-396">            )</span>
+<span class="source-line-no">397</span><span id="line-397">    );</span>
+<span class="source-line-no">398</span><span id="line-398">  }</span>
+<span class="source-line-no">399</span><span id="line-399"></span>
+<span class="source-line-no">400</span><span id="line-400">  /**</span>
+<span class="source-line-no">401</span><span id="line-401">   * Gets the current position of the pivot in rotations</span>
+<span class="source-line-no">402</span><span id="line-402">   *</span>
+<span class="source-line-no">403</span><span id="line-403">   * @return the position of the primary motor which is the same as the position of the pivot when</span>
+<span class="source-line-no">404</span><span id="line-404">   *     they are fused</span>
+<span class="source-line-no">405</span><span id="line-405">   */</span>
+<span class="source-line-no">406</span><span id="line-406">  public double getPivotPosition() {</span>
+<span class="source-line-no">407</span><span id="line-407">    return getPrimaryMotorPosition();</span>
+<span class="source-line-no">408</span><span id="line-408">  }</span>
+<span class="source-line-no">409</span><span id="line-409"></span>
+<span class="source-line-no">410</span><span id="line-410">  /**</span>
+<span class="source-line-no">411</span><span id="line-411">   * Gets the current velocity of the pivot in rotations per second</span>
+<span class="source-line-no">412</span><span id="line-412">   *</span>
+<span class="source-line-no">413</span><span id="line-413">   * @return the velocity of the primary motor which is the same as the velocity of the pivot when</span>
+<span class="source-line-no">414</span><span id="line-414">   *     they are fused</span>
+<span class="source-line-no">415</span><span id="line-415">   */</span>
+<span class="source-line-no">416</span><span id="line-416">  public double getPivotVelocity() {</span>
+<span class="source-line-no">417</span><span id="line-417">    return getPrimaryMotorVelocity();</span>
+<span class="source-line-no">418</span><span id="line-418">  }</span>
+<span class="source-line-no">419</span><span id="line-419"></span>
+<span class="source-line-no">420</span><span id="line-420">  /**</span>
+<span class="source-line-no">421</span><span id="line-421">   * Returns the new pivot angle in the closest scope of the reference pivot angle</span>
+<span class="source-line-no">422</span><span id="line-422">   *</span>
+<span class="source-line-no">423</span><span id="line-423">   * @param scopeReferenceRot reference angle in rotations</span>
+<span class="source-line-no">424</span><span id="line-424">   * @param newAngleRot       angle to be scoped in rotations</span>
+<span class="source-line-no">425</span><span id="line-425">   * @return scoped newAngleRot</span>
+<span class="source-line-no">426</span><span id="line-426">   */</span>
+<span class="source-line-no">427</span><span id="line-427">  public double placePivotInClosestRot(double scopeReferenceRot, double newAngleRot) {</span>
+<span class="source-line-no">428</span><span id="line-428">    return AlgebraicUtils.placeInScopeRot(scopeReferenceRot, newAngleRot);</span>
+<span class="source-line-no">429</span><span id="line-429">  }</span>
+<span class="source-line-no">430</span><span id="line-430"></span>
+<span class="source-line-no">431</span><span id="line-431">  /**</span>
+<span class="source-line-no">432</span><span id="line-432">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">433</span><span id="line-433">   *</span>
+<span class="source-line-no">434</span><span id="line-434">   * @param goalPosition     goal position in rotations</span>
+<span class="source-line-no">435</span><span id="line-435">   */</span>
+<span class="source-line-no">436</span><span id="line-436">  public void setPivotProfile(Angle goalPosition) {</span>
+<span class="source-line-no">437</span><span id="line-437">    setPivotProfile(goalPosition.getRotations());</span>
+<span class="source-line-no">438</span><span id="line-438">  }</span>
+<span class="source-line-no">439</span><span id="line-439"></span>
+<span class="source-line-no">440</span><span id="line-440">  /**</span>
+<span class="source-line-no">441</span><span id="line-441">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">442</span><span id="line-442">   *</span>
+<span class="source-line-no">443</span><span id="line-443">   * @param goalPosition     goal position in rotations</span>
+<span class="source-line-no">444</span><span id="line-444">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
+<span class="source-line-no">445</span><span id="line-445">   */</span>
+<span class="source-line-no">446</span><span id="line-446">  public void setPivotProfile(Angle goalPosition, double goalVelocityRPS) {</span>
+<span class="source-line-no">447</span><span id="line-447">    setPivotProfile(goalPosition.getRotations(), goalVelocityRPS);</span>
+<span class="source-line-no">448</span><span id="line-448">  }</span>
+<span class="source-line-no">449</span><span id="line-449"></span>
+<span class="source-line-no">450</span><span id="line-450">  /**</span>
+<span class="source-line-no">451</span><span id="line-451">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">452</span><span id="line-452">   *</span>
+<span class="source-line-no">453</span><span id="line-453">   * @param goalPosition     goal position in rotations</span>
+<span class="source-line-no">454</span><span id="line-454">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
+<span class="source-line-no">455</span><span id="line-455">   * @param maxVelocityRPS      maximum velocity in rotations per second</span>
+<span class="source-line-no">456</span><span id="line-456">   */</span>
+<span class="source-line-no">457</span><span id="line-457">  public void setPivotProfile(Angle goalPosition, double goalVelocityRPS, double maxVelocityRPS) {</span>
+<span class="source-line-no">458</span><span id="line-458">    setPivotProfile(goalPosition.getRotations(), goalVelocityRPS, maxVelocityRPS);</span>
+<span class="source-line-no">459</span><span id="line-459">  }</span>
+<span class="source-line-no">460</span><span id="line-460"></span>
+<span class="source-line-no">461</span><span id="line-461">  /**</span>
+<span class="source-line-no">462</span><span id="line-462">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">463</span><span id="line-463">   *</span>
+<span class="source-line-no">464</span><span id="line-464">   * @param goalPosition     goal position in rotations</span>
+<span class="source-line-no">465</span><span id="line-465">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
+<span class="source-line-no">466</span><span id="line-466">   * @param maxVelocityRPS      maximum velocity in rotations per second</span>
+<span class="source-line-no">467</span><span id="line-467">   * @param maxAccelerationRPS2 maximum acceleration in rotations per second squared</span>
+<span class="source-line-no">468</span><span id="line-468">   */</span>
+<span class="source-line-no">469</span><span id="line-469">  public void setPivotProfile(</span>
+<span class="source-line-no">470</span><span id="line-470">      Angle goalPosition, double goalVelocityRPS, double maxVelocityRPS, double maxAccelerationRPS2</span>
 <span class="source-line-no">471</span><span id="line-471">  ) {</span>
-<span class="source-line-no">472</span><span id="line-472">    setPivotProfile(goalPositionRot, goalVelocityRPS, maxVelocityRPS, maxAccelerationRPS2, true);</span>
-<span class="source-line-no">473</span><span id="line-473">  }</span>
-<span class="source-line-no">474</span><span id="line-474"></span>
-<span class="source-line-no">475</span><span id="line-475">  /**</span>
-<span class="source-line-no">476</span><span id="line-476">   * Creates a new trapezoidal profile for the pivot to follow</span>
-<span class="source-line-no">477</span><span id="line-477">   *</span>
-<span class="source-line-no">478</span><span id="line-478">   * @param goalPositionRot     goal position in rotations</span>
-<span class="source-line-no">479</span><span id="line-479">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
-<span class="source-line-no">480</span><span id="line-480">   * @param maxVelocityRPS      maximum velocity in rotations per second</span>
-<span class="source-line-no">481</span><span id="line-481">   * @param maxAccelerationRPS2 maximum acceleration in rotations per second squared</span>
-<span class="source-line-no">482</span><span id="line-482">   * @param setCurrentState     True if the profiles current state should base itself off sensor</span>
-<span class="source-line-no">483</span><span id="line-483">   *     values rather than continue from the existing state</span>
-<span class="source-line-no">484</span><span id="line-484">   */</span>
-<span class="source-line-no">485</span><span id="line-485">  public void setPivotProfile(</span>
-<span class="source-line-no">486</span><span id="line-486">      double goalPositionRot,</span>
-<span class="source-line-no">487</span><span id="line-487">      double goalVelocityRPS,</span>
-<span class="source-line-no">488</span><span id="line-488">      double maxVelocityRPS,</span>
-<span class="source-line-no">489</span><span id="line-489">      double maxAccelerationRPS2,</span>
-<span class="source-line-no">490</span><span id="line-490">      boolean setCurrentState</span>
-<span class="source-line-no">491</span><span id="line-491">  ) {</span>
-<span class="source-line-no">492</span><span id="line-492">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">493</span><span id="line-493">      return;</span>
-<span class="source-line-no">494</span><span id="line-494">    }</span>
-<span class="source-line-no">495</span><span id="line-495">    setFollowProfile(false);</span>
-<span class="source-line-no">496</span><span id="line-496"></span>
-<span class="source-line-no">497</span><span id="line-497">    if (setCurrentState) {</span>
-<span class="source-line-no">498</span><span id="line-498">      _curState.position = getPivotPosition();</span>
-<span class="source-line-no">499</span><span id="line-499">      _curState.velocity = getPivotVelocity();</span>
-<span class="source-line-no">500</span><span id="line-500">    }</span>
-<span class="source-line-no">501</span><span id="line-501"></span>
-<span class="source-line-no">502</span><span id="line-502">    _goalState.velocity = goalVelocityRPS;</span>
-<span class="source-line-no">503</span><span id="line-503">    _goalState.position = (_absoluteRangeRot &lt; 1.0 ? absoluteClamp(goalPositionRot)</span>
-<span class="source-line-no">504</span><span id="line-504">                                                   : clampPivotPosition(goalPositionRot))</span>
-<span class="source-line-no">505</span><span id="line-505">        + _profileTargetOffset;</span>
-<span class="source-line-no">506</span><span id="line-506"></span>
-<span class="source-line-no">507</span><span id="line-507">    _trapProfile = new TrapezoidProfile(</span>
-<span class="source-line-no">508</span><span id="line-508">        (maxVelocityRPS &gt;= _maxVelocityRPS || maxAccelerationRPS2 &gt;= _maxAccelerationRPS2)</span>
-<span class="source-line-no">509</span><span id="line-509">            ? _pivotConf.trapezoidalLimits</span>
-<span class="source-line-no">510</span><span id="line-510">            : new TrapezoidProfile.Constraints(maxVelocityRPS, maxAccelerationRPS2)</span>
-<span class="source-line-no">511</span><span id="line-511">    );</span>
-<span class="source-line-no">512</span><span id="line-512"></span>
-<span class="source-line-no">513</span><span id="line-513">    _profileTimer.restart();</span>
-<span class="source-line-no">514</span><span id="line-514">  }</span>
-<span class="source-line-no">515</span><span id="line-515"></span>
-<span class="source-line-no">516</span><span id="line-516">  /**</span>
-<span class="source-line-no">517</span><span id="line-517">   * Configures the CANcoder according to specified configuration</span>
-<span class="source-line-no">518</span><span id="line-518">   */</span>
-<span class="source-line-no">519</span><span id="line-519">  private void configCancoder() {</span>
-<span class="source-line-no">520</span><span id="line-520">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">521</span><span id="line-521">      return;</span>
-<span class="source-line-no">522</span><span id="line-522">    }</span>
-<span class="source-line-no">523</span><span id="line-523"></span>
-<span class="source-line-no">524</span><span id="line-524">    _pivotCancoder.getConfigurator().apply(_pivotCancoderConfiguration);</span>
-<span class="source-line-no">525</span><span id="line-525">  }</span>
-<span class="source-line-no">526</span><span id="line-526"></span>
-<span class="source-line-no">527</span><span id="line-527">  /**</span>
-<span class="source-line-no">528</span><span id="line-528">   * Configures the motor according to specified configuration</span>
-<span class="source-line-no">529</span><span id="line-529">   */</span>
-<span class="source-line-no">530</span><span id="line-530">  private void configMotor() {</span>
-<span class="source-line-no">531</span><span id="line-531">    for (int i = 0; i &lt; _conf.numMotors; i++) {</span>
-<span class="source-line-no">532</span><span id="line-532">      _conf.motorConfig[i].withFeedback(</span>
-<span class="source-line-no">533</span><span id="line-533">          new FeedbackConfigs()</span>
-<span class="source-line-no">534</span><span id="line-534">              .withFeedbackSensorSource(FeedbackSensorSourceValue.FusedCANcoder)</span>
-<span class="source-line-no">535</span><span id="line-535">              .withFeedbackRemoteSensorID(_pivotCancoder.getDeviceID())</span>
-<span class="source-line-no">536</span><span id="line-536">              .withRotorToSensorRatio(_pivotConf.motorToEncoderRatio)</span>
-<span class="source-line-no">537</span><span id="line-537">              .withSensorToMechanismRatio(_pivotConf.encoderToPivotRatio)</span>
-<span class="source-line-no">538</span><span id="line-538">      );</span>
-<span class="source-line-no">539</span><span id="line-539">      _allMotors[i].getConfigurator().apply(_conf.motorConfig[i]);</span>
-<span class="source-line-no">540</span><span id="line-540">    }</span>
-<span class="source-line-no">541</span><span id="line-541">  }</span>
-<span class="source-line-no">542</span><span id="line-542"></span>
-<span class="source-line-no">543</span><span id="line-543">  /**</span>
-<span class="source-line-no">544</span><span id="line-544">   * Clamps the goal pivot position to be within rotational limits</span>
-<span class="source-line-no">545</span><span id="line-545">   *</span>
-<span class="source-line-no">546</span><span id="line-546">   * @param target goal position in rotations</span>
-<span class="source-line-no">547</span><span id="line-547">   * @return clamped goal position in rotations</span>
-<span class="source-line-no">548</span><span id="line-548">   */</span>
-<span class="source-line-no">549</span><span id="line-549">  public double clampPivotPosition(double target) {</span>
-<span class="source-line-no">550</span><span id="line-550">    return AlgebraicUtils.clamp(target, _minPositionRot, _maxPositionRot);</span>
-<span class="source-line-no">551</span><span id="line-551">  }</span>
-<span class="source-line-no">552</span><span id="line-552"></span>
-<span class="source-line-no">553</span><span id="line-553">  /**</span>
-<span class="source-line-no">554</span><span id="line-554">   * Resets devices if resets have occurred</span>
-<span class="source-line-no">555</span><span id="line-555">   */</span>
-<span class="source-line-no">556</span><span id="line-556">  @Override</span>
-<span class="source-line-no">557</span><span id="line-557">  public boolean motorResetConfig() {</span>
-<span class="source-line-no">558</span><span id="line-558">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">559</span><span id="line-559">      return false;</span>
-<span class="source-line-no">560</span><span id="line-560">    }</span>
-<span class="source-line-no">561</span><span id="line-561">    if (_primaryMotor.hasResetOccurred()) {</span>
-<span class="source-line-no">562</span><span id="line-562">      configAllDevices();</span>
-<span class="source-line-no">563</span><span id="line-563">      configMotor();</span>
-<span class="source-line-no">564</span><span id="line-564">      return true;</span>
-<span class="source-line-no">565</span><span id="line-565">    }</span>
-<span class="source-line-no">566</span><span id="line-566">    if (_pivotCancoder.hasResetOccurred()) {</span>
-<span class="source-line-no">567</span><span id="line-567">      configCancoder();</span>
-<span class="source-line-no">568</span><span id="line-568">      return true;</span>
-<span class="source-line-no">569</span><span id="line-569">    }</span>
-<span class="source-line-no">570</span><span id="line-570">    return false;</span>
-<span class="source-line-no">571</span><span id="line-571">  }</span>
-<span class="source-line-no">572</span><span id="line-572"></span>
-<span class="source-line-no">573</span><span id="line-573">  /**</span>
-<span class="source-line-no">574</span><span id="line-574">   * Initializes the pivot simulation</span>
-<span class="source-line-no">575</span><span id="line-575">   */</span>
-<span class="source-line-no">576</span><span id="line-576">  public void simulationInit() {</span>
-<span class="source-line-no">577</span><span id="line-577">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">578</span><span id="line-578">      return;</span>
-<span class="source-line-no">579</span><span id="line-579">    }</span>
-<span class="source-line-no">580</span><span id="line-580"></span>
-<span class="source-line-no">581</span><span id="line-581">    _pivotSim = new SingleJointedArmSim(</span>
-<span class="source-line-no">582</span><span id="line-582">        _pivotConf.motorTypes[0].simSupplier.apply(_pivotConf.numMotors),</span>
-<span class="source-line-no">583</span><span id="line-583">        _motorToEncoderRatio * _encoderToPivotRatio,</span>
-<span class="source-line-no">584</span><span id="line-584">        _pivotConf.pivotMOI,</span>
-<span class="source-line-no">585</span><span id="line-585">        _pivotConf.pivotLengthM,</span>
-<span class="source-line-no">586</span><span id="line-586">        Units.degreesToRadians(_minPositionRot),</span>
-<span class="source-line-no">587</span><span id="line-587">        Units.degreesToRadians(_maxPositionRot),</span>
-<span class="source-line-no">588</span><span id="line-588">        true,</span>
-<span class="source-line-no">589</span><span id="line-589">        Units.degreesToRadians(0)</span>
-<span class="source-line-no">590</span><span id="line-590">    );</span>
-<span class="source-line-no">591</span><span id="line-591"></span>
-<span class="source-line-no">592</span><span id="line-592">    _mechanism = new Mechanism2d(50, 50);</span>
-<span class="source-line-no">593</span><span id="line-593">    SmartDashboard.putData("SIM: " + _pivotConf.name, _mechanism);</span>
-<span class="source-line-no">594</span><span id="line-594"></span>
-<span class="source-line-no">595</span><span id="line-595">    _root = _mechanism.getRoot(_pivotConf.name, 25, 25);</span>
-<span class="source-line-no">596</span><span id="line-596">    _ligament = new MechanismLigament2d(_pivotConf.name, 10.0, 180);</span>
-<span class="source-line-no">597</span><span id="line-597">    _root.append(_ligament);</span>
-<span class="source-line-no">598</span><span id="line-598">    _ligament.setColor(new Color8Bit(255, 255, 255));</span>
-<span class="source-line-no">599</span><span id="line-599"></span>
-<span class="source-line-no">600</span><span id="line-600">    _pivotCancoderSim = _pivotCancoder.getSimState();</span>
-<span class="source-line-no">601</span><span id="line-601">    _primaryMotorSim = _primaryMotor.getSimState();</span>
+<span class="source-line-no">472</span><span id="line-472">    setPivotProfile(</span>
+<span class="source-line-no">473</span><span id="line-473">        goalPosition.getRotations(), goalVelocityRPS, maxVelocityRPS, maxAccelerationRPS2</span>
+<span class="source-line-no">474</span><span id="line-474">    );</span>
+<span class="source-line-no">475</span><span id="line-475">  }</span>
+<span class="source-line-no">476</span><span id="line-476"></span>
+<span class="source-line-no">477</span><span id="line-477">  /**</span>
+<span class="source-line-no">478</span><span id="line-478">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">479</span><span id="line-479">   *</span>
+<span class="source-line-no">480</span><span id="line-480">   * @param goalPosition     goal position in rotations</span>
+<span class="source-line-no">481</span><span id="line-481">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
+<span class="source-line-no">482</span><span id="line-482">   * @param maxVelocityRPS      maximum velocity in rotations per second</span>
+<span class="source-line-no">483</span><span id="line-483">   * @param maxAccelerationRPS2 maximum acceleration in rotations per second squared</span>
+<span class="source-line-no">484</span><span id="line-484">   * @param setCurrentState     True if the profiles current state should base itself off sensor</span>
+<span class="source-line-no">485</span><span id="line-485">   *     values rather than continue from the existing state</span>
+<span class="source-line-no">486</span><span id="line-486">   */</span>
+<span class="source-line-no">487</span><span id="line-487">  public void setPivotProfile(</span>
+<span class="source-line-no">488</span><span id="line-488">      Angle goalPosition,</span>
+<span class="source-line-no">489</span><span id="line-489">      double goalVelocityRPS,</span>
+<span class="source-line-no">490</span><span id="line-490">      double maxVelocityRPS,</span>
+<span class="source-line-no">491</span><span id="line-491">      double maxAccelerationRPS2,</span>
+<span class="source-line-no">492</span><span id="line-492">      boolean setCurrentState</span>
+<span class="source-line-no">493</span><span id="line-493">  ) {</span>
+<span class="source-line-no">494</span><span id="line-494">    setPivotProfile(</span>
+<span class="source-line-no">495</span><span id="line-495">        goalPosition.getRotations(),</span>
+<span class="source-line-no">496</span><span id="line-496">        goalVelocityRPS,</span>
+<span class="source-line-no">497</span><span id="line-497">        maxVelocityRPS,</span>
+<span class="source-line-no">498</span><span id="line-498">        maxAccelerationRPS2,</span>
+<span class="source-line-no">499</span><span id="line-499">        setCurrentState</span>
+<span class="source-line-no">500</span><span id="line-500">    );</span>
+<span class="source-line-no">501</span><span id="line-501">  }</span>
+<span class="source-line-no">502</span><span id="line-502"></span>
+<span class="source-line-no">503</span><span id="line-503">  /**</span>
+<span class="source-line-no">504</span><span id="line-504">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">505</span><span id="line-505">   *</span>
+<span class="source-line-no">506</span><span id="line-506">   * @param goalPositionRot goal position in rotations</span>
+<span class="source-line-no">507</span><span id="line-507">   */</span>
+<span class="source-line-no">508</span><span id="line-508">  public void setPivotProfile(double goalPositionRot) {</span>
+<span class="source-line-no">509</span><span id="line-509">    setPivotProfile(goalPositionRot, 0.0);</span>
+<span class="source-line-no">510</span><span id="line-510">  }</span>
+<span class="source-line-no">511</span><span id="line-511"></span>
+<span class="source-line-no">512</span><span id="line-512">  /**</span>
+<span class="source-line-no">513</span><span id="line-513">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">514</span><span id="line-514">   *</span>
+<span class="source-line-no">515</span><span id="line-515">   * @param goalPositionRot goal position in rotations</span>
+<span class="source-line-no">516</span><span id="line-516">   * @param goalVelocityRPS goal velocity in rotations per second</span>
+<span class="source-line-no">517</span><span id="line-517">   */</span>
+<span class="source-line-no">518</span><span id="line-518">  public void setPivotProfile(double goalPositionRot, double goalVelocityRPS) {</span>
+<span class="source-line-no">519</span><span id="line-519">    setPivotProfile(goalPositionRot, goalVelocityRPS, _maxVelocityRPS);</span>
+<span class="source-line-no">520</span><span id="line-520">  }</span>
+<span class="source-line-no">521</span><span id="line-521"></span>
+<span class="source-line-no">522</span><span id="line-522">  /**</span>
+<span class="source-line-no">523</span><span id="line-523">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">524</span><span id="line-524">   *</span>
+<span class="source-line-no">525</span><span id="line-525">   * @param goalPositionRot goal position in rotations</span>
+<span class="source-line-no">526</span><span id="line-526">   * @param goalVelocityRPS goal velocity in rotations per second</span>
+<span class="source-line-no">527</span><span id="line-527">   * @param maxVelocityRPS  maximum velocity in rotations per second</span>
+<span class="source-line-no">528</span><span id="line-528">   */</span>
+<span class="source-line-no">529</span><span id="line-529">  public void setPivotProfile(</span>
+<span class="source-line-no">530</span><span id="line-530">      double goalPositionRot, double goalVelocityRPS, double maxVelocityRPS</span>
+<span class="source-line-no">531</span><span id="line-531">  ) {</span>
+<span class="source-line-no">532</span><span id="line-532">    setPivotProfile(goalPositionRot, goalVelocityRPS, maxVelocityRPS, _maxAccelerationRPS2);</span>
+<span class="source-line-no">533</span><span id="line-533">  }</span>
+<span class="source-line-no">534</span><span id="line-534"></span>
+<span class="source-line-no">535</span><span id="line-535">  /**</span>
+<span class="source-line-no">536</span><span id="line-536">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">537</span><span id="line-537">   *</span>
+<span class="source-line-no">538</span><span id="line-538">   * @param goalPositionRot     goal position in rotations</span>
+<span class="source-line-no">539</span><span id="line-539">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
+<span class="source-line-no">540</span><span id="line-540">   * @param maxVelocityRPS      maximum velocity in rotations per second</span>
+<span class="source-line-no">541</span><span id="line-541">   * @param maxAccelerationRPS2 maximum acceleration in rotations per second squared</span>
+<span class="source-line-no">542</span><span id="line-542">   */</span>
+<span class="source-line-no">543</span><span id="line-543">  public void setPivotProfile(</span>
+<span class="source-line-no">544</span><span id="line-544">      double goalPositionRot,</span>
+<span class="source-line-no">545</span><span id="line-545">      double goalVelocityRPS,</span>
+<span class="source-line-no">546</span><span id="line-546">      double maxVelocityRPS,</span>
+<span class="source-line-no">547</span><span id="line-547">      double maxAccelerationRPS2</span>
+<span class="source-line-no">548</span><span id="line-548">  ) {</span>
+<span class="source-line-no">549</span><span id="line-549">    setPivotProfile(goalPositionRot, goalVelocityRPS, maxVelocityRPS, maxAccelerationRPS2, true);</span>
+<span class="source-line-no">550</span><span id="line-550">  }</span>
+<span class="source-line-no">551</span><span id="line-551"></span>
+<span class="source-line-no">552</span><span id="line-552">  /**</span>
+<span class="source-line-no">553</span><span id="line-553">   * Creates a new trapezoidal profile for the pivot to follow</span>
+<span class="source-line-no">554</span><span id="line-554">   *</span>
+<span class="source-line-no">555</span><span id="line-555">   * @param goalPositionRot     goal position in rotations</span>
+<span class="source-line-no">556</span><span id="line-556">   * @param goalVelocityRPS     goal velocity in rotations per second</span>
+<span class="source-line-no">557</span><span id="line-557">   * @param maxVelocityRPS      maximum velocity in rotations per second</span>
+<span class="source-line-no">558</span><span id="line-558">   * @param maxAccelerationRPS2 maximum acceleration in rotations per second squared</span>
+<span class="source-line-no">559</span><span id="line-559">   * @param setCurrentState     True if the profiles current state should base itself off sensor</span>
+<span class="source-line-no">560</span><span id="line-560">   *     values rather than continue from the existing state</span>
+<span class="source-line-no">561</span><span id="line-561">   */</span>
+<span class="source-line-no">562</span><span id="line-562">  public void setPivotProfile(</span>
+<span class="source-line-no">563</span><span id="line-563">      double goalPositionRot,</span>
+<span class="source-line-no">564</span><span id="line-564">      double goalVelocityRPS,</span>
+<span class="source-line-no">565</span><span id="line-565">      double maxVelocityRPS,</span>
+<span class="source-line-no">566</span><span id="line-566">      double maxAccelerationRPS2,</span>
+<span class="source-line-no">567</span><span id="line-567">      boolean setCurrentState</span>
+<span class="source-line-no">568</span><span id="line-568">  ) {</span>
+<span class="source-line-no">569</span><span id="line-569">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">570</span><span id="line-570">      return;</span>
+<span class="source-line-no">571</span><span id="line-571">    }</span>
+<span class="source-line-no">572</span><span id="line-572">    setFollowProfile(false);</span>
+<span class="source-line-no">573</span><span id="line-573"></span>
+<span class="source-line-no">574</span><span id="line-574">    if (setCurrentState) {</span>
+<span class="source-line-no">575</span><span id="line-575">      _curState.position = getPivotPosition();</span>
+<span class="source-line-no">576</span><span id="line-576">      _curState.velocity = getPivotVelocity();</span>
+<span class="source-line-no">577</span><span id="line-577">    }</span>
+<span class="source-line-no">578</span><span id="line-578"></span>
+<span class="source-line-no">579</span><span id="line-579">    _goalState.velocity = goalVelocityRPS;</span>
+<span class="source-line-no">580</span><span id="line-580">    _goalState.position = (_absoluteRangeRot &lt; 1.0 ? absoluteClamp(goalPositionRot)</span>
+<span class="source-line-no">581</span><span id="line-581">                                                   : clampPivotPosition(goalPositionRot))</span>
+<span class="source-line-no">582</span><span id="line-582">        + _profileTargetOffset;</span>
+<span class="source-line-no">583</span><span id="line-583"></span>
+<span class="source-line-no">584</span><span id="line-584">    _trapProfile = new TrapezoidProfile(</span>
+<span class="source-line-no">585</span><span id="line-585">        (maxVelocityRPS &gt;= _maxVelocityRPS || maxAccelerationRPS2 &gt;= _maxAccelerationRPS2)</span>
+<span class="source-line-no">586</span><span id="line-586">            ? _pivotConf.trapezoidalLimits</span>
+<span class="source-line-no">587</span><span id="line-587">            : new TrapezoidProfile.Constraints(maxVelocityRPS, maxAccelerationRPS2)</span>
+<span class="source-line-no">588</span><span id="line-588">    );</span>
+<span class="source-line-no">589</span><span id="line-589"></span>
+<span class="source-line-no">590</span><span id="line-590">    _profileTimer.restart();</span>
+<span class="source-line-no">591</span><span id="line-591">  }</span>
+<span class="source-line-no">592</span><span id="line-592"></span>
+<span class="source-line-no">593</span><span id="line-593">  /**</span>
+<span class="source-line-no">594</span><span id="line-594">   * Configures the CANcoder according to specified configuration</span>
+<span class="source-line-no">595</span><span id="line-595">   */</span>
+<span class="source-line-no">596</span><span id="line-596">  private void configCancoder() {</span>
+<span class="source-line-no">597</span><span id="line-597">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">598</span><span id="line-598">      return;</span>
+<span class="source-line-no">599</span><span id="line-599">    }</span>
+<span class="source-line-no">600</span><span id="line-600"></span>
+<span class="source-line-no">601</span><span id="line-601">    _pivotCancoder.getConfigurator().apply(_pivotCancoderConfiguration);</span>
 <span class="source-line-no">602</span><span id="line-602">  }</span>
 <span class="source-line-no">603</span><span id="line-603"></span>
 <span class="source-line-no">604</span><span id="line-604">  /**</span>
-<span class="source-line-no">605</span><span id="line-605">   * Runs the pivot simulation--sets motor and cancoder simulation fields and updates the visual</span>
+<span class="source-line-no">605</span><span id="line-605">   * Configures the motor according to specified configuration</span>
 <span class="source-line-no">606</span><span id="line-606">   */</span>
-<span class="source-line-no">607</span><span id="line-607">  @Override</span>
-<span class="source-line-no">608</span><span id="line-608">  public void simulationPeriodic() {</span>
-<span class="source-line-no">609</span><span id="line-609">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">610</span><span id="line-610">      return;</span>
-<span class="source-line-no">611</span><span id="line-611">    }</span>
-<span class="source-line-no">612</span><span id="line-612">    _pivotSim.setInputVoltage(_primaryMotor.get() * RobotController.getBatteryVoltage());</span>
-<span class="source-line-no">613</span><span id="line-613">    _pivotSim.update(TagalongConfiguration.LOOP_PERIOD_S);</span>
-<span class="source-line-no">614</span><span id="line-614"></span>
-<span class="source-line-no">615</span><span id="line-615">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
-<span class="source-line-no">616</span><span id="line-616">    double prevSimVelo = _simVeloRPS;</span>
-<span class="source-line-no">617</span><span id="line-617">    _simVeloRPS = Units.radiansToRotations(_pivotSim.getVelocityRadPerSec());</span>
-<span class="source-line-no">618</span><span id="line-618">    _simRotations += Units.radiansToRotations(_pivotSim.getAngleRads());</span>
-<span class="source-line-no">619</span><span id="line-619">    _simAccelRPS2 = (_simVeloRPS - prevSimVelo) / TagalongConfiguration.LOOP_PERIOD_S;</span>
-<span class="source-line-no">620</span><span id="line-620"></span>
-<span class="source-line-no">621</span><span id="line-621">    _ligament.setAngle(Rotation2d.fromRadians(_pivotSim.getAngleRads()));</span>
-<span class="source-line-no">622</span><span id="line-622"></span>
-<span class="source-line-no">623</span><span id="line-623">    _pivotCancoderSim.setRawPosition(Units.radiansToRotations(_pivotSim.getAngleRads()));</span>
-<span class="source-line-no">624</span><span id="line-624">    _pivotCancoderSim.setVelocity(_simVeloRPS);</span>
-<span class="source-line-no">625</span><span id="line-625">    _pivotCancoderSim.setSupplyVoltage(RobotController.getBatteryVoltage());</span>
-<span class="source-line-no">626</span><span id="line-626"></span>
-<span class="source-line-no">627</span><span id="line-627">    _primaryMotorSim.setRawRotorPosition(pivotRotToMotor(_simRotations));</span>
-<span class="source-line-no">628</span><span id="line-628">    _primaryMotorSim.setRotorVelocity(pivotRotToMotor(_simVeloRPS));</span>
-<span class="source-line-no">629</span><span id="line-629">    _primaryMotorSim.setRotorAcceleration(pivotRotToMotor(_simAccelRPS2));</span>
-<span class="source-line-no">630</span><span id="line-630">    _primaryMotorSim.setSupplyVoltage(RobotController.getBatteryVoltage());</span>
-<span class="source-line-no">631</span><span id="line-631"></span>
-<span class="source-line-no">632</span><span id="line-632">    RoboRioSim.setVInVoltage(</span>
-<span class="source-line-no">633</span><span id="line-633">        BatterySim.calculateDefaultBatteryLoadedVoltage(_pivotSim.getCurrentDrawAmps())</span>
-<span class="source-line-no">634</span><span id="line-634">    );</span>
-<span class="source-line-no">635</span><span id="line-635">  }</span>
-<span class="source-line-no">636</span><span id="line-636"></span>
-<span class="source-line-no">637</span><span id="line-637">  /**</span>
-<span class="source-line-no">638</span><span id="line-638">   * Checks whether or not it's safe for the pivot to move</span>
-<span class="source-line-no">639</span><span id="line-639">   *</span>
-<span class="source-line-no">640</span><span id="line-640">   * @return whether or not it's safe to move</span>
-<span class="source-line-no">641</span><span id="line-641">   */</span>
-<span class="source-line-no">642</span><span id="line-642">  public boolean isSafeToMove() {</span>
-<span class="source-line-no">643</span><span id="line-643">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">644</span><span id="line-644">      return true;</span>
-<span class="source-line-no">645</span><span id="line-645">    }</span>
-<span class="source-line-no">646</span><span id="line-646">    return true;</span>
-<span class="source-line-no">647</span><span id="line-647">  }</span>
-<span class="source-line-no">648</span><span id="line-648"></span>
-<span class="source-line-no">649</span><span id="line-649">  /**</span>
-<span class="source-line-no">650</span><span id="line-650">   * Directs the pivot to its maximum position, current goal position, or minimum position</span>
-<span class="source-line-no">651</span><span id="line-651">   *</span>
-<span class="source-line-no">652</span><span id="line-652">   * @param value goal position</span>
-<span class="source-line-no">653</span><span id="line-653">   * @return redirected goal position</span>
-<span class="source-line-no">654</span><span id="line-654">   */</span>
-<span class="source-line-no">655</span><span id="line-655">  public double absoluteClamp(double value) {</span>
-<span class="source-line-no">656</span><span id="line-656">    double abs = AlgebraicUtils.cppMod(value, 1.0);</span>
-<span class="source-line-no">657</span><span id="line-657">    int i = 0;</span>
-<span class="source-line-no">658</span><span id="line-658">    while (abs &gt;= _values[i] &amp;&amp; i &lt; _values.length) {</span>
-<span class="source-line-no">659</span><span id="line-659">      i++;</span>
-<span class="source-line-no">660</span><span id="line-660">    }</span>
-<span class="source-line-no">661</span><span id="line-661">    switch (_ids[i]) {</span>
-<span class="source-line-no">662</span><span id="line-662">      case 2:</span>
-<span class="source-line-no">663</span><span id="line-663">        return _maxPositionRot;</span>
-<span class="source-line-no">664</span><span id="line-664">      case 1:</span>
-<span class="source-line-no">665</span><span id="line-665">        return abs;</span>
-<span class="source-line-no">666</span><span id="line-666">      case 0:</span>
-<span class="source-line-no">667</span><span id="line-667">      default:</span>
-<span class="source-line-no">668</span><span id="line-668">        return _minPositionRot;</span>
-<span class="source-line-no">669</span><span id="line-669">    }</span>
-<span class="source-line-no">670</span><span id="line-670">  }</span>
-<span class="source-line-no">671</span><span id="line-671"></span>
-<span class="source-line-no">672</span><span id="line-672">  /**</span>
-<span class="source-line-no">673</span><span id="line-673">   * Bounds checking function that uses the current pivot position</span>
-<span class="source-line-no">674</span><span id="line-674">   *</span>
-<span class="source-line-no">675</span><span id="line-675">   * @param lowerBound Minimum of acceptable range</span>
-<span class="source-line-no">676</span><span id="line-676">   * @param upperBound Maximum of acceptable range</span>
-<span class="source-line-no">677</span><span id="line-677">   * @return If the current position is greater than or equal to the lower bound and less than or</span>
-<span class="source-line-no">678</span><span id="line-678">   *     equal to the upper bound</span>
-<span class="source-line-no">679</span><span id="line-679">   */</span>
-<span class="source-line-no">680</span><span id="line-680">  public boolean isPivotInTolerance(double lowerBound, double upperBound) {</span>
-<span class="source-line-no">681</span><span id="line-681">    if (_isMicrosystemDisabled) {</span>
-<span class="source-line-no">682</span><span id="line-682">      return true;</span>
-<span class="source-line-no">683</span><span id="line-683">    }</span>
-<span class="source-line-no">684</span><span id="line-684">    return AlgebraicUtils.inTolerance(getPivotPosition(), lowerBound, upperBound);</span>
-<span class="source-line-no">685</span><span id="line-685">  }</span>
-<span class="source-line-no">686</span><span id="line-686"></span>
-<span class="source-line-no">687</span><span id="line-687">  /**</span>
-<span class="source-line-no">688</span><span id="line-688">   * Bounds checking function that uses the absolute current pivot position (modulo one rotation)</span>
-<span class="source-line-no">689</span><span id="line-689">   *</span>
-<span class="source-line-no">690</span><span id="line-690">   * @param lowerBound Minimum of acceptable range</span>
-<span class="source-line-no">691</span><span id="line-691">   * @param upperBound Maximum of acceptable range</span>
-<span class="source-line-no">692</span><span id="line-692">   * @return If the absolute current position is in absolute acceptable range</span>
-<span class="source-line-no">693</span><span id="line-693">   */</span>
-<span class="source-line-no">694</span><span id="line-694">  public boolean isPivotInAbsoluteTolerance(double lowerBound, double upperBound) {</span>
-<span class="source-line-no">695</span><span id="line-695">    double position = AlgebraicUtils.cppMod(getPivotPosition(), 1.0);</span>
-<span class="source-line-no">696</span><span id="line-696">    lowerBound = AlgebraicUtils.cppMod(lowerBound, 1.0);</span>
-<span class="source-line-no">697</span><span id="line-697">    upperBound = AlgebraicUtils.cppMod(upperBound, 1.0);</span>
-<span class="source-line-no">698</span><span id="line-698">    return _isMicrosystemDisabled || position &gt;= 0</span>
-<span class="source-line-no">699</span><span id="line-699">        ? AlgebraicUtils.inTolerance(position, lowerBound, upperBound)</span>
-<span class="source-line-no">700</span><span id="line-700">        : AlgebraicUtils.inTolerance(position + 1.0, lowerBound, upperBound);</span>
-<span class="source-line-no">701</span><span id="line-701">  }</span>
-<span class="source-line-no">702</span><span id="line-702"></span>
-<span class="source-line-no">703</span><span id="line-703">  @Override</span>
-<span class="source-line-no">704</span><span id="line-704">  public void holdCurrentPosition() {</span>
-<span class="source-line-no">705</span><span id="line-705">    setPivotProfile(getPivotPosition(), 0.0);</span>
-<span class="source-line-no">706</span><span id="line-706">    setFollowProfile(true);</span>
-<span class="source-line-no">707</span><span id="line-707">  }</span>
-<span class="source-line-no">708</span><span id="line-708">}</span>
+<span class="source-line-no">607</span><span id="line-607">  private void configMotor() {</span>
+<span class="source-line-no">608</span><span id="line-608">    for (int i = 0; i &lt; _conf.numMotors; i++) {</span>
+<span class="source-line-no">609</span><span id="line-609">      _conf.motorConfig[i].withFeedback(</span>
+<span class="source-line-no">610</span><span id="line-610">          new FeedbackConfigs()</span>
+<span class="source-line-no">611</span><span id="line-611">              .withFeedbackSensorSource(FeedbackSensorSourceValue.FusedCANcoder)</span>
+<span class="source-line-no">612</span><span id="line-612">              .withFeedbackRemoteSensorID(_pivotCancoder.getDeviceID())</span>
+<span class="source-line-no">613</span><span id="line-613">              .withRotorToSensorRatio(_pivotConf.motorToEncoderRatio)</span>
+<span class="source-line-no">614</span><span id="line-614">              .withSensorToMechanismRatio(_pivotConf.encoderToPivotRatio)</span>
+<span class="source-line-no">615</span><span id="line-615">      );</span>
+<span class="source-line-no">616</span><span id="line-616">      _allMotors[i].getConfigurator().apply(_conf.motorConfig[i]);</span>
+<span class="source-line-no">617</span><span id="line-617">    }</span>
+<span class="source-line-no">618</span><span id="line-618">  }</span>
+<span class="source-line-no">619</span><span id="line-619"></span>
+<span class="source-line-no">620</span><span id="line-620">  /**</span>
+<span class="source-line-no">621</span><span id="line-621">   * Clamps the goal pivot position to be within rotational limits</span>
+<span class="source-line-no">622</span><span id="line-622">   *</span>
+<span class="source-line-no">623</span><span id="line-623">   * @param target goal position in rotations</span>
+<span class="source-line-no">624</span><span id="line-624">   * @return clamped goal position in rotations</span>
+<span class="source-line-no">625</span><span id="line-625">   */</span>
+<span class="source-line-no">626</span><span id="line-626">  public double clampPivotPosition(double target) {</span>
+<span class="source-line-no">627</span><span id="line-627">    return AlgebraicUtils.clamp(target, _minPositionRot, _maxPositionRot);</span>
+<span class="source-line-no">628</span><span id="line-628">  }</span>
+<span class="source-line-no">629</span><span id="line-629"></span>
+<span class="source-line-no">630</span><span id="line-630">  /**</span>
+<span class="source-line-no">631</span><span id="line-631">   * Resets devices if resets have occurred</span>
+<span class="source-line-no">632</span><span id="line-632">   */</span>
+<span class="source-line-no">633</span><span id="line-633">  @Override</span>
+<span class="source-line-no">634</span><span id="line-634">  public boolean motorResetConfig() {</span>
+<span class="source-line-no">635</span><span id="line-635">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">636</span><span id="line-636">      return false;</span>
+<span class="source-line-no">637</span><span id="line-637">    }</span>
+<span class="source-line-no">638</span><span id="line-638">    if (_primaryMotor.hasResetOccurred()) {</span>
+<span class="source-line-no">639</span><span id="line-639">      configAllDevices();</span>
+<span class="source-line-no">640</span><span id="line-640">      configMotor();</span>
+<span class="source-line-no">641</span><span id="line-641">      return true;</span>
+<span class="source-line-no">642</span><span id="line-642">    }</span>
+<span class="source-line-no">643</span><span id="line-643">    if (_pivotCancoder.hasResetOccurred()) {</span>
+<span class="source-line-no">644</span><span id="line-644">      configCancoder();</span>
+<span class="source-line-no">645</span><span id="line-645">      return true;</span>
+<span class="source-line-no">646</span><span id="line-646">    }</span>
+<span class="source-line-no">647</span><span id="line-647">    return false;</span>
+<span class="source-line-no">648</span><span id="line-648">  }</span>
+<span class="source-line-no">649</span><span id="line-649"></span>
+<span class="source-line-no">650</span><span id="line-650">  /**</span>
+<span class="source-line-no">651</span><span id="line-651">   * Initializes the pivot simulation</span>
+<span class="source-line-no">652</span><span id="line-652">   */</span>
+<span class="source-line-no">653</span><span id="line-653">  @Override</span>
+<span class="source-line-no">654</span><span id="line-654">  public void simulationInit() {</span>
+<span class="source-line-no">655</span><span id="line-655">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">656</span><span id="line-656">      return;</span>
+<span class="source-line-no">657</span><span id="line-657">    }</span>
+<span class="source-line-no">658</span><span id="line-658"></span>
+<span class="source-line-no">659</span><span id="line-659">    _pivotSim = new SingleJointedArmSim(</span>
+<span class="source-line-no">660</span><span id="line-660">        _pivotConf.motorTypes[0].simSupplier.apply(_pivotConf.numMotors),</span>
+<span class="source-line-no">661</span><span id="line-661">        _motorToEncoderRatio * _encoderToPivotRatio,</span>
+<span class="source-line-no">662</span><span id="line-662">        _pivotConf.pivotMOI,</span>
+<span class="source-line-no">663</span><span id="line-663">        _pivotConf.pivotLengthM,</span>
+<span class="source-line-no">664</span><span id="line-664">        Units.rotationsToRadians(_minPositionRot),</span>
+<span class="source-line-no">665</span><span id="line-665">        Units.rotationsToRadians(_maxPositionRot),</span>
+<span class="source-line-no">666</span><span id="line-666">        true,</span>
+<span class="source-line-no">667</span><span id="line-667">        Units.rotationsToRadians(0)</span>
+<span class="source-line-no">668</span><span id="line-668">    );</span>
+<span class="source-line-no">669</span><span id="line-669"></span>
+<span class="source-line-no">670</span><span id="line-670">    _mechanism = new Mechanism2d(_pivotConf.mech2dDim, _pivotConf.mech2dDim);</span>
+<span class="source-line-no">671</span><span id="line-671">    SmartDashboard.putData("SIM: " + _pivotConf.name, _mechanism);</span>
+<span class="source-line-no">672</span><span id="line-672"></span>
+<span class="source-line-no">673</span><span id="line-673">    _root = _mechanism.getRoot(_pivotConf.name, _pivotConf.rootX, _pivotConf.rootY);</span>
+<span class="source-line-no">674</span><span id="line-674">    _pivotLigament = new MechanismLigament2d(_pivotConf.name, _pivotConf.pivotLengthM, 0.0);</span>
+<span class="source-line-no">675</span><span id="line-675">    _root.append(_pivotLigament);</span>
+<span class="source-line-no">676</span><span id="line-676">    _pivotLigament.setColor(new Color8Bit(255, 255, 255));</span>
+<span class="source-line-no">677</span><span id="line-677"></span>
+<span class="source-line-no">678</span><span id="line-678">    _pivotCancoderSim = _pivotCancoder.getSimState();</span>
+<span class="source-line-no">679</span><span id="line-679">    _primaryMotorSim = _primaryMotor.getSimState();</span>
+<span class="source-line-no">680</span><span id="line-680">  }</span>
+<span class="source-line-no">681</span><span id="line-681"></span>
+<span class="source-line-no">682</span><span id="line-682">  /**</span>
+<span class="source-line-no">683</span><span id="line-683">   * Runs the pivot simulation--sets motor and cancoder simulation fields and updates the visual</span>
+<span class="source-line-no">684</span><span id="line-684">   */</span>
+<span class="source-line-no">685</span><span id="line-685">  @Override</span>
+<span class="source-line-no">686</span><span id="line-686">  public void simulationPeriodic() {</span>
+<span class="source-line-no">687</span><span id="line-687">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">688</span><span id="line-688">      return;</span>
+<span class="source-line-no">689</span><span id="line-689">    }</span>
+<span class="source-line-no">690</span><span id="line-690">    _pivotSim.setInputVoltage(_primaryMotor.get() * RobotController.getBatteryVoltage());</span>
+<span class="source-line-no">691</span><span id="line-691">    _pivotSim.update(TagalongConfiguration.LOOP_PERIOD_S);</span>
+<span class="source-line-no">692</span><span id="line-692"></span>
+<span class="source-line-no">693</span><span id="line-693">    // FUTURE DEV: modify to allow for unfused or not 1:1 with pivot</span>
+<span class="source-line-no">694</span><span id="line-694">    double prevSimVelo = _simVeloRPS;</span>
+<span class="source-line-no">695</span><span id="line-695">    _simVeloRPS = Units.radiansToRotations(_pivotSim.getVelocityRadPerSec());</span>
+<span class="source-line-no">696</span><span id="line-696">    _simRotations += Units.radiansToRotations(_pivotSim.getAngleRads());</span>
+<span class="source-line-no">697</span><span id="line-697">    _simAccelRPS2 = (_simVeloRPS - prevSimVelo) / TagalongConfiguration.LOOP_PERIOD_S;</span>
+<span class="source-line-no">698</span><span id="line-698"></span>
+<span class="source-line-no">699</span><span id="line-699">    _pivotLigament.setAngle(Rotation2d.fromRadians(_pivotSim.getAngleRads()));</span>
+<span class="source-line-no">700</span><span id="line-700"></span>
+<span class="source-line-no">701</span><span id="line-701">    _pivotCancoderSim.setRawPosition(Units.radiansToRotations(_pivotSim.getAngleRads()));</span>
+<span class="source-line-no">702</span><span id="line-702">    _pivotCancoderSim.setVelocity(_simVeloRPS);</span>
+<span class="source-line-no">703</span><span id="line-703">    _pivotCancoderSim.setSupplyVoltage(RobotController.getBatteryVoltage());</span>
+<span class="source-line-no">704</span><span id="line-704"></span>
+<span class="source-line-no">705</span><span id="line-705">    _primaryMotorSim.setRawRotorPosition(pivotRotToMotor(_simRotations));</span>
+<span class="source-line-no">706</span><span id="line-706">    _primaryMotorSim.setRotorVelocity(pivotRotToMotor(_simVeloRPS));</span>
+<span class="source-line-no">707</span><span id="line-707">    _primaryMotorSim.setRotorAcceleration(pivotRotToMotor(_simAccelRPS2));</span>
+<span class="source-line-no">708</span><span id="line-708">    _primaryMotorSim.setSupplyVoltage(RobotController.getBatteryVoltage());</span>
+<span class="source-line-no">709</span><span id="line-709"></span>
+<span class="source-line-no">710</span><span id="line-710">    RoboRioSim.setVInVoltage(</span>
+<span class="source-line-no">711</span><span id="line-711">        BatterySim.calculateDefaultBatteryLoadedVoltage(_pivotSim.getCurrentDrawAmps())</span>
+<span class="source-line-no">712</span><span id="line-712">    );</span>
+<span class="source-line-no">713</span><span id="line-713">  }</span>
+<span class="source-line-no">714</span><span id="line-714"></span>
+<span class="source-line-no">715</span><span id="line-715">  /**</span>
+<span class="source-line-no">716</span><span id="line-716">   * Checks whether or not it's safe for the pivot to move</span>
+<span class="source-line-no">717</span><span id="line-717">   *</span>
+<span class="source-line-no">718</span><span id="line-718">   * @return whether or not it's safe to move</span>
+<span class="source-line-no">719</span><span id="line-719">   */</span>
+<span class="source-line-no">720</span><span id="line-720">  public boolean isSafeToMove() {</span>
+<span class="source-line-no">721</span><span id="line-721">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">722</span><span id="line-722">      return true;</span>
+<span class="source-line-no">723</span><span id="line-723">    }</span>
+<span class="source-line-no">724</span><span id="line-724">    return true;</span>
+<span class="source-line-no">725</span><span id="line-725">  }</span>
+<span class="source-line-no">726</span><span id="line-726"></span>
+<span class="source-line-no">727</span><span id="line-727">  /**</span>
+<span class="source-line-no">728</span><span id="line-728">   * Directs the pivot to its maximum position, current goal position, or minimum position</span>
+<span class="source-line-no">729</span><span id="line-729">   *</span>
+<span class="source-line-no">730</span><span id="line-730">   * @param value goal position</span>
+<span class="source-line-no">731</span><span id="line-731">   * @return redirected goal position</span>
+<span class="source-line-no">732</span><span id="line-732">   */</span>
+<span class="source-line-no">733</span><span id="line-733">  public double absoluteClamp(double value) {</span>
+<span class="source-line-no">734</span><span id="line-734">    double abs = AlgebraicUtils.cppMod(value, 1.0);</span>
+<span class="source-line-no">735</span><span id="line-735">    int i = 0;</span>
+<span class="source-line-no">736</span><span id="line-736">    while (abs &gt;= _values[i] &amp;&amp; i &lt; _values.length) {</span>
+<span class="source-line-no">737</span><span id="line-737">      i++;</span>
+<span class="source-line-no">738</span><span id="line-738">    }</span>
+<span class="source-line-no">739</span><span id="line-739">    switch (_ids[i]) {</span>
+<span class="source-line-no">740</span><span id="line-740">      case 2:</span>
+<span class="source-line-no">741</span><span id="line-741">        return _maxPositionRot;</span>
+<span class="source-line-no">742</span><span id="line-742">      case 1:</span>
+<span class="source-line-no">743</span><span id="line-743">        return abs;</span>
+<span class="source-line-no">744</span><span id="line-744">      case 0:</span>
+<span class="source-line-no">745</span><span id="line-745">      default:</span>
+<span class="source-line-no">746</span><span id="line-746">        return _minPositionRot;</span>
+<span class="source-line-no">747</span><span id="line-747">    }</span>
+<span class="source-line-no">748</span><span id="line-748">  }</span>
+<span class="source-line-no">749</span><span id="line-749"></span>
+<span class="source-line-no">750</span><span id="line-750">  /**</span>
+<span class="source-line-no">751</span><span id="line-751">   * Bounds checking function that uses the current pivot position</span>
+<span class="source-line-no">752</span><span id="line-752">   *</span>
+<span class="source-line-no">753</span><span id="line-753">   * @param lowerBound minimum of acceptable range</span>
+<span class="source-line-no">754</span><span id="line-754">   * @param upperBound maximum of acceptable range</span>
+<span class="source-line-no">755</span><span id="line-755">   * @return if the current position is greater than or equal to the lower bound and less than or</span>
+<span class="source-line-no">756</span><span id="line-756">   *     equal to the upper bound</span>
+<span class="source-line-no">757</span><span id="line-757">   */</span>
+<span class="source-line-no">758</span><span id="line-758">  public boolean isPivotInTolerance(double lowerBound, double upperBound) {</span>
+<span class="source-line-no">759</span><span id="line-759">    if (_isMicrosystemDisabled) {</span>
+<span class="source-line-no">760</span><span id="line-760">      return true;</span>
+<span class="source-line-no">761</span><span id="line-761">    }</span>
+<span class="source-line-no">762</span><span id="line-762">    return AlgebraicUtils.inTolerance(getPivotPosition(), lowerBound, upperBound);</span>
+<span class="source-line-no">763</span><span id="line-763">  }</span>
+<span class="source-line-no">764</span><span id="line-764"></span>
+<span class="source-line-no">765</span><span id="line-765">  /**</span>
+<span class="source-line-no">766</span><span id="line-766">   * Bounds checking function that uses the absolute current pivot position (modulo one rotation)</span>
+<span class="source-line-no">767</span><span id="line-767">   *</span>
+<span class="source-line-no">768</span><span id="line-768">   * @param lowerBound minimum of acceptable range</span>
+<span class="source-line-no">769</span><span id="line-769">   * @param upperBound maximum of acceptable range</span>
+<span class="source-line-no">770</span><span id="line-770">   * @return if the absolute current position is in absolute acceptable range</span>
+<span class="source-line-no">771</span><span id="line-771">   */</span>
+<span class="source-line-no">772</span><span id="line-772">  public boolean isPivotInAbsoluteTolerance(double lowerBound, double upperBound) {</span>
+<span class="source-line-no">773</span><span id="line-773">    double position = AlgebraicUtils.cppMod(getPivotPosition(), 1.0);</span>
+<span class="source-line-no">774</span><span id="line-774">    lowerBound = AlgebraicUtils.cppMod(lowerBound, 1.0);</span>
+<span class="source-line-no">775</span><span id="line-775">    upperBound = AlgebraicUtils.cppMod(upperBound, 1.0);</span>
+<span class="source-line-no">776</span><span id="line-776">    return _isMicrosystemDisabled || position &gt;= 0</span>
+<span class="source-line-no">777</span><span id="line-777">        ? AlgebraicUtils.inTolerance(position, lowerBound, upperBound)</span>
+<span class="source-line-no">778</span><span id="line-778">        : AlgebraicUtils.inTolerance(position + 1.0, lowerBound, upperBound);</span>
+<span class="source-line-no">779</span><span id="line-779">  }</span>
+<span class="source-line-no">780</span><span id="line-780"></span>
+<span class="source-line-no">781</span><span id="line-781">  @Override</span>
+<span class="source-line-no">782</span><span id="line-782">  public void holdCurrentPosition() {</span>
+<span class="source-line-no">783</span><span id="line-783">    setPivotProfile(getPivotPosition(), 0.0);</span>
+<span class="source-line-no">784</span><span id="line-784">    setFollowProfile(true);</span>
+<span class="source-line-no">785</span><span id="line-785">  }</span>
+<span class="source-line-no">786</span><span id="line-786"></span>
+<span class="source-line-no">787</span><span id="line-787">  /**</span>
+<span class="source-line-no">788</span><span id="line-788">   * Retrieves ligament attached to pivot Mechanism2d</span>
+<span class="source-line-no">789</span><span id="line-789">   *</span>
+<span class="source-line-no">790</span><span id="line-790">   * @return pivot ligament</span>
+<span class="source-line-no">791</span><span id="line-791">   */</span>
+<span class="source-line-no">792</span><span id="line-792">  public MechanismLigament2d getPivotLigament() {</span>
+<span class="source-line-no">793</span><span id="line-793">    return _pivotLigament;</span>
+<span class="source-line-no">794</span><span id="line-794">  }</span>
+<span class="source-line-no">795</span><span id="line-795">}</span>
 
 
 

@@ -98,9 +98,29 @@ loadScripts(document, 'script');</script>
 <div class="block">Motor feedforward model</div>
 </div>
 <div class="col-first odd-row-color"><code>final double</code></div>
-<div class="col-second odd-row-color"><code><a href="#rollerMOI" class="member-name-link">rollerMOI</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#mech2dDim" class="member-name-link">mech2dDim</a></code></div>
 <div class="col-last odd-row-color">
+<div class="block">Dimension of the mechanical system</div>
+</div>
+<div class="col-first even-row-color"><code>final double</code></div>
+<div class="col-second even-row-color"><code><a href="#rollerMOI" class="member-name-link">rollerMOI</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">Moment of inertia for the roller</div>
+</div>
+<div class="col-first odd-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#rootName" class="member-name-link">rootName</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">Sim root name</div>
+</div>
+<div class="col-first even-row-color"><code>final double</code></div>
+<div class="col-second even-row-color"><code><a href="#rootX" class="member-name-link">rootX</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">Sim root x coordinate</div>
+</div>
+<div class="col-first odd-row-color"><code>final double</code></div>
+<div class="col-second odd-row-color"><code><a href="#rootY" class="member-name-link">rootY</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">Sim root y coordinate</div>
 </div>
 <div class="col-first even-row-color"><code>final int</code></div>
 <div class="col-second even-row-color"><code><a href="#simNumLigaments" class="member-name-link">simNumLigaments</a></code></div>
@@ -121,7 +141,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,int,double)" class="member-name-link">RollerConf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,double,java.lang.String,double,double,int,double)" class="member-name-link">RollerConf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="../../../devices/Motors.html" title="enum class in tagalong.devices">Motors</a>[]&nbsp;motorTypes,
  int[]&nbsp;motorDeviceIDs,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;motorCanBus,
@@ -146,6 +166,10 @@ loadScripts(document, 'script');</script>
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot0,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot1,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot2,
+ double&nbsp;mech2dDim,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;rootName,
+ double&nbsp;rootX,
+ double&nbsp;rootY,
  int&nbsp;simNumLigaments,
  double&nbsp;rollerMOI)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
@@ -174,23 +198,51 @@ loadScripts(document, 'script');</script>
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="mech2dDim">
+<h3>mech2dDim</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-28">mech2dDim</a></span></div>
+<div class="block">Dimension of the mechanical system</div>
+</section>
+</li>
+<li>
+<section class="detail" id="rootName">
+<h3>rootName</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-32">rootName</a></span></div>
+<div class="block">Sim root name</div>
+</section>
+</li>
+<li>
+<section class="detail" id="rootX">
+<h3>rootX</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-36">rootX</a></span></div>
+<div class="block">Sim root x coordinate</div>
+</section>
+</li>
+<li>
+<section class="detail" id="rootY">
+<h3>rootY</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-40">rootY</a></span></div>
+<div class="block">Sim root y coordinate</div>
+</section>
+</li>
+<li>
 <section class="detail" id="simNumLigaments">
 <h3>simNumLigaments</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-28">simNumLigaments</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-44">simNumLigaments</a></span></div>
 <div class="block">Number of simulated ligaments used</div>
 </section>
 </li>
 <li>
 <section class="detail" id="rollerMOI">
 <h3>rollerMOI</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-32">rollerMOI</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-48">rollerMOI</a></span></div>
 <div class="block">Moment of inertia for the roller</div>
 </section>
 </li>
 <li>
 <section class="detail" id="feedForward">
 <h3>feedForward</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/SimpleMotorFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">SimpleMotorFeedforward</a></span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-36">feedForward</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/SimpleMotorFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">SimpleMotorFeedforward</a></span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-52">feedForward</a></span></div>
 <div class="block">Motor feedforward model</div>
 </section>
 </li>
@@ -203,9 +255,9 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,tagalong.devices.Motors[],int[],java.lang.String[],com.ctre.phoenix6.signals.InvertedValue[],com.ctre.phoenix6.signals.NeutralModeValue[],com.ctre.phoenix6.signals.NeutralModeValue[],int[][],tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,int,double)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,tagalong.devices.Motors[],int[],java.lang.String[],com.ctre.phoenix6.signals.InvertedValue[],com.ctre.phoenix6.signals.NeutralModeValue[],com.ctre.phoenix6.signals.NeutralModeValue[],int[][],tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,double,java.lang.String,double,double,int,double)">
 <h3>RollerConf</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-68">RollerConf</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/RollerConf.html#line-88">RollerConf</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="../../../devices/Motors.html" title="enum class in tagalong.devices">Motors</a>[]&nbsp;motorTypes,
  int[]&nbsp;motorDeviceIDs,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;motorCanBus,
@@ -230,6 +282,10 @@ loadScripts(document, 'script');</script>
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot0,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot1,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot2,
+ double&nbsp;mech2dDim,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;rootName,
+ double&nbsp;rootX,
+ double&nbsp;rootY,
  int&nbsp;simNumLigaments,
  double&nbsp;rollerMOI)</span></div>
 <dl class="notes">
@@ -259,6 +315,10 @@ loadScripts(document, 'script');</script>
 <dd><code>simSlot0</code> - simulated PID slot 0 configuration</dd>
 <dd><code>simSlot1</code> - simulated PID slot 1 configuration</dd>
 <dd><code>simSlot2</code> - simulated PID slot 2 configuration</dd>
+<dd><code>mech2dDim</code> - dimensions of mechanical system</dd>
+<dd><code>rootName</code> - sim root name</dd>
+<dd><code>rootX</code> - sim root x coordinate</dd>
+<dd><code>rootY</code> - sim root y coordinate</dd>
 <dd><code>simNumLigaments</code> - number of simulated ligaments used</dd>
 <dd><code>rollerMOI</code> - moment of inertia for the roller</dd>
 </dl>
