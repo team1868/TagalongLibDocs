@@ -87,7 +87,7 @@ loadScripts(document, 'script');</script>
 <h2>Field Summary</h2>
 <div class="inherited-list">
 <h3 id="fields-inherited-from-class-tagalong.subsystems.micro.confs.RollerConf">Fields inherited from class&nbsp;tagalong.subsystems.micro.confs.<a href="RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></h3>
-<code><a href="RollerConf.html#feedForward">feedForward</a>, <a href="RollerConf.html#rollerMOI">rollerMOI</a>, <a href="RollerConf.html#simNumLigaments">simNumLigaments</a></code></div>
+<code><a href="RollerConf.html#feedForward">feedForward</a>, <a href="RollerConf.html#mech2dDim">mech2dDim</a>, <a href="RollerConf.html#rollerMOI">rollerMOI</a>, <a href="RollerConf.html#rootName">rootName</a>, <a href="RollerConf.html#rootX">rootX</a>, <a href="RollerConf.html#rootY">rootY</a>, <a href="RollerConf.html#simNumLigaments">simNumLigaments</a></code></div>
 <div class="inherited-list">
 <h3 id="fields-inherited-from-class-tagalong.subsystems.micro.confs.MicrosystemConf">Fields inherited from class&nbsp;tagalong.subsystems.micro.confs.<a href="MicrosystemConf.html" title="class in tagalong.subsystems.micro.confs">MicrosystemConf</a></h3>
 <code><a href="MicrosystemConf.html#defaultLowerTolerance">defaultLowerTolerance</a>, <a href="MicrosystemConf.html#defaultTolerancesUnit">defaultTolerancesUnit</a>, <a href="MicrosystemConf.html#defaultUpperTolerance">defaultUpperTolerance</a>, <a href="MicrosystemConf.html#motorCanBus">motorCanBus</a>, <a href="MicrosystemConf.html#motorConfig">motorConfig</a>, <a href="MicrosystemConf.html#motorDeviceIDs">motorDeviceIDs</a>, <a href="MicrosystemConf.html#motorDirection">motorDirection</a>, <a href="MicrosystemConf.html#motorDisabledBrakeMode">motorDisabledBrakeMode</a>, <a href="MicrosystemConf.html#motorEnabledBrakeMode">motorEnabledBrakeMode</a>, <a href="MicrosystemConf.html#motorToMechRatio">motorToMechRatio</a>, <a href="MicrosystemConf.html#motorTypes">motorTypes</a>, <a href="MicrosystemConf.html#name">name</a>, <a href="MicrosystemConf.html#numMotors">numMotors</a>, <a href="MicrosystemConf.html#trapezoidalAccelerationUnit">trapezoidalAccelerationUnit</a>, <a href="MicrosystemConf.html#trapezoidalLimits">trapezoidalLimits</a>, <a href="MicrosystemConf.html#trapezoidalLimitsAcceleration">trapezoidalLimitsAcceleration</a>, <a href="MicrosystemConf.html#trapezoidalLimitsVelocity">trapezoidalLimitsVelocity</a>, <a href="MicrosystemConf.html#trapezoidalVelocityUnit">trapezoidalVelocityUnit</a></code></div>
@@ -101,7 +101,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,int,double)" class="member-name-link">FlywheelConf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,double,java.lang.String,double,double,int,double)" class="member-name-link">FlywheelConf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="../../../devices/Motors.html" title="enum class in tagalong.devices">Motors</a>[]&nbsp;motorTypes,
  int[]&nbsp;motorDeviceIDs,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;motorCanBus,
@@ -126,6 +126,10 @@ loadScripts(document, 'script');</script>
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot0,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot1,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot2,
+ double&nbsp;mech2dDim,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;rootName,
+ double&nbsp;rootX,
+ double&nbsp;rootY,
  int&nbsp;simNumLigaments,
  double&nbsp;rollerMOI)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
@@ -154,9 +158,9 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,tagalong.devices.Motors[],int[],java.lang.String[],com.ctre.phoenix6.signals.InvertedValue[],com.ctre.phoenix6.signals.NeutralModeValue[],com.ctre.phoenix6.signals.NeutralModeValue[],int[][],tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,int,double)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,tagalong.devices.Motors[],int[],java.lang.String[],com.ctre.phoenix6.signals.InvertedValue[],com.ctre.phoenix6.signals.NeutralModeValue[],com.ctre.phoenix6.signals.NeutralModeValue[],int[][],tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,double,java.lang.String,double,double,int,double)">
 <h3>FlywheelConf</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/FlywheelConf.html#line-47">FlywheelConf</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../src-html/tagalong/subsystems/micro/confs/FlywheelConf.html#line-51">FlywheelConf</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="../../../devices/Motors.html" title="enum class in tagalong.devices">Motors</a>[]&nbsp;motorTypes,
  int[]&nbsp;motorDeviceIDs,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;motorCanBus,
@@ -181,6 +185,10 @@ loadScripts(document, 'script');</script>
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot0,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot1,
  <a href="../../../controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a>&nbsp;simSlot2,
+ double&nbsp;mech2dDim,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;rootName,
+ double&nbsp;rootX,
+ double&nbsp;rootY,
  int&nbsp;simNumLigaments,
  double&nbsp;rollerMOI)</span></div>
 <dl class="notes">
@@ -210,6 +218,10 @@ loadScripts(document, 'script');</script>
 <dd><code>simSlot0</code> - simulated PID slot 0 configuration</dd>
 <dd><code>simSlot1</code> - simulated PID slot 1 configuration</dd>
 <dd><code>simSlot2</code> - simulated PID slot 2 configuration</dd>
+<dd><code>mech2dDim</code> - dimensions of mechanical system</dd>
+<dd><code>rootName</code> - sim root name</dd>
+<dd><code>rootX</code> - sim root x coordinate</dd>
+<dd><code>rootY</code> - sim root y coordinate</dd>
 <dd><code>simNumLigaments</code> - number of simulated ligaments used</dd>
 <dd><code>rollerMOI</code> - moment of inertia for the roller</dd>
 </dl>

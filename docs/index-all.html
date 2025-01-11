@@ -166,6 +166,18 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Clamps the goal pivot position to be within rotational limits</div>
 </dd>
+<dt><a href="tagalong/logging/ElevatorIOInputsAutoLogged.html#clone()" class="member-name-link">clone()</a> - Method in class tagalong.logging.<a href="tagalong/logging/ElevatorIOInputsAutoLogged.html" title="class in tagalong.logging">ElevatorIOInputsAutoLogged</a></dt>
+<dd>
+<div class="block">Returns a copy of ElevatorIOInputsAutoLogged</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIOInputsAutoLogged.html#clone()" class="member-name-link">clone()</a> - Method in class tagalong.logging.<a href="tagalong/logging/PivotIOInputsAutoLogged.html" title="class in tagalong.logging">PivotIOInputsAutoLogged</a></dt>
+<dd>
+<div class="block">Returns a copy of PivotIOInputsAutoLogged</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIOInputsAutoLogged.html#clone()" class="member-name-link">clone()</a> - Method in class tagalong.logging.<a href="tagalong/logging/RollerIOInputsAutoLogged.html" title="class in tagalong.logging">RollerIOInputsAutoLogged</a></dt>
+<dd>
+<div class="block">Returns a copy of RollerIOInputsAutoLogged</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#closedLoopConfigsContinuousWrap" class="member-name-link">closedLoopConfigsContinuousWrap</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
 <dd>
 <div class="block">Whether there is continuous wrapping in closed loop configurations</div>
@@ -516,7 +528,11 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#%3Cinit%3E(tagalong.subsystems.micro.confs.ElevatorConf)" class="member-name-link">Elevator(ElevatorConf)</a> - Constructor for class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
-<div class="block">Constructor that creates an elevator microsystem with the below configurations</div>
+<div class="block">Constructs an elevator microsystem with the below configurations</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html#elevatorAppliedVolts" class="member-name-link">elevatorAppliedVolts</a> - Variable in class tagalong.logging.<a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html" title="class in tagalong.logging">ElevatorIO.ElevatorIOInputs</a></dt>
+<dd>
+<div class="block">Applied (output) motor voltage of the elevator</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/augments/ElevatorAugment.html" class="type-name-link" title="interface in tagalong.subsystems.micro.augments">ElevatorAugment</a> - Interface in <a href="tagalong/subsystems/micro/augments/package-summary.html">tagalong.subsystems.micro.augments</a></dt>
 <dd>
@@ -527,8 +543,44 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Configuration for the elevator microsystem</div>
 </dd>
-<dt><a href="tagalong/subsystems/micro/confs/ElevatorConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,double,double,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.units.MassUnits,double,int,int,int,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.units.DistanceUnits,double)" class="member-name-link">ElevatorConf(String, Motors[], int[], String[], InvertedValue[], NeutralModeValue[], NeutralModeValue[], int[][], DistanceUnits, double, double, DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, MassUnits, double, int, int, int, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, DistanceUnits, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></dt>
+<dt><a href="tagalong/subsystems/micro/confs/ElevatorConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,double,double,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.units.MassUnits,double,double,java.lang.String,double,double,double,double,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.units.DistanceUnits,double)" class="member-name-link">ElevatorConf(String, Motors[], int[], String[], InvertedValue[], NeutralModeValue[], NeutralModeValue[], int[][], DistanceUnits, double, double, DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, MassUnits, double, double, String, double, double, double, double, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, DistanceUnits, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html#elevatorCurrentAmps" class="member-name-link">elevatorCurrentAmps</a> - Variable in class tagalong.logging.<a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html" title="class in tagalong.logging">ElevatorIO.ElevatorIOInputs</a></dt>
+<dd>
+<div class="block">Current corresponding to the stator windings of the elevator</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html#elevatorHeightM" class="member-name-link">elevatorHeightM</a> - Variable in class tagalong.logging.<a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html" title="class in tagalong.logging">ElevatorIO.ElevatorIOInputs</a></dt>
+<dd>
+<div class="block">Height of the elevator in meters</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIO.html" class="type-name-link" title="interface in tagalong.logging">ElevatorIO</a> - Interface in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Interface with elevator hardware</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html" class="type-name-link" title="class in tagalong.logging">ElevatorIO.ElevatorIOInputs</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Set of loggable elevator inputs</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html#%3Cinit%3E()" class="member-name-link">ElevatorIOInputs()</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html" title="class in tagalong.logging">ElevatorIO.ElevatorIOInputs</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/ElevatorIOInputsAutoLogged.html" class="type-name-link" title="class in tagalong.logging">ElevatorIOInputsAutoLogged</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Logger for elevator inputs</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIOInputsAutoLogged.html#%3Cinit%3E()" class="member-name-link">ElevatorIOInputsAutoLogged()</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/ElevatorIOInputsAutoLogged.html" title="class in tagalong.logging">ElevatorIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/ElevatorIOTalonFX.html" class="type-name-link" title="class in tagalong.logging">ElevatorIOTalonFX</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Collection of elevator TalonFX data</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIOTalonFX.html#%3Cinit%3E(tagalong.subsystems.micro.Elevator)" class="member-name-link">ElevatorIOTalonFX(Elevator)</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/ElevatorIOTalonFX.html" title="class in tagalong.logging">ElevatorIOTalonFX</a></dt>
+<dd>
+<div class="block">Constructs a layer with the below elevator TalonFX data</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html#elevatorVelocityMPS" class="member-name-link">elevatorVelocityMPS</a> - Variable in class tagalong.logging.<a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html" title="class in tagalong.logging">ElevatorIO.ElevatorIOInputs</a></dt>
+<dd>
+<div class="block">Velocity of the elevator in meters per second</div>
+</dd>
 <dt><a href="tagalong/commands/base/ElevatorZeroCmd.html" class="type-name-link" title="class in tagalong.commands.base">ElevatorZeroCmd</a>&lt;<a href="tagalong/commands/base/ElevatorZeroCmd.html" title="type parameter in ElevatorZeroCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/ElevatorAugment.html" title="interface in tagalong.subsystems.micro.augments">ElevatorAugment</a>&gt; - Class in <a href="tagalong/commands/base/package-summary.html">tagalong.commands.base</a></dt>
 <dd>
 <div class="block">Command that finds the elevator zero position and sets the encoder position
@@ -737,7 +789,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Configuration for the flywheel</div>
 </dd>
-<dt><a href="tagalong/subsystems/micro/confs/FlywheelConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,int,double)" class="member-name-link">FlywheelConf(String, Motors[], int[], String[], InvertedValue[], NeutralModeValue[], NeutralModeValue[], int[][], DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, int, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/FlywheelConf.html" title="class in tagalong.subsystems.micro.confs">FlywheelConf</a></dt>
+<dt><a href="tagalong/subsystems/micro/confs/FlywheelConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,double,java.lang.String,double,double,int,double)" class="member-name-link">FlywheelConf(String, Motors[], int[], String[], InvertedValue[], NeutralModeValue[], NeutralModeValue[], int[][], DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, double, String, double, double, int, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/FlywheelConf.html" title="class in tagalong.subsystems.micro.confs">FlywheelConf</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#followLastProfile()" class="member-name-link">followLastProfile()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
@@ -754,6 +806,12 @@ loadScripts(document, 'script');</script>
 <div class="block">Calculates the next state according to the trapezoidal profile and requests the roller motor(s)
  to arrive at the next position with feedforward</div>
 </dd>
+<dt><a href="tagalong/logging/ElevatorIOInputsAutoLogged.html#fromLog(org.littletonrobotics.junction.LogTable)" class="member-name-link">fromLog(LogTable)</a> - Method in class tagalong.logging.<a href="tagalong/logging/ElevatorIOInputsAutoLogged.html" title="class in tagalong.logging">ElevatorIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/PivotIOInputsAutoLogged.html#fromLog(org.littletonrobotics.junction.LogTable)" class="member-name-link">fromLog(LogTable)</a> - Method in class tagalong.logging.<a href="tagalong/logging/PivotIOInputsAutoLogged.html" title="class in tagalong.logging">PivotIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/RollerIOInputsAutoLogged.html#fromLog(org.littletonrobotics.junction.LogTable)" class="member-name-link">fromLog(LogTable)</a> - Method in class tagalong.logging.<a href="tagalong/logging/RollerIOInputsAutoLogged.html" title="class in tagalong.logging">RollerIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
@@ -788,11 +846,19 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/subsystems/micro/augments/ElevatorAugment.html#getElevator(int)" class="member-name-link">getElevator(int)</a> - Method in interface tagalong.subsystems.micro.augments.<a href="tagalong/subsystems/micro/augments/ElevatorAugment.html" title="interface in tagalong.subsystems.micro.augments">ElevatorAugment</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#getElevatorBaseStageLigament()" class="member-name-link">getElevatorBaseStageLigament()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Retrieves base stage ligament attached to elevator Mechanism2d</div>
+</dd>
 <dt><a href="tagalong/controls/FeedforwardConstants.html#getElevatorFeedforward()" class="member-name-link">getElevatorFeedforward()</a> - Method in class tagalong.controls.<a href="tagalong/controls/FeedforwardConstants.html" title="class in tagalong.controls">FeedforwardConstants</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#getElevatorHeightM()" class="member-name-link">getElevatorHeightM()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
 <div class="block">Gets the height of the elevator in meters</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#getElevatorStage1Ligament()" class="member-name-link">getElevatorStage1Ligament()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Retrieves stage 1 ligament attached to elevator Mechanism2d</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#getElevatorVelocityMPS()" class="member-name-link">getElevatorVelocityMPS()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
@@ -815,6 +881,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/subsystems/micro/augments/PivotAugment.html#getPivot(int)" class="member-name-link">getPivot(int)</a> - Method in interface tagalong.subsystems.micro.augments.<a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#getPivotLigament()" class="member-name-link">getPivotLigament()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Retrieves ligament attached to pivot Mechanism2d</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#getPivotPosition()" class="member-name-link">getPivotPosition()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
 <div class="block">Gets the current position of the pivot in rotations</div>
@@ -848,6 +918,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/subsystems/micro/augments/RollerAugment.html#getRoller(int)" class="member-name-link">getRoller(int)</a> - Method in interface tagalong.subsystems.micro.augments.<a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="tagalong/subsystems/micro/Roller.html#getRollerLigaments()" class="member-name-link">getRollerLigaments()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
+<dd>
+<div class="block">Retrieves ligaments attached to roller Mechanism2d</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#getRollerPosition()" class="member-name-link">getRollerPosition()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
 <div class="block">Gets the position of the roller in rotations</div>
@@ -860,6 +934,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Gets the velocity of roller in rotations</div>
 </dd>
+<dt><a href="tagalong/subsystems/micro/Microsystem.html#getRoot()" class="member-name-link">getRoot()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="tagalong/measurements/Angle.html#getRotations()" class="member-name-link">getRotations()</a> - Method in interface tagalong.measurements.<a href="tagalong/measurements/Angle.html" title="interface in tagalong.measurements">Angle</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/controls/FeedforwardConstants.html#getSimpleMotorFeedforward()" class="member-name-link">getSimpleMotorFeedforward()</a> - Method in class tagalong.controls.<a href="tagalong/controls/FeedforwardConstants.html" title="class in tagalong.controls">FeedforwardConstants</a></dt>
@@ -1012,6 +1088,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Checks if the trapezoidal profile has reached its goal</div>
 </dd>
+<dt><a href="tagalong/TagalongConfiguration.html#isReplayMode" class="member-name-link">isReplayMode</a> - Static variable in class tagalong.<a href="tagalong/TagalongConfiguration.html" title="class in tagalong">TagalongConfiguration</a></dt>
+<dd>
+<div class="block">Set isReplayMode to true to replay a log</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#isRollerAtTargetSpeed(double)" class="member-name-link">isRollerAtTargetSpeed(double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
 <div class="block">Checks if the roller is at the target speed</div>
@@ -1063,6 +1143,14 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
+<dt><a href="tagalong/math/LinearizedLookupTable.html" class="type-name-link" title="class in tagalong.math">LinearizedLookupTable</a> - Class in <a href="tagalong/math/package-summary.html">tagalong.math</a></dt>
+<dd>
+<div class="block">Linearized Lookup Table</div>
+</dd>
+<dt><a href="tagalong/math/LinearizedLookupTable.html#%3Cinit%3E(double%5B%5D,double%5B%5D)" class="member-name-link">LinearizedLookupTable(double[], double[])</a> - Constructor for class tagalong.math.<a href="tagalong/math/LinearizedLookupTable.html" title="class in tagalong.math">LinearizedLookupTable</a></dt>
+<dd>
+<div class="block">Constructs a lookup table containing IDs and their corresponding values</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/confs/ElevatorConf.html#lineLength" class="member-name-link">lineLength</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></dt>
 <dd>
 <div class="block">Length of the line</div>
@@ -1070,6 +1158,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="tagalong/math/AlgebraicUtils.html#log(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">log(Pose2d)</a> - Static method in class tagalong.math.<a href="tagalong/math/AlgebraicUtils.html" title="class in tagalong.math">AlgebraicUtils</a></dt>
 <dd>
 <div class="block">Logical inverse of the above.</div>
+</dd>
+<dt><a href="tagalong/math/LinearizedLookupTable.html#lookup(double)" class="member-name-link">lookup(double)</a> - Method in class tagalong.math.<a href="tagalong/math/LinearizedLookupTable.html" title="class in tagalong.math">LinearizedLookupTable</a></dt>
+<dd>
+<div class="block">Returns the value that the ID maps to on a continuous, linearized function</div>
 </dd>
 <dt><a href="tagalong/TagalongConfiguration.html#LOOP_PERIOD_S" class="member-name-link">LOOP_PERIOD_S</a> - Static variable in class tagalong.<a href="tagalong/TagalongConfiguration.html" title="class in tagalong">TagalongConfiguration</a></dt>
 <dd>
@@ -1102,6 +1194,14 @@ loadScripts(document, 'script');</script>
 <div class="block">Max free speed RPM and converted RPS of the motor</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/confs/ElevatorConf.html#mech2dDim" class="member-name-link">mech2dDim</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></dt>
+<dd>
+<div class="block">Dimension of the mechanical system</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#mech2dDim" class="member-name-link">mech2dDim</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
+<dd>
+<div class="block">Dimension of the mechanical system</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/RollerConf.html#mech2dDim" class="member-name-link">mech2dDim</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></dt>
 <dd>
 <div class="block">Dimension of the mechanical system</div>
 </dd>
@@ -1150,7 +1250,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Base class for all Tagalong Microsystems</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Microsystem.html#%3Cinit%3E(tagalong.subsystems.micro.confs.MicrosystemConf)" class="member-name-link">Microsystem(MicrosystemConf)</a> - Constructor for class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Constructs a microsystem with the below configurations</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/confs/MicrosystemConf.html" class="type-name-link" title="class in tagalong.subsystems.micro.confs">MicrosystemConf</a> - Class in <a href="tagalong/subsystems/micro/confs/package-summary.html">tagalong.subsystems.micro.confs</a></dt>
 <dd>
 <div class="block">Configuration for a microsystem</div>
@@ -1406,6 +1508,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor that creates the command with the below parameters.</div>
 </dd>
+<dt><a href="tagalong/logging/PivotIO.PivotIOInputs.html#pivotAppliedVolts" class="member-name-link">pivotAppliedVolts</a> - Variable in class tagalong.logging.<a href="tagalong/logging/PivotIO.PivotIOInputs.html" title="class in tagalong.logging">PivotIO.PivotIOInputs</a></dt>
+<dd>
+<div class="block">Applied (output) motor voltage of the pivot</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/augments/PivotAugment.html" class="type-name-link" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a> - Interface in <a href="tagalong/subsystems/micro/augments/package-summary.html">tagalong.subsystems.micro.augments</a></dt>
 <dd>
 <div class="block">Subsystem augment required for all subsystems containing 1 or more pivot
@@ -1415,8 +1521,36 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Configuration for the pivot microsystem</div>
 </dd>
-<dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,tagalong.devices.Encoders,int,java.lang.String,boolean,boolean,tagalong.units.DistanceUnits,double,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,double,double,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,boolean,tagalong.units.DistanceUnits,double,tagalong.units.DistanceUnits,double,double,double)" class="member-name-link">PivotConf(String, Motors[], int[], String[], InvertedValue[], Encoders, int, String, boolean, boolean, DistanceUnits, double, NeutralModeValue[], NeutralModeValue[], int[][], int[][], DistanceUnits, double, double, DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, boolean, DistanceUnits, double, DistanceUnits, double, double, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
+<dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,tagalong.devices.Encoders,int,java.lang.String,boolean,boolean,tagalong.units.DistanceUnits,double,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,double,double,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,boolean,tagalong.units.DistanceUnits,double,tagalong.units.DistanceUnits,double,double,java.lang.String,double,double,double,double)" class="member-name-link">PivotConf(String, Motors[], int[], String[], InvertedValue[], Encoders, int, String, boolean, boolean, DistanceUnits, double, NeutralModeValue[], NeutralModeValue[], int[][], int[][], DistanceUnits, double, double, DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, boolean, DistanceUnits, double, DistanceUnits, double, double, String, double, double, double, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/PivotIO.PivotIOInputs.html#pivotCurrentAmps" class="member-name-link">pivotCurrentAmps</a> - Variable in class tagalong.logging.<a href="tagalong/logging/PivotIO.PivotIOInputs.html" title="class in tagalong.logging">PivotIO.PivotIOInputs</a></dt>
+<dd>
+<div class="block">Current corresponding to the stator windings of the pivot</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIO.html" class="type-name-link" title="interface in tagalong.logging">PivotIO</a> - Interface in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Interface with pivot hardware</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIO.PivotIOInputs.html" class="type-name-link" title="class in tagalong.logging">PivotIO.PivotIOInputs</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Set of loggable pivot inputs</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIO.PivotIOInputs.html#%3Cinit%3E()" class="member-name-link">PivotIOInputs()</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/PivotIO.PivotIOInputs.html" title="class in tagalong.logging">PivotIO.PivotIOInputs</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/PivotIOInputsAutoLogged.html" class="type-name-link" title="class in tagalong.logging">PivotIOInputsAutoLogged</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Logger for pivot inputs</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIOInputsAutoLogged.html#%3Cinit%3E()" class="member-name-link">PivotIOInputsAutoLogged()</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/PivotIOInputsAutoLogged.html" title="class in tagalong.logging">PivotIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/PivotIOTalonFX.html" class="type-name-link" title="class in tagalong.logging">PivotIOTalonFX</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Collection of pivot TalonFX data</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIOTalonFX.html#%3Cinit%3E(tagalong.subsystems.micro.Pivot)" class="member-name-link">PivotIOTalonFX(Pivot)</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/PivotIOTalonFX.html" title="class in tagalong.logging">PivotIOTalonFX</a></dt>
+<dd>
+<div class="block">Constructs a layer with the below pivot TalonFX data</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#pivotLengthM" class="member-name-link">pivotLengthM</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
 <dd>
 <div class="block">Length of the pivot in meters</div>
@@ -1424,6 +1558,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#pivotMOI" class="member-name-link">pivotMOI</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
 <dd>
 <div class="block">Moment of inertia for the pivot</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIO.PivotIOInputs.html#pivotPositionRot" class="member-name-link">pivotPositionRot</a> - Variable in class tagalong.logging.<a href="tagalong/logging/PivotIO.PivotIOInputs.html" title="class in tagalong.logging">PivotIO.PivotIOInputs</a></dt>
+<dd>
+<div class="block">Position of the pivot in rotations</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#pivotRotToMotor(double)" class="member-name-link">pivotRotToMotor(double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
@@ -1624,6 +1762,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="tagalong/commands/base/PivotToDynamicCmd.html#%3Cinit%3E(T,java.util.function.DoubleSupplier,boolean,double,java.util.function.BooleanSupplier)" class="member-name-link">PivotToDynamicCmd(T, DoubleSupplier, boolean, double, BooleanSupplier)</a> - Constructor for class tagalong.commands.base.<a href="tagalong/commands/base/PivotToDynamicCmd.html" title="class in tagalong.commands.base">PivotToDynamicCmd</a></dt>
 <dd>
 <div class="block">Continuously move to the double suppliers target position.</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIO.PivotIOInputs.html#pivotVelocityRPS" class="member-name-link">pivotVelocityRPS</a> - Variable in class tagalong.logging.<a href="tagalong/logging/PivotIO.PivotIOInputs.html" title="class in tagalong.logging">PivotIO.PivotIOInputs</a></dt>
+<dd>
+<div class="block">Velocity of the pivot in rotations per second</div>
 </dd>
 <dt><a href="tagalong/commands/base/PivotXCmd.html" class="type-name-link" title="class in tagalong.commands.base">PivotXCmd</a>&lt;<a href="tagalong/commands/base/PivotXCmd.html" title="type parameter in PivotXCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt; - Class in <a href="tagalong/commands/base/package-summary.html">tagalong.commands.base</a></dt>
 <dd>
@@ -1886,6 +2028,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor that creates the command with the below parameters.</div>
 </dd>
+<dt><a href="tagalong/logging/RollerIO.RollerIOInputs.html#rollerAppliedVolts" class="member-name-link">rollerAppliedVolts</a> - Variable in class tagalong.logging.<a href="tagalong/logging/RollerIO.RollerIOInputs.html" title="class in tagalong.logging">RollerIO.RollerIOInputs</a></dt>
+<dd>
+<div class="block">Applied (output) motor voltage of the roller</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/augments/RollerAugment.html" class="type-name-link" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a> - Interface in <a href="tagalong/subsystems/micro/augments/package-summary.html">tagalong.subsystems.micro.augments</a></dt>
 <dd>
 <div class="block">Subsystem augment required for all subsystems containing 1 or more roller
@@ -1895,15 +2041,51 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Configuration for the roller microsystem</div>
 </dd>
-<dt><a href="tagalong/subsystems/micro/confs/RollerConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,int,double)" class="member-name-link">RollerConf(String, Motors[], int[], String[], InvertedValue[], NeutralModeValue[], NeutralModeValue[], int[][], DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, int, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></dt>
+<dt><a href="tagalong/subsystems/micro/confs/RollerConf.html#%3Cinit%3E(java.lang.String,tagalong.devices.Motors%5B%5D,int%5B%5D,java.lang.String%5B%5D,com.ctre.phoenix6.signals.InvertedValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,com.ctre.phoenix6.signals.NeutralModeValue%5B%5D,int%5B%5D%5B%5D,tagalong.units.DistanceUnits,tagalong.units.VelocityUnits,double,tagalong.units.AccelerationUnits,double,tagalong.units.DistanceUnits,double,double,tagalong.controls.FeedforwardConstants,tagalong.controls.FeedforwardConstants,com.ctre.phoenix6.configs.CurrentLimitsConfigs,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,tagalong.controls.PIDSGVAConstants,double,java.lang.String,double,double,int,double)" class="member-name-link">RollerConf(String, Motors[], int[], String[], InvertedValue[], NeutralModeValue[], NeutralModeValue[], int[][], DistanceUnits, VelocityUnits, double, AccelerationUnits, double, DistanceUnits, double, double, FeedforwardConstants, FeedforwardConstants, CurrentLimitsConfigs, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, PIDSGVAConstants, double, String, double, double, int, double)</a> - Constructor for class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/RollerIO.RollerIOInputs.html#rollerCurrentAmps" class="member-name-link">rollerCurrentAmps</a> - Variable in class tagalong.logging.<a href="tagalong/logging/RollerIO.RollerIOInputs.html" title="class in tagalong.logging">RollerIO.RollerIOInputs</a></dt>
+<dd>
+<div class="block">Current corresponding to the stator windings of the roller</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIO.html" class="type-name-link" title="interface in tagalong.logging">RollerIO</a> - Interface in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Interface with roller hardware</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIO.RollerIOInputs.html" class="type-name-link" title="class in tagalong.logging">RollerIO.RollerIOInputs</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Set of loggable roller inputs</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIO.RollerIOInputs.html#%3Cinit%3E()" class="member-name-link">RollerIOInputs()</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/RollerIO.RollerIOInputs.html" title="class in tagalong.logging">RollerIO.RollerIOInputs</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/RollerIOInputsAutoLogged.html" class="type-name-link" title="class in tagalong.logging">RollerIOInputsAutoLogged</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Logger for roller inputs</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIOInputsAutoLogged.html#%3Cinit%3E()" class="member-name-link">RollerIOInputsAutoLogged()</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/RollerIOInputsAutoLogged.html" title="class in tagalong.logging">RollerIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/RollerIOTalonFX.html" class="type-name-link" title="class in tagalong.logging">RollerIOTalonFX</a> - Class in <a href="tagalong/logging/package-summary.html">tagalong.logging</a></dt>
+<dd>
+<div class="block">Collection of roller TalonFX data</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIOTalonFX.html#%3Cinit%3E(tagalong.subsystems.micro.Roller)" class="member-name-link">RollerIOTalonFX(Roller)</a> - Constructor for class tagalong.logging.<a href="tagalong/logging/RollerIOTalonFX.html" title="class in tagalong.logging">RollerIOTalonFX</a></dt>
+<dd>
+<div class="block">Constructs a layer with the below roller TalonFX data</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/confs/RollerConf.html#rollerMOI" class="member-name-link">rollerMOI</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></dt>
 <dd>
 <div class="block">Moment of inertia for the roller</div>
 </dd>
+<dt><a href="tagalong/logging/RollerIO.RollerIOInputs.html#rollerPositionRot" class="member-name-link">rollerPositionRot</a> - Variable in class tagalong.logging.<a href="tagalong/logging/RollerIO.RollerIOInputs.html" title="class in tagalong.logging">RollerIO.RollerIOInputs</a></dt>
+<dd>
+<div class="block">Position of the roller in rotations</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#rollerRotToMotor(double)" class="member-name-link">rollerRotToMotor(double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
 <div class="block">Converts motor rotations to roller rotations</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIO.RollerIOInputs.html#rollerVelocityRPS" class="member-name-link">rollerVelocityRPS</a> - Variable in class tagalong.logging.<a href="tagalong/logging/RollerIO.RollerIOInputs.html" title="class in tagalong.logging">RollerIO.RollerIOInputs</a></dt>
+<dd>
+<div class="block">Velocity of the roller in rotations per second</div>
 </dd>
 <dt><a href="tagalong/commands/base/RollToCmd.html" class="type-name-link" title="class in tagalong.commands.base">RollToCmd</a>&lt;<a href="tagalong/commands/base/RollToCmd.html" title="type parameter in RollToCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt; - Class in <a href="tagalong/commands/base/package-summary.html">tagalong.commands.base</a></dt>
 <dd>
@@ -2058,6 +2240,42 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor that creates the command with the below parameters.</div>
 </dd>
+<dt><a href="tagalong/subsystems/micro/confs/ElevatorConf.html#rootName" class="member-name-link">rootName</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></dt>
+<dd>
+<div class="block">Sim root name</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#rootName" class="member-name-link">rootName</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
+<dd>
+<div class="block">Sim root name</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/RollerConf.html#rootName" class="member-name-link">rootName</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></dt>
+<dd>
+<div class="block">Sim root name</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/ElevatorConf.html#rootX" class="member-name-link">rootX</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></dt>
+<dd>
+<div class="block">Sim root x coordinate</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#rootX" class="member-name-link">rootX</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
+<dd>
+<div class="block">Sim root x coordinate</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/RollerConf.html#rootX" class="member-name-link">rootX</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></dt>
+<dd>
+<div class="block">Sim root x coordinate</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/ElevatorConf.html#rootY" class="member-name-link">rootY</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/ElevatorConf.html" title="class in tagalong.subsystems.micro.confs">ElevatorConf</a></dt>
+<dd>
+<div class="block">Sim root y coordinate</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/PivotConf.html#rootY" class="member-name-link">rootY</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></dt>
+<dd>
+<div class="block">Sim root y coordinate</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/confs/RollerConf.html#rootY" class="member-name-link">rootY</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></dt>
+<dd>
+<div class="block">Sim root y coordinate</div>
+</dd>
 <dt><a href="tagalong/math/AlgebraicUtils.html#rotateVector(edu.wpi.first.math.Matrix,double)" class="member-name-link">rotateVector(Matrix&lt;N2, N1&gt;, double)</a> - Static method in class tagalong.math.<a href="tagalong/math/AlgebraicUtils.html" title="class in tagalong.math">AlgebraicUtils</a></dt>
 <dd>
 <div class="block">Rotates a vector by a given angle.</div>
@@ -2151,6 +2369,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Sets the position of the elevator in meters</div>
 </dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(double)" class="member-name-link">setElevatorProfile(double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(double,double)" class="member-name-link">setElevatorProfile(double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
 <div class="block">Creates a new trapezoidal profile for the elevator</div>
@@ -2166,6 +2388,26 @@ loadScripts(document, 'script');</script>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(double,double,double,double,boolean)" class="member-name-link">setElevatorProfile(double, double, double, double, boolean)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
 <div class="block">Creates a new trapezoidal profile for the elevator</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(tagalong.measurements.Height)" class="member-name-link">setElevatorProfile(Height)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(tagalong.measurements.Height,double)" class="member-name-link">setElevatorProfile(Height, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(tagalong.measurements.Height,double,double)" class="member-name-link">setElevatorProfile(Height, double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(tagalong.measurements.Height,double,double,double)" class="member-name-link">setElevatorProfile(Height, double, double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorProfile(tagalong.measurements.Height,double,double,double,boolean)" class="member-name-link">setElevatorProfile(Height, double, double, double, boolean)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the elevator to follow</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#setElevatorVelocity(double,boolean)" class="member-name-link">setElevatorVelocity(double, boolean)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
@@ -2183,6 +2425,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Sets the power of the primary motor</div>
 </dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(double)" class="member-name-link">setPivotProfile(double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(double,double)" class="member-name-link">setPivotProfile(double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
 <div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
@@ -2196,6 +2442,26 @@ loadScripts(document, 'script');</script>
 <div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(double,double,double,double,boolean)" class="member-name-link">setPivotProfile(double, double, double, double, boolean)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(tagalong.measurements.Angle)" class="member-name-link">setPivotProfile(Angle)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(tagalong.measurements.Angle,double)" class="member-name-link">setPivotProfile(Angle, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(tagalong.measurements.Angle,double,double)" class="member-name-link">setPivotProfile(Angle, double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(tagalong.measurements.Angle,double,double,double)" class="member-name-link">setPivotProfile(Angle, double, double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#setPivotProfile(tagalong.measurements.Angle,double,double,double,boolean)" class="member-name-link">setPivotProfile(Angle, double, double, double, boolean)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
 <div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 </dd>
@@ -2216,6 +2482,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Command that sets the roller power</div>
 </dd>
+<dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(double)" class="member-name-link">setRollerProfile(double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the roller to follow</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(double,double)" class="member-name-link">setRollerProfile(double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
 <div class="block">Creates a new trapezoidal profile for the roller to follow</div>
@@ -2229,6 +2499,26 @@ loadScripts(document, 'script');</script>
 <div class="block">Creates a new trapezoidal profile for the roller to follow</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(double,double,double,double,boolean)" class="member-name-link">setRollerProfile(double, double, double, double, boolean)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the roller to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(tagalong.measurements.Angle)" class="member-name-link">setRollerProfile(Angle)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the roller to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(tagalong.measurements.Angle,double)" class="member-name-link">setRollerProfile(Angle, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the roller to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(tagalong.measurements.Angle,double,double)" class="member-name-link">setRollerProfile(Angle, double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the roller to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(tagalong.measurements.Angle,double,double,double)" class="member-name-link">setRollerProfile(Angle, double, double, double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
+<dd>
+<div class="block">Creates a new trapezoidal profile for the roller to follow</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Roller.html#setRollerProfile(tagalong.measurements.Angle,double,double,double,boolean)" class="member-name-link">setRollerProfile(Angle, double, double, double, boolean)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
 <div class="block">Creates a new trapezoidal profile for the roller to follow</div>
 </dd>
@@ -2291,6 +2581,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Called periodically on robot to update simulations.</div>
 </dd>
+<dt><a href="tagalong/math/LinearizedLookupTable.html#size()" class="member-name-link">size()</a> - Method in class tagalong.math.<a href="tagalong/math/LinearizedLookupTable.html" title="class in tagalong.math">LinearizedLookupTable</a></dt>
+<dd>
+<div class="block">Gets length of ID array</div>
+</dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#startEndRollerPowerCmd(double)" class="member-name-link">startEndRollerPowerCmd(double)</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
 <div class="block">Command that sets the power of the primary motor (zero if interrupted)</div>
@@ -2318,6 +2612,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="tagalong/controls/package-summary.html">tagalong.controls</a> - package tagalong.controls</dt>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/devices/package-summary.html">tagalong.devices</a> - package tagalong.devices</dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/package-summary.html">tagalong.logging</a> - package tagalong.logging</dt>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/math/package-summary.html">tagalong.math</a> - package tagalong.math</dt>
 <dd>&nbsp;</dd>
@@ -2373,6 +2669,12 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/controls/PIDSGVAConstants.html#toCTRESlot2Configuration()" class="member-name-link">toCTRESlot2Configuration()</a> - Method in class tagalong.controls.<a href="tagalong/controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/ElevatorIOInputsAutoLogged.html#toLog(org.littletonrobotics.junction.LogTable)" class="member-name-link">toLog(LogTable)</a> - Method in class tagalong.logging.<a href="tagalong/logging/ElevatorIOInputsAutoLogged.html" title="class in tagalong.logging">ElevatorIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/PivotIOInputsAutoLogged.html#toLog(org.littletonrobotics.junction.LogTable)" class="member-name-link">toLog(LogTable)</a> - Method in class tagalong.logging.<a href="tagalong/logging/PivotIOInputsAutoLogged.html" title="class in tagalong.logging">PivotIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/RollerIOInputsAutoLogged.html#toLog(org.littletonrobotics.junction.LogTable)" class="member-name-link">toLog(LogTable)</a> - Method in class tagalong.logging.<a href="tagalong/logging/RollerIOInputsAutoLogged.html" title="class in tagalong.logging">RollerIOInputsAutoLogged</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="tagalong/subsystems/micro/confs/MicrosystemConf.html#trapezoidalAccelerationUnit" class="member-name-link">trapezoidalAccelerationUnit</a> - Variable in class tagalong.subsystems.micro.confs.<a href="tagalong/subsystems/micro/confs/MicrosystemConf.html" title="class in tagalong.subsystems.micro.confs">MicrosystemConf</a></dt>
 <dd>
 <div class="block">Unit of trapezoidal motion acceleration</div>
@@ -2397,6 +2699,24 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:U">U</h2>
 <dl class="index">
 <dt><a href="tagalong/subsystems/micro/Microsystem.html#updateAllPIDSGVA()" class="member-name-link">updateAllPIDSGVA()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/ElevatorIO.html#updateInputs(tagalong.logging.ElevatorIO.ElevatorIOInputs)" class="member-name-link">updateInputs(ElevatorIO.ElevatorIOInputs)</a> - Method in interface tagalong.logging.<a href="tagalong/logging/ElevatorIO.html" title="interface in tagalong.logging">ElevatorIO</a></dt>
+<dd>
+<div class="block">Updates the set of loggable elevator inputs</div>
+</dd>
+<dt><a href="tagalong/logging/ElevatorIOTalonFX.html#updateInputs(tagalong.logging.ElevatorIO.ElevatorIOInputs)" class="member-name-link">updateInputs(ElevatorIO.ElevatorIOInputs)</a> - Method in class tagalong.logging.<a href="tagalong/logging/ElevatorIOTalonFX.html" title="class in tagalong.logging">ElevatorIOTalonFX</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/PivotIO.html#updateInputs(tagalong.logging.PivotIO.PivotIOInputs)" class="member-name-link">updateInputs(PivotIO.PivotIOInputs)</a> - Method in interface tagalong.logging.<a href="tagalong/logging/PivotIO.html" title="interface in tagalong.logging">PivotIO</a></dt>
+<dd>
+<div class="block">Updates the set of loggable pivot inputs</div>
+</dd>
+<dt><a href="tagalong/logging/PivotIOTalonFX.html#updateInputs(tagalong.logging.PivotIO.PivotIOInputs)" class="member-name-link">updateInputs(PivotIO.PivotIOInputs)</a> - Method in class tagalong.logging.<a href="tagalong/logging/PivotIOTalonFX.html" title="class in tagalong.logging">PivotIOTalonFX</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="tagalong/logging/RollerIO.html#updateInputs(tagalong.logging.RollerIO.RollerIOInputs)" class="member-name-link">updateInputs(RollerIO.RollerIOInputs)</a> - Method in interface tagalong.logging.<a href="tagalong/logging/RollerIO.html" title="interface in tagalong.logging">RollerIO</a></dt>
+<dd>
+<div class="block">Updates the set of loggable roller inputs</div>
+</dd>
+<dt><a href="tagalong/logging/RollerIOTalonFX.html#updateInputs(tagalong.logging.RollerIO.RollerIOInputs)" class="member-name-link">updateInputs(RollerIO.RollerIOInputs)</a> - Method in class tagalong.logging.<a href="tagalong/logging/RollerIOTalonFX.html" title="class in tagalong.logging">RollerIOTalonFX</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#updateShuffleboard()" class="member-name-link">updateShuffleboard()</a> - Method in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>&nbsp;</dd>
@@ -2580,7 +2900,7 @@ the order they are declared.</div>
 <dd>
 <div class="block">Default upper tolerance for roller in rotations</div>
 </dd>
-<dt><a href="tagalong/subsystems/micro/Elevator.html#_elevatorBaseStage" class="member-name-link">_elevatorBaseStage</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#_elevatorBaseStageLigament" class="member-name-link">_elevatorBaseStageLigament</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
 <div class="block">Base stage ligament</div>
 </dd>
@@ -2606,7 +2926,7 @@ the order they are declared.</div>
 <dd>
 <div class="block">Simulation for the elevator</div>
 </dd>
-<dt><a href="tagalong/subsystems/micro/Elevator.html#_elevatorStage1" class="member-name-link">_elevatorStage1</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
+<dt><a href="tagalong/subsystems/micro/Elevator.html#_elevatorStage1Ligament" class="member-name-link">_elevatorStage1Ligament</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
 <div class="block">Stage 1 ligament</div>
 </dd>
@@ -2678,10 +2998,6 @@ the order they are declared.</div>
 <dd>
 <div class="block">FeedForward tuning entries that read FeedForward constants from shuffleboard</div>
 </dd>
-<dt><a href="tagalong/subsystems/micro/Pivot.html#_ligament" class="member-name-link">_ligament</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
-<dd>
-<div class="block">Simulated arm of the pivot</div>
-</dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#_maxAccelerationMPS2" class="member-name-link">_maxAccelerationMPS2</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
 <div class="block">Maximum velocity of the elevator in meters per second,
@@ -2689,8 +3005,8 @@ the order they are declared.</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#_maxAccelerationRPS2" class="member-name-link">_maxAccelerationRPS2</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
-<div class="block">Maximum velocity of the pivot in rollers per second,
- Maximum acceleration of the rollers in rotations per second squared</div>
+<div class="block">Maximum velocity of the pivot in rotations per second,
+ Maximum acceleration of the pivot in rotations per second squared</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#_maxAccelerationRPS2" class="member-name-link">_maxAccelerationRPS2</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
@@ -2698,8 +3014,8 @@ the order they are declared.</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#_maxPositionRot" class="member-name-link">_maxPositionRot</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
-<div class="block">Minimum height of the pivot in rotations,
- Maximum height of the pivot in rotations</div>
+<div class="block">Minimum position of the pivot in rotations,
+ Maximum position of the pivot in rotations</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Elevator.html#_maxVelocityMPS" class="member-name-link">_maxVelocityMPS</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Elevator.html" title="class in tagalong.subsystems.micro">Elevator</a></dt>
 <dd>
@@ -2708,8 +3024,8 @@ the order they are declared.</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#_maxVelocityRPS" class="member-name-link">_maxVelocityRPS</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
-<div class="block">Maximum velocity of the pivot in rollers per second,
- Maximum acceleration of the rollers in rotations per second squared</div>
+<div class="block">Maximum velocity of the pivot in rotations per second,
+ Maximum acceleration of the pivot in rotations per second squared</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Roller.html#_maxVelocityRPS" class="member-name-link">_maxVelocityRPS</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></dt>
 <dd>
@@ -2721,8 +3037,8 @@ the order they are declared.</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#_minPositionRot" class="member-name-link">_minPositionRot</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
-<div class="block">Minimum height of the pivot in rotations,
- Maximum height of the pivot in rotations</div>
+<div class="block">Minimum position of the pivot in rotations,
+ Maximum position of the pivot in rotations</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#_motorToEncoderRatio" class="member-name-link">_motorToEncoderRatio</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
@@ -2751,6 +3067,10 @@ the order they are declared.</div>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#_pivotFF" class="member-name-link">_pivotFF</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>
 <div class="block">Feedforward model for the pivot</div>
+</dd>
+<dt><a href="tagalong/subsystems/micro/Pivot.html#_pivotLigament" class="member-name-link">_pivotLigament</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
+<dd>
+<div class="block">Simulated arm of the pivot</div>
 </dd>
 <dt><a href="tagalong/subsystems/micro/Pivot.html#_pivotSim" class="member-name-link">_pivotSim</a> - Variable in class tagalong.subsystems.micro.<a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></dt>
 <dd>

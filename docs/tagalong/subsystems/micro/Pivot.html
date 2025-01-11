@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-34">Pivot</a></span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-35">Pivot</a></span>
 <span class="extends-implements">extends <a href="Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></span></div>
 <div class="block">Pivot microsystem</div>
 </section>
@@ -119,64 +119,64 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">Offset value for the target position</div>
 </div>
-<div class="col-first odd-row-color"><code>protected <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></code></div>
-<div class="col-second odd-row-color"><code><a href="#_ligament" class="member-name-link">_ligament</a></code></div>
+<div class="col-first odd-row-color"><code>final double</code></div>
+<div class="col-second odd-row-color"><code><a href="#_maxAccelerationRPS2" class="member-name-link">_maxAccelerationRPS2</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Simulated arm of the pivot</div>
+<div class="block">Maximum velocity of the pivot in rotations per second,
+ Maximum acceleration of the pivot in rotations per second squared</div>
 </div>
 <div class="col-first even-row-color"><code>final double</code></div>
-<div class="col-second even-row-color"><code><a href="#_maxAccelerationRPS2" class="member-name-link">_maxAccelerationRPS2</a></code></div>
+<div class="col-second even-row-color"><code><a href="#_maxPositionRot" class="member-name-link">_maxPositionRot</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Maximum velocity of the pivot in rollers per second,
- Maximum acceleration of the rollers in rotations per second squared</div>
+<div class="block">Minimum position of the pivot in rotations,
+ Maximum position of the pivot in rotations</div>
 </div>
 <div class="col-first odd-row-color"><code>final double</code></div>
-<div class="col-second odd-row-color"><code><a href="#_maxPositionRot" class="member-name-link">_maxPositionRot</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#_maxVelocityRPS" class="member-name-link">_maxVelocityRPS</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Minimum height of the pivot in rotations,
- Maximum height of the pivot in rotations</div>
+<div class="block">Maximum velocity of the pivot in rotations per second,
+ Maximum acceleration of the pivot in rotations per second squared</div>
 </div>
 <div class="col-first even-row-color"><code>final double</code></div>
-<div class="col-second even-row-color"><code><a href="#_maxVelocityRPS" class="member-name-link">_maxVelocityRPS</a></code></div>
+<div class="col-second even-row-color"><code><a href="#_minPositionRot" class="member-name-link">_minPositionRot</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Maximum velocity of the pivot in rollers per second,
- Maximum acceleration of the rollers in rotations per second squared</div>
+<div class="block">Minimum position of the pivot in rotations,
+ Maximum position of the pivot in rotations</div>
 </div>
-<div class="col-first odd-row-color"><code>final double</code></div>
-<div class="col-second odd-row-color"><code><a href="#_minPositionRot" class="member-name-link">_minPositionRot</a></code></div>
+<div class="col-first odd-row-color"><code>protected double</code></div>
+<div class="col-second odd-row-color"><code><a href="#_motorToEncoderRatio" class="member-name-link">_motorToEncoderRatio</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Minimum height of the pivot in rotations,
- Maximum height of the pivot in rotations</div>
-</div>
-<div class="col-first even-row-color"><code>protected double</code></div>
-<div class="col-second even-row-color"><code><a href="#_motorToEncoderRatio" class="member-name-link">_motorToEncoderRatio</a></code></div>
-<div class="col-last even-row-color">
 <div class="block">Gear ratio from the motor to encoder (conversion g.t.</div>
 </div>
-<div class="col-first odd-row-color"><code>com.ctre.phoenix6.hardware.CANcoder</code></div>
-<div class="col-second odd-row-color"><code><a href="#_pivotCancoder" class="member-name-link">_pivotCancoder</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code>com.ctre.phoenix6.hardware.CANcoder</code></div>
+<div class="col-second even-row-color"><code><a href="#_pivotCancoder" class="member-name-link">_pivotCancoder</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">CANcoder device</div>
 </div>
-<div class="col-first even-row-color"><code>protected com.ctre.phoenix6.configs.CANcoderConfiguration</code></div>
-<div class="col-second even-row-color"><code><a href="#_pivotCancoderConfiguration" class="member-name-link">_pivotCancoderConfiguration</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code>protected com.ctre.phoenix6.configs.CANcoderConfiguration</code></div>
+<div class="col-second odd-row-color"><code><a href="#_pivotCancoderConfiguration" class="member-name-link">_pivotCancoderConfiguration</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">Configuration for the CANcoder</div>
 </div>
-<div class="col-first odd-row-color"><code>protected com.ctre.phoenix6.sim.CANcoderSimState</code></div>
-<div class="col-second odd-row-color"><code><a href="#_pivotCancoderSim" class="member-name-link">_pivotCancoderSim</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code>protected com.ctre.phoenix6.sim.CANcoderSimState</code></div>
+<div class="col-second even-row-color"><code><a href="#_pivotCancoderSim" class="member-name-link">_pivotCancoderSim</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">CANcoder simulation</div>
 </div>
-<div class="col-first even-row-color"><code>final <a href="confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></code></div>
-<div class="col-second even-row-color"><code><a href="#_pivotConf" class="member-name-link">_pivotConf</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code>final <a href="confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#_pivotConf" class="member-name-link">_pivotConf</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">Configuration for the pivot</div>
 </div>
-<div class="col-first odd-row-color"><code>protected <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ArmFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">ArmFeedforward</a></code></div>
-<div class="col-second odd-row-color"><code><a href="#_pivotFF" class="member-name-link">_pivotFF</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code>protected <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ArmFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">ArmFeedforward</a></code></div>
+<div class="col-second even-row-color"><code><a href="#_pivotFF" class="member-name-link">_pivotFF</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">Feedforward model for the pivot</div>
+</div>
+<div class="col-first odd-row-color"><code>protected <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#_pivotLigament" class="member-name-link">_pivotLigament</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">Simulated arm of the pivot</div>
 </div>
 <div class="col-first even-row-color"><code>protected <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/simulation/SingleJointedArmSim.html" title="class or interface in edu.wpi.first.wpilibj.simulation" class="external-link">SingleJointedArmSim</a></code></div>
 <div class="col-second even-row-color"><code><a href="#_pivotSim" class="member-name-link">_pivotSim</a></code></div>
@@ -230,8 +230,8 @@ loadScripts(document, 'script');</script>
 <h2>Method Summary</h2>
 <div id="method-summary-table">
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
-<div id="method-summary-table.tabpanel" role="tabpanel">
-<div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
+<div id="method-summary-table.tabpanel" role="tabpanel" aria-labelledby="method-summary-table-tab0">
+<div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
@@ -267,83 +267,93 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Gets the primary motor of the pivot</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPivotPosition()" class="member-name-link">getPivotPosition</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPivotLigament()" class="member-name-link">getPivotLigament</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves ligament attached to pivot Mechanism2d</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPivotPosition()" class="member-name-link">getPivotPosition</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Gets the current position of the pivot in rotations</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPivotPower()" class="member-name-link">getPivotPower</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPivotPower()" class="member-name-link">getPivotPower</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Gets the power of the primary motor</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPivotVelocity()" class="member-name-link">getPivotVelocity</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPivotVelocity()" class="member-name-link">getPivotVelocity</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Gets the current velocity of the pivot in rotations per second</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#holdCurrentPosition()" class="member-name-link">holdCurrentPosition</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#holdCurrentPosition()" class="member-name-link">holdCurrentPosition</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the power of the primary motor to zero</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPivotInAbsoluteTolerance(double,double)" class="member-name-link">isPivotInAbsoluteTolerance</a><wbr>(double&nbsp;lowerBound,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPivotInAbsoluteTolerance(double,double)" class="member-name-link">isPivotInAbsoluteTolerance</a><wbr>(double&nbsp;lowerBound,
  double&nbsp;upperBound)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Bounds checking function that uses the absolute current pivot position (modulo one rotation)</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPivotInTolerance(double,double)" class="member-name-link">isPivotInTolerance</a><wbr>(double&nbsp;lowerBound,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPivotInTolerance(double,double)" class="member-name-link">isPivotInTolerance</a><wbr>(double&nbsp;lowerBound,
  double&nbsp;upperBound)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Bounds checking function that uses the current pivot position</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isSafeToMove()" class="member-name-link">isSafeToMove</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isSafeToMove()" class="member-name-link">isSafeToMove</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Checks whether or not it's safe for the pivot to move</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#motorResetConfig()" class="member-name-link">motorResetConfig</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#motorResetConfig()" class="member-name-link">motorResetConfig</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Resets devices if resets have occurred</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#motorToPivotRot(double)" class="member-name-link">motorToPivotRot</a><wbr>(double&nbsp;motorRot)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#motorToPivotRot(double)" class="member-name-link">motorToPivotRot</a><wbr>(double&nbsp;motorRot)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Converts motor rotations to rotations of the pivot mechanism</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onDisable()" class="member-name-link">onDisable</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onDisable()" class="member-name-link">onDisable</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">returns nothing if micro system is disabled</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onEnable()" class="member-name-link">onEnable</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onEnable()" class="member-name-link">onEnable</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Executes logic for when the robot is first enabled</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Periodic update function</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pivotRotToMotor(double)" class="member-name-link">pivotRotToMotor</a><wbr>(double&nbsp;pivotRot)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pivotRotToMotor(double)" class="member-name-link">pivotRotToMotor</a><wbr>(double&nbsp;pivotRot)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Converts rotations of the pivot mechanism to motor rotations</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#placePivotInClosestRot(double,double)" class="member-name-link">placePivotInClosestRot</a><wbr>(double&nbsp;scopeReferenceRot,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#placePivotInClosestRot(double,double)" class="member-name-link">placePivotInClosestRot</a><wbr>(double&nbsp;scopeReferenceRot,
  double&nbsp;newAngleRot)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the new pivot angle in the closest scope of the reference pivot angle</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotPower(double)" class="member-name-link">setPivotPower</a><wbr>(double&nbsp;power)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotPower(double)" class="member-name-link">setPivotPower</a><wbr>(double&nbsp;power)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the power of the primary motor</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotProfile(double)" class="member-name-link">setPivotProfile</a><wbr>(double&nbsp;goalPositionRot)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotProfile(double,double)" class="member-name-link">setPivotProfile</a><wbr>(double&nbsp;goalPositionRot,
@@ -376,24 +386,59 @@ loadScripts(document, 'script');</script>
 <div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotVelocity(double,boolean)" class="member-name-link">setPivotVelocity</a><wbr>(double&nbsp;rps,
- boolean&nbsp;withFF)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotProfile(tagalong.measurements.Angle)" class="member-name-link">setPivotProfile</a><wbr>(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the velocity of the pivot in RPS</div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simulationInit()" class="member-name-link">simulationInit</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotProfile(tagalong.measurements.Angle,double)" class="member-name-link">setPivotProfile</a><wbr>(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Initializes the pivot simulation</div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simulationPeriodic()" class="member-name-link">simulationPeriodic</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotProfile(tagalong.measurements.Angle,double,double)" class="member-name-link">setPivotProfile</a><wbr>(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS,
+ double&nbsp;maxVelocityRPS)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Runs the pivot simulation--sets motor and cancoder simulation fields and updates the visual</div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateShuffleboard()" class="member-name-link">updateShuffleboard</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotProfile(tagalong.measurements.Angle,double,double,double)" class="member-name-link">setPivotProfile</a><wbr>(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS,
+ double&nbsp;maxVelocityRPS,
+ double&nbsp;maxAccelerationRPS2)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotProfile(tagalong.measurements.Angle,double,double,double,boolean)" class="member-name-link">setPivotProfile</a><wbr>(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS,
+ double&nbsp;maxVelocityRPS,
+ double&nbsp;maxAccelerationRPS2,
+ boolean&nbsp;setCurrentState)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPivotVelocity(double,boolean)" class="member-name-link">setPivotVelocity</a><wbr>(double&nbsp;rps,
+ boolean&nbsp;withFF)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the velocity of the pivot in RPS</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simulationInit()" class="member-name-link">simulationInit</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Initializes the pivot simulation</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simulationPeriodic()" class="member-name-link">simulationPeriodic</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Runs the pivot simulation--sets motor and cancoder simulation fields and updates the visual</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateShuffleboard()" class="member-name-link">updateShuffleboard</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates shuffleboard with the pivot's current position and velocity</div>
 </div>
 </div>
@@ -401,7 +446,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-tagalong.subsystems.micro.Microsystem">Methods inherited from class&nbsp;tagalong.subsystems.micro.<a href="Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></h3>
-<code><a href="Microsystem.html#checkInitStatus()">checkInitStatus</a>, <a href="Microsystem.html#checkToleranceTime(boolean,double)">checkToleranceTime</a>, <a href="Microsystem.html#configAllDevices()">configAllDevices</a>, <a href="Microsystem.html#configTuningModes()">configTuningModes</a>, <a href="Microsystem.html#disableMicrosystem(boolean)">disableMicrosystem</a>, <a href="Microsystem.html#getPrimaryMotor()">getPrimaryMotor</a>, <a href="Microsystem.html#getPrimaryMotorPosition()">getPrimaryMotorPosition</a>, <a href="Microsystem.html#getPrimaryMotorPower()">getPrimaryMotorPower</a>, <a href="Microsystem.html#getPrimaryMotorVelocity()">getPrimaryMotorVelocity</a>, <a href="Microsystem.html#isProfileFinished()">isProfileFinished</a>, <a href="Microsystem.html#onTeleopDisable()">onTeleopDisable</a>, <a href="Microsystem.html#resetToleranceTimer()">resetToleranceTimer</a>, <a href="Microsystem.html#setBrakeMode(boolean)">setBrakeMode</a>, <a href="Microsystem.html#setFollowProfile(boolean)">setFollowProfile</a>, <a href="Microsystem.html#setHoldPosition(boolean)">setHoldPosition</a>, <a href="Microsystem.html#setPrimaryPower(double)">setPrimaryPower</a>, <a href="Microsystem.html#updateAllPIDSGVA()">updateAllPIDSGVA</a>, <a href="Microsystem.html#waitForInitialization()">waitForInitialization</a></code></div>
+<code><a href="Microsystem.html#checkInitStatus()">checkInitStatus</a>, <a href="Microsystem.html#checkToleranceTime(boolean,double)">checkToleranceTime</a>, <a href="Microsystem.html#configAllDevices()">configAllDevices</a>, <a href="Microsystem.html#configTuningModes()">configTuningModes</a>, <a href="Microsystem.html#disableMicrosystem(boolean)">disableMicrosystem</a>, <a href="Microsystem.html#getPrimaryMotor()">getPrimaryMotor</a>, <a href="Microsystem.html#getPrimaryMotorPosition()">getPrimaryMotorPosition</a>, <a href="Microsystem.html#getPrimaryMotorPower()">getPrimaryMotorPower</a>, <a href="Microsystem.html#getPrimaryMotorVelocity()">getPrimaryMotorVelocity</a>, <a href="Microsystem.html#getRoot()">getRoot</a>, <a href="Microsystem.html#isProfileFinished()">isProfileFinished</a>, <a href="Microsystem.html#onTeleopDisable()">onTeleopDisable</a>, <a href="Microsystem.html#resetToleranceTimer()">resetToleranceTimer</a>, <a href="Microsystem.html#setBrakeMode(boolean)">setBrakeMode</a>, <a href="Microsystem.html#setFollowProfile(boolean)">setFollowProfile</a>, <a href="Microsystem.html#setHoldPosition(boolean)">setHoldPosition</a>, <a href="Microsystem.html#setPrimaryPower(double)">setPrimaryPower</a>, <a href="Microsystem.html#updateAllPIDSGVA()">updateAllPIDSGVA</a>, <a href="Microsystem.html#waitForInitialization()">waitForInitialization</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -419,42 +464,42 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_pivotConf">
 <h3>_pivotConf</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-38">_pivotConf</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-39">_pivotConf</a></span></div>
 <div class="block">Configuration for the pivot</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_pivotCancoder">
 <h3>_pivotCancoder</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.ctre.phoenix6.hardware.CANcoder</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-44">_pivotCancoder</a></span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.ctre.phoenix6.hardware.CANcoder</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-45">_pivotCancoder</a></span></div>
 <div class="block">CANcoder device</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_pivotCancoderConfiguration">
 <h3>_pivotCancoderConfiguration</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">com.ctre.phoenix6.configs.CANcoderConfiguration</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-48">_pivotCancoderConfiguration</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">com.ctre.phoenix6.configs.CANcoderConfiguration</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-49">_pivotCancoderConfiguration</a></span></div>
 <div class="block">Configuration for the CANcoder</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_motorToEncoderRatio">
 <h3>_motorToEncoderRatio</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-54">_motorToEncoderRatio</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-55">_motorToEncoderRatio</a></span></div>
 <div class="block">Gear ratio from the motor to encoder (conversion g.t. 1 represents a reduction)</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_encoderToPivotRatio">
 <h3>_encoderToPivotRatio</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-58">_encoderToPivotRatio</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-59">_encoderToPivotRatio</a></span></div>
 <div class="block">Gear ratio from the encoder to pivot mechanism (conversion g.t. 1 represents a reduction)</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_defaultPivotLowerToleranceRot">
 <h3>_defaultPivotLowerToleranceRot</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-63">_defaultPivotLowerToleranceRot</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-64">_defaultPivotLowerToleranceRot</a></span></div>
 <div class="block">Default lower tolerance of the pivot in rotations,
  Default upper tolerance of the pivot in rotations</div>
 </section>
@@ -462,7 +507,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_defaultPivotUpperToleranceRot">
 <h3>_defaultPivotUpperToleranceRot</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-63">_defaultPivotUpperToleranceRot</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-64">_defaultPivotUpperToleranceRot</a></span></div>
 <div class="block">Default lower tolerance of the pivot in rotations,
  Default upper tolerance of the pivot in rotations</div>
 </section>
@@ -470,102 +515,102 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="_absoluteRangeRot">
 <h3>_absoluteRangeRot</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-67">_absoluteRangeRot</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-68">_absoluteRangeRot</a></span></div>
 <div class="block">Absolute range of pivot movement in rotations</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_minPositionRot">
 <h3>_minPositionRot</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-72">_minPositionRot</a></span></div>
-<div class="block">Minimum height of the pivot in rotations,
- Maximum height of the pivot in rotations</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-73">_minPositionRot</a></span></div>
+<div class="block">Minimum position of the pivot in rotations,
+ Maximum position of the pivot in rotations</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_maxPositionRot">
 <h3>_maxPositionRot</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-72">_maxPositionRot</a></span></div>
-<div class="block">Minimum height of the pivot in rotations,
- Maximum height of the pivot in rotations</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-73">_maxPositionRot</a></span></div>
+<div class="block">Minimum position of the pivot in rotations,
+ Maximum position of the pivot in rotations</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_maxVelocityRPS">
 <h3>_maxVelocityRPS</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-77">_maxVelocityRPS</a></span></div>
-<div class="block">Maximum velocity of the pivot in rollers per second,
- Maximum acceleration of the rollers in rotations per second squared</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-78">_maxVelocityRPS</a></span></div>
+<div class="block">Maximum velocity of the pivot in rotations per second,
+ Maximum acceleration of the pivot in rotations per second squared</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_maxAccelerationRPS2">
 <h3>_maxAccelerationRPS2</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-77">_maxAccelerationRPS2</a></span></div>
-<div class="block">Maximum velocity of the pivot in rollers per second,
- Maximum acceleration of the rollers in rotations per second squared</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-78">_maxAccelerationRPS2</a></span></div>
+<div class="block">Maximum velocity of the pivot in rotations per second,
+ Maximum acceleration of the pivot in rotations per second squared</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_profileTargetOffset">
 <h3>_profileTargetOffset</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-81">_profileTargetOffset</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-82">_profileTargetOffset</a></span></div>
 <div class="block">Offset value for the target position</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_pivotFF">
 <h3>_pivotFF</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ArmFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">ArmFeedforward</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-87">_pivotFF</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ArmFeedforward.html" title="class or interface in edu.wpi.first.math.controller" class="external-link">ArmFeedforward</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-88">_pivotFF</a></span></div>
 <div class="block">Feedforward model for the pivot</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_ffCenterOfMassOffsetRad">
 <h3>_ffCenterOfMassOffsetRad</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-91">_ffCenterOfMassOffsetRad</a></span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-92">_ffCenterOfMassOffsetRad</a></span></div>
 <div class="block">Offset value for the target position</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_pivotSim">
 <h3>_pivotSim</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/simulation/SingleJointedArmSim.html" title="class or interface in edu.wpi.first.wpilibj.simulation" class="external-link">SingleJointedArmSim</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-105">_pivotSim</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/simulation/SingleJointedArmSim.html" title="class or interface in edu.wpi.first.wpilibj.simulation" class="external-link">SingleJointedArmSim</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-106">_pivotSim</a></span></div>
 <div class="block">Single jointed arm simulation for the pivot</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_pivotCancoderSim">
 <h3>_pivotCancoderSim</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">com.ctre.phoenix6.sim.CANcoderSimState</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-109">_pivotCancoderSim</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">com.ctre.phoenix6.sim.CANcoderSimState</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-110">_pivotCancoderSim</a></span></div>
 <div class="block">CANcoder simulation</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_simRotations">
 <h3>_simRotations</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-113">_simRotations</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-114">_simRotations</a></span></div>
 <div class="block">Position of the simulated pivot in rotations</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_simVeloRPS">
 <h3>_simVeloRPS</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-117">_simVeloRPS</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-118">_simVeloRPS</a></span></div>
 <div class="block">Velocity of the simulated pivot in rotations per second</div>
 </section>
 </li>
 <li>
 <section class="detail" id="_simAccelRPS2">
 <h3>_simAccelRPS2</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-121">_simAccelRPS2</a></span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-122">_simAccelRPS2</a></span></div>
 <div class="block">Acceleration of the simulated pivot in rotations per second squared</div>
 </section>
 </li>
 <li>
-<section class="detail" id="_ligament">
-<h3>_ligament</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-125">_ligament</a></span></div>
+<section class="detail" id="_pivotLigament">
+<h3>_pivotLigament</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-126">_pivotLigament</a></span></div>
 <div class="block">Simulated arm of the pivot</div>
 </section>
 </li>
@@ -580,7 +625,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="&lt;init&gt;(tagalong.subsystems.micro.confs.PivotConf)">
 <h3>Pivot</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-132">Pivot</a></span><wbr><span class="parameters">(<a href="confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a>&nbsp;conf)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-133">Pivot</a></span><wbr><span class="parameters">(<a href="confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a>&nbsp;conf)</span></div>
 <div class="block">Constructs a pivot microsystem with the below configurations</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -599,7 +644,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-203">periodic</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-204">periodic</a></span>()</div>
 <div class="block">Periodic update function</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -610,7 +655,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getMotor()">
 <h3>getMotor</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.ctre.phoenix6.hardware.TalonFX</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-225">getMotor</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.ctre.phoenix6.hardware.TalonFX</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-226">getMotor</a></span>()</div>
 <div class="block">Gets the primary motor of the pivot</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -621,7 +666,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="onEnable()">
 <h3>onEnable</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-232">onEnable</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-233">onEnable</a></span>()</div>
 <div class="block">Executes logic for when the robot is first enabled</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -632,7 +677,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="onDisable()">
 <h3>onDisable</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-252">onDisable</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-253">onDisable</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#onDisable()">Microsystem</a></code></span></div>
 <div class="block">returns nothing if micro system is disabled</div>
 <dl class="notes">
@@ -644,7 +689,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="updateShuffleboard()">
 <h3>updateShuffleboard</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-264">updateShuffleboard</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-265">updateShuffleboard</a></span>()</div>
 <div class="block">Updates shuffleboard with the pivot's current position and velocity</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -655,33 +700,33 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="motorToPivotRot(double)">
 <h3>motorToPivotRot</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-281">motorToPivotRot</a></span><wbr><span class="parameters">(double&nbsp;motorRot)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-282">motorToPivotRot</a></span><wbr><span class="parameters">(double&nbsp;motorRot)</span></div>
 <div class="block">Converts motor rotations to rotations of the pivot mechanism</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>motorRot</code> - Position of the motor in rotations</dd>
+<dd><code>motorRot</code> - position of the motor in rotations</dd>
 <dt>Returns:</dt>
-<dd>Position of the pivot in rotations</dd>
+<dd>position of the pivot in rotations</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="pivotRotToMotor(double)">
 <h3>pivotRotToMotor</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-295">pivotRotToMotor</a></span><wbr><span class="parameters">(double&nbsp;pivotRot)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-296">pivotRotToMotor</a></span><wbr><span class="parameters">(double&nbsp;pivotRot)</span></div>
 <div class="block">Converts rotations of the pivot mechanism to motor rotations</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>pivotRot</code> - Position of the pivot in rotations</dd>
+<dd><code>pivotRot</code> - position of the pivot in rotations</dd>
 <dt>Returns:</dt>
-<dd>Position of the motor in rotations</dd>
+<dd>position of the motor in rotations</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="configShuffleboard()">
 <h3>configShuffleboard</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-306">configShuffleboard</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-307">configShuffleboard</a></span>()</div>
 <div class="block">Configure shuffleboard for the pivot</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -692,7 +737,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="followLastProfile()">
 <h3>followLastProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-318">followLastProfile</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-319">followLastProfile</a></span>()</div>
 <div class="block">Calculates the next state according to the trapezoidal profile and requests the pivot motor(s)
  to arrive at the next position with feedforward</div>
 </section>
@@ -700,7 +745,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getFFPositionRad()">
 <h3>getFFPositionRad</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-353">getFFPositionRad</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-350">getFFPositionRad</a></span>()</div>
 <div class="block">Gets the position offset for feedforward (to account for a shifted center of
  mass) in rotations</div>
 <dl class="notes">
@@ -712,7 +757,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setPivotPower(double)">
 <h3>setPivotPower</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-368">setPivotPower</a></span><wbr><span class="parameters">(double&nbsp;power)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-365">setPivotPower</a></span><wbr><span class="parameters">(double&nbsp;power)</span></div>
 <div class="block">Sets the power of the primary motor</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -723,7 +768,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getPivotPower()">
 <h3>getPivotPower</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-377">getPivotPower</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-374">getPivotPower</a></span>()</div>
 <div class="block">Gets the power of the primary motor</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -734,7 +779,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setPivotVelocity(double,boolean)">
 <h3>setPivotVelocity</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-387">setPivotVelocity</a></span><wbr><span class="parameters">(double&nbsp;rps,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-384">setPivotVelocity</a></span><wbr><span class="parameters">(double&nbsp;rps,
  boolean&nbsp;withFF)</span></div>
 <div class="block">Sets the velocity of the pivot in RPS</div>
 <dl class="notes">
@@ -747,7 +792,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getPivotPosition()">
 <h3>getPivotPosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-410">getPivotPosition</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-406">getPivotPosition</a></span>()</div>
 <div class="block">Gets the current position of the pivot in rotations</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -759,7 +804,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getPivotVelocity()">
 <h3>getPivotVelocity</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-420">getPivotVelocity</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-416">getPivotVelocity</a></span>()</div>
 <div class="block">Gets the current velocity of the pivot in rotations per second</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -771,7 +816,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="placePivotInClosestRot(double,double)">
 <h3>placePivotInClosestRot</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-431">placePivotInClosestRot</a></span><wbr><span class="parameters">(double&nbsp;scopeReferenceRot,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-427">placePivotInClosestRot</a></span><wbr><span class="parameters">(double&nbsp;scopeReferenceRot,
  double&nbsp;newAngleRot)</span></div>
 <div class="block">Returns the new pivot angle in the closest scope of the reference pivot angle</div>
 <dl class="notes">
@@ -784,9 +829,96 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="setPivotProfile(tagalong.measurements.Angle)">
+<h3>setPivotProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-436">setPivotProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition)</span></div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in rotations</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setPivotProfile(tagalong.measurements.Angle,double)">
+<h3>setPivotProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-446">setPivotProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS)</span></div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in rotations</dd>
+<dd><code>goalVelocityRPS</code> - goal velocity in rotations per second</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setPivotProfile(tagalong.measurements.Angle,double,double)">
+<h3>setPivotProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-457">setPivotProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS,
+ double&nbsp;maxVelocityRPS)</span></div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in rotations</dd>
+<dd><code>goalVelocityRPS</code> - goal velocity in rotations per second</dd>
+<dd><code>maxVelocityRPS</code> - maximum velocity in rotations per second</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setPivotProfile(tagalong.measurements.Angle,double,double,double)">
+<h3>setPivotProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-469">setPivotProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS,
+ double&nbsp;maxVelocityRPS,
+ double&nbsp;maxAccelerationRPS2)</span></div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in rotations</dd>
+<dd><code>goalVelocityRPS</code> - goal velocity in rotations per second</dd>
+<dd><code>maxVelocityRPS</code> - maximum velocity in rotations per second</dd>
+<dd><code>maxAccelerationRPS2</code> - maximum acceleration in rotations per second squared</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setPivotProfile(tagalong.measurements.Angle,double,double,double,boolean)">
+<h3>setPivotProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-487">setPivotProfile</a></span><wbr><span class="parameters">(<a href="../../measurements/Angle.html" title="interface in tagalong.measurements">Angle</a>&nbsp;goalPosition,
+ double&nbsp;goalVelocityRPS,
+ double&nbsp;maxVelocityRPS,
+ double&nbsp;maxAccelerationRPS2,
+ boolean&nbsp;setCurrentState)</span></div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPosition</code> - goal position in rotations</dd>
+<dd><code>goalVelocityRPS</code> - goal velocity in rotations per second</dd>
+<dd><code>maxVelocityRPS</code> - maximum velocity in rotations per second</dd>
+<dd><code>maxAccelerationRPS2</code> - maximum acceleration in rotations per second squared</dd>
+<dd><code>setCurrentState</code> - True if the profiles current state should base itself off sensor
+     values rather than continue from the existing state</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setPivotProfile(double)">
+<h3>setPivotProfile</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-508">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot)</span></div>
+<div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>goalPositionRot</code> - goal position in rotations</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="setPivotProfile(double,double)">
 <h3>setPivotProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-441">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-518">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
  double&nbsp;goalVelocityRPS)</span></div>
 <div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
 <dl class="notes">
@@ -799,7 +931,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setPivotProfile(double,double,double)">
 <h3>setPivotProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-452">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-529">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
  double&nbsp;goalVelocityRPS,
  double&nbsp;maxVelocityRPS)</span></div>
 <div class="block">Creates a new trapezoidal profile for the pivot to follow</div>
@@ -814,7 +946,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setPivotProfile(double,double,double,double)">
 <h3>setPivotProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-466">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-543">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
  double&nbsp;goalVelocityRPS,
  double&nbsp;maxVelocityRPS,
  double&nbsp;maxAccelerationRPS2)</span></div>
@@ -831,7 +963,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setPivotProfile(double,double,double,double,boolean)">
 <h3>setPivotProfile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-485">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-562">setPivotProfile</a></span><wbr><span class="parameters">(double&nbsp;goalPositionRot,
  double&nbsp;goalVelocityRPS,
  double&nbsp;maxVelocityRPS,
  double&nbsp;maxAccelerationRPS2,
@@ -851,7 +983,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="clampPivotPosition(double)">
 <h3>clampPivotPosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-549">clampPivotPosition</a></span><wbr><span class="parameters">(double&nbsp;target)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-626">clampPivotPosition</a></span><wbr><span class="parameters">(double&nbsp;target)</span></div>
 <div class="block">Clamps the goal pivot position to be within rotational limits</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -864,7 +996,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="motorResetConfig()">
 <h3>motorResetConfig</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-556">motorResetConfig</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-633">motorResetConfig</a></span>()</div>
 <div class="block">Resets devices if resets have occurred</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -879,7 +1011,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="simulationInit()">
 <h3>simulationInit</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-576">simulationInit</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-653">simulationInit</a></span>()</div>
 <div class="block">Initializes the pivot simulation</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -890,7 +1022,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="simulationPeriodic()">
 <h3>simulationPeriodic</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-607">simulationPeriodic</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-685">simulationPeriodic</a></span>()</div>
 <div class="block">Runs the pivot simulation--sets motor and cancoder simulation fields and updates the visual</div>
 <dl class="notes">
 <dt>Overrides:</dt>
@@ -901,7 +1033,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="isSafeToMove()">
 <h3>isSafeToMove</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-642">isSafeToMove</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-720">isSafeToMove</a></span>()</div>
 <div class="block">Checks whether or not it's safe for the pivot to move</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -912,7 +1044,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="absoluteClamp(double)">
 <h3>absoluteClamp</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-655">absoluteClamp</a></span><wbr><span class="parameters">(double&nbsp;value)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-733">absoluteClamp</a></span><wbr><span class="parameters">(double&nbsp;value)</span></div>
 <div class="block">Directs the pivot to its maximum position, current goal position, or minimum position</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -925,15 +1057,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="isPivotInTolerance(double,double)">
 <h3>isPivotInTolerance</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-680">isPivotInTolerance</a></span><wbr><span class="parameters">(double&nbsp;lowerBound,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-758">isPivotInTolerance</a></span><wbr><span class="parameters">(double&nbsp;lowerBound,
  double&nbsp;upperBound)</span></div>
 <div class="block">Bounds checking function that uses the current pivot position</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>lowerBound</code> - Minimum of acceptable range</dd>
-<dd><code>upperBound</code> - Maximum of acceptable range</dd>
+<dd><code>lowerBound</code> - minimum of acceptable range</dd>
+<dd><code>upperBound</code> - maximum of acceptable range</dd>
 <dt>Returns:</dt>
-<dd>If the current position is greater than or equal to the lower bound and less than or
+<dd>if the current position is greater than or equal to the lower bound and less than or
      equal to the upper bound</dd>
 </dl>
 </section>
@@ -941,27 +1073,38 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="isPivotInAbsoluteTolerance(double,double)">
 <h3>isPivotInAbsoluteTolerance</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-694">isPivotInAbsoluteTolerance</a></span><wbr><span class="parameters">(double&nbsp;lowerBound,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-772">isPivotInAbsoluteTolerance</a></span><wbr><span class="parameters">(double&nbsp;lowerBound,
  double&nbsp;upperBound)</span></div>
 <div class="block">Bounds checking function that uses the absolute current pivot position (modulo one rotation)</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>lowerBound</code> - Minimum of acceptable range</dd>
-<dd><code>upperBound</code> - Maximum of acceptable range</dd>
+<dd><code>lowerBound</code> - minimum of acceptable range</dd>
+<dd><code>upperBound</code> - maximum of acceptable range</dd>
 <dt>Returns:</dt>
-<dd>If the absolute current position is in absolute acceptable range</dd>
+<dd>if the absolute current position is in absolute acceptable range</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="holdCurrentPosition()">
 <h3>holdCurrentPosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-703">holdCurrentPosition</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-781">holdCurrentPosition</a></span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Microsystem.html#holdCurrentPosition()">Microsystem</a></code></span></div>
 <div class="block">Sets the power of the primary motor to zero</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="Microsystem.html#holdCurrentPosition()">holdCurrentPosition</a></code>&nbsp;in class&nbsp;<code><a href="Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getPivotLigament()">
+<h3>getPivotLigament</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/MechanismLigament2d.html" title="class or interface in edu.wpi.first.wpilibj.smartdashboard" class="external-link">MechanismLigament2d</a></span>&nbsp;<span class="element-name"><a href="../../../src-html/tagalong/subsystems/micro/Pivot.html#line-792">getPivotLigament</a></span>()</div>
+<div class="block">Retrieves ligament attached to pivot Mechanism2d</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>pivot ligament</dd>
 </dl>
 </section>
 </li>

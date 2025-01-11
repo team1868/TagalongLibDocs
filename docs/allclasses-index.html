@@ -55,8 +55,8 @@ loadScripts(document, 'script');</script>
 </div>
 <div id="all-classes-table">
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="all-classes-table-tab0" role="tab" aria-selected="true" aria-controls="all-classes-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="all-classes-table-tab1" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab1', 2)" class="table-tab">Interfaces</button><button id="all-classes-table-tab2" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab2', 2)" class="table-tab">Classes</button><button id="all-classes-table-tab3" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab3', 2)" class="table-tab">Enum Classes</button></div>
-<div id="all-classes-table.tabpanel" role="tabpanel">
-<div class="summary-table two-column-summary" aria-labelledby="all-classes-table-tab0">
+<div id="all-classes-table.tabpanel" role="tabpanel" aria-labelledby="all-classes-table-tab0">
+<div class="summary-table two-column-summary">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/units/AccelerationUnits.html" title="enum class in tagalong.units">AccelerationUnits</a></div>
@@ -117,6 +117,22 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Configuration for the elevator microsystem</div>
 </div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="tagalong/logging/ElevatorIO.html" title="interface in tagalong.logging">ElevatorIO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Interface with elevator hardware</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/ElevatorIO.ElevatorIOInputs.html" title="class in tagalong.logging">ElevatorIO.ElevatorIOInputs</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Set of loggable elevator inputs</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/ElevatorIOInputsAutoLogged.html" title="class in tagalong.logging">ElevatorIOInputsAutoLogged</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Logger for elevator inputs</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/ElevatorIOTalonFX.html" title="class in tagalong.logging">ElevatorIOTalonFX</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Collection of elevator TalonFX data</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/ElevatorZeroCmd.html" title="class in tagalong.commands.base">ElevatorZeroCmd</a>&lt;<a href="tagalong/commands/base/ElevatorZeroCmd.html" title="type parameter in ElevatorZeroCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/ElevatorAugment.html" title="interface in tagalong.subsystems.micro.augments">ElevatorAugment</a>&gt;</div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that finds the elevator zero position and sets the encoder position
@@ -144,134 +160,170 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Linear unit interface</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/units/MassUnits.html" title="enum class in tagalong.units">MassUnits</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/math/LinearizedLookupTable.html" title="class in tagalong.math">LinearizedLookupTable</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Linearized Lookup Table</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/units/MassUnits.html" title="enum class in tagalong.units">MassUnits</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
 <div class="block">Mass units enum identifiers.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/Microsystem.html" title="class in tagalong.subsystems.micro">Microsystem</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Base class for all Tagalong Microsystems</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/confs/MicrosystemConf.html" title="class in tagalong.subsystems.micro.confs">MicrosystemConf</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/confs/MicrosystemConf.html" title="class in tagalong.subsystems.micro.confs">MicrosystemConf</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Configuration for a microsystem</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/devices/Motors.html" title="enum class in tagalong.devices">Motors</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/devices/Motors.html" title="enum class in tagalong.devices">Motors</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
 <div class="block">Generic motor identifier enum</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/controls/PIDConstants.html" title="class in tagalong.controls">PIDConstants</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/controls/PIDConstants.html" title="class in tagalong.controls">PIDConstants</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">PID wrapper class for coefficients that are generically reused in multiple
  controllers.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/controls/PIDSGVAConstants.html" title="class in tagalong.controls">PIDSGVAConstants</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Wrapper class for PID + FeedForward coefficients for generic reuse in CTRE
  Devices</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/Pivot.html" title="class in tagalong.subsystems.micro">Pivot</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Pivot microsystem</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/PivotAimAtCmd.html" title="class in tagalong.commands.aim">PivotAimAtCmd</a>&lt;<a href="tagalong/commands/aim/PivotAimAtCmd.html" title="type parameter in PivotAimAtCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/PivotAimAtCmd.html" title="class in tagalong.commands.aim">PivotAimAtCmd</a>&lt;<a href="tagalong/commands/aim/PivotAimAtCmd.html" title="type parameter in PivotAimAtCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that continuously points at a target in 2d space.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/PivotAimAtYawCompCmd.html" title="class in tagalong.commands.aim">PivotAimAtYawCompCmd</a>&lt;<a href="tagalong/commands/aim/PivotAimAtYawCompCmd.html" title="type parameter in PivotAimAtYawCompCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/PivotAimAtYawCompCmd.html" title="class in tagalong.commands.aim">PivotAimAtYawCompCmd</a>&lt;<a href="tagalong/commands/aim/PivotAimAtYawCompCmd.html" title="type parameter in PivotAimAtYawCompCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that continuously points at a target in 2d space while compensating for the current
  rotation of the robot.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Subsystem augment required for all subsystems containing 1 or more pivot
  microsystems.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/confs/PivotConf.html" title="class in tagalong.subsystems.micro.confs">PivotConf</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Configuration for the pivot microsystem</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToAbsoluteCmd.html" title="class in tagalong.commands.base">PivotToAbsoluteCmd</a>&lt;<a href="tagalong/commands/base/PivotToAbsoluteCmd.html" title="type parameter in PivotToAbsoluteCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="tagalong/logging/PivotIO.html" title="interface in tagalong.logging">PivotIO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Interface with pivot hardware</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/PivotIO.PivotIOInputs.html" title="class in tagalong.logging">PivotIO.PivotIOInputs</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Set of loggable pivot inputs</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/PivotIOInputsAutoLogged.html" title="class in tagalong.logging">PivotIOInputsAutoLogged</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Logger for pivot inputs</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/PivotIOTalonFX.html" title="class in tagalong.logging">PivotIOTalonFX</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Collection of pivot TalonFX data</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToAbsoluteCmd.html" title="class in tagalong.commands.base">PivotToAbsoluteCmd</a>&lt;<a href="tagalong/commands/base/PivotToAbsoluteCmd.html" title="type parameter in PivotToAbsoluteCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">PivotToCommand with optimal pathing</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToCmd.html" title="class in tagalong.commands.base">PivotToCmd</a>&lt;<a href="tagalong/commands/base/PivotToCmd.html" title="type parameter in PivotToCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToCmd.html" title="class in tagalong.commands.base">PivotToCmd</a>&lt;<a href="tagalong/commands/base/PivotToCmd.html" title="type parameter in PivotToCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that moves the pivot absolutely to the desired position</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToDynamicAbsoluteCmd.html" title="class in tagalong.commands.base">PivotToDynamicAbsoluteCmd</a>&lt;<a href="tagalong/commands/base/PivotToDynamicAbsoluteCmd.html" title="type parameter in PivotToDynamicAbsoluteCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToDynamicAbsoluteCmd.html" title="class in tagalong.commands.base">PivotToDynamicAbsoluteCmd</a>&lt;<a href="tagalong/commands/base/PivotToDynamicAbsoluteCmd.html" title="type parameter in PivotToDynamicAbsoluteCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that continuously and optimally moves the pivot towards the supplied goal rotation</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToDynamicCmd.html" title="class in tagalong.commands.base">PivotToDynamicCmd</a>&lt;<a href="tagalong/commands/base/PivotToDynamicCmd.html" title="type parameter in PivotToDynamicCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotToDynamicCmd.html" title="class in tagalong.commands.base">PivotToDynamicCmd</a>&lt;<a href="tagalong/commands/base/PivotToDynamicCmd.html" title="type parameter in PivotToDynamicCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that continuously moves the pivot to the goal supplier's target position</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotXCmd.html" title="class in tagalong.commands.base">PivotXCmd</a>&lt;<a href="tagalong/commands/base/PivotXCmd.html" title="type parameter in PivotXCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/PivotXCmd.html" title="class in tagalong.commands.base">PivotXCmd</a>&lt;<a href="tagalong/commands/base/PivotXCmd.html" title="type parameter in PivotXCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/PivotAugment.html" title="interface in tagalong.subsystems.micro.augments">PivotAugment</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that rotates pivot by a target angle based on specified
  parameters.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/Roller.html" title="class in tagalong.subsystems.micro">Roller</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Roller microsystem</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/RollerAimAtCmd.html" title="class in tagalong.commands.aim">RollerAimAtCmd</a>&lt;<a href="tagalong/commands/aim/RollerAimAtCmd.html" title="type parameter in RollerAimAtCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/RollerAimAtCmd.html" title="class in tagalong.commands.aim">RollerAimAtCmd</a>&lt;<a href="tagalong/commands/aim/RollerAimAtCmd.html" title="type parameter in RollerAimAtCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that continuously points at a target in 2d space.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/RollerAimAtYawCompCmd.html" title="class in tagalong.commands.aim">RollerAimAtYawCompCmd</a>&lt;<a href="tagalong/commands/aim/RollerAimAtYawCompCmd.html" title="type parameter in RollerAimAtYawCompCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/aim/RollerAimAtYawCompCmd.html" title="class in tagalong.commands.aim">RollerAimAtYawCompCmd</a>&lt;<a href="tagalong/commands/aim/RollerAimAtYawCompCmd.html" title="type parameter in RollerAimAtYawCompCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that continuously points at a target in 2d space while compensating for the current
  rotation of the robot.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Subsystem augment required for all subsystems containing 1 or more roller
  microsystems.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/micro/confs/RollerConf.html" title="class in tagalong.subsystems.micro.confs">RollerConf</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Configuration for the roller microsystem</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/RollToCmd.html" title="class in tagalong.commands.base">RollToCmd</a>&lt;<a href="tagalong/commands/base/RollToCmd.html" title="type parameter in RollToCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="tagalong/logging/RollerIO.html" title="interface in tagalong.logging">RollerIO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Interface with roller hardware</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/RollerIO.RollerIOInputs.html" title="class in tagalong.logging">RollerIO.RollerIOInputs</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Set of loggable roller inputs</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/RollerIOInputsAutoLogged.html" title="class in tagalong.logging">RollerIOInputsAutoLogged</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Logger for roller inputs</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/logging/RollerIOTalonFX.html" title="class in tagalong.logging">RollerIOTalonFX</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Collection of roller TalonFX data</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/RollToCmd.html" title="class in tagalong.commands.base">RollToCmd</a>&lt;<a href="tagalong/commands/base/RollToCmd.html" title="type parameter in RollToCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that moves the roller absolutely to the desired position</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/RollToDynamicCmd.html" title="class in tagalong.commands.base">RollToDynamicCmd</a>&lt;<a href="tagalong/commands/base/RollToDynamicCmd.html" title="type parameter in RollToDynamicCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/RollToDynamicCmd.html" title="class in tagalong.commands.base">RollToDynamicCmd</a>&lt;<a href="tagalong/commands/base/RollToDynamicCmd.html" title="type parameter in RollToDynamicCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command for the roller to continuously move towards the goal supplier's target height</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/RollXCmd.html" title="class in tagalong.commands.base">RollXCmd</a>&lt;<a href="tagalong/commands/base/RollXCmd.html" title="type parameter in RollXCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/base/RollXCmd.html" title="class in tagalong.commands.base">RollXCmd</a>&lt;<a href="tagalong/commands/base/RollXCmd.html" title="type parameter in RollXCmd">T</a> extends <a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a> &amp; <a href="tagalong/subsystems/micro/augments/RollerAugment.html" title="interface in tagalong.subsystems.micro.augments">RollerAugment</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command that rotates roller by a target angle based on specified
  parameters.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/TagalongCommand.html" title="class in tagalong.commands">TagalongCommand</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/commands/TagalongCommand.html" title="class in tagalong.commands">TagalongCommand</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Tagalong extension of the WPILib Command class, adding utilities that allow for easier
  composition of library commands</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/TagalongConfiguration.html" title="class in tagalong">TagalongConfiguration</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/TagalongConfiguration.html" title="class in tagalong">TagalongConfiguration</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Tagalong configurations, must be configured before subsystems are constructed
  on boot.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/subsystems/TagalongSubsystemBase.html" title="class in tagalong.subsystems">TagalongSubsystemBase</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Base class for all Tagalong Subsystems containing multiple microsystems</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/units/TimeUnits.html" title="enum class in tagalong.units">TimeUnits</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/units/TimeUnits.html" title="enum class in tagalong.units">TimeUnits</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
 <div class="block">Time units enum identifiers.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/units/VelocityUnits.html" title="enum class in tagalong.units">VelocityUnits</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="tagalong/units/VelocityUnits.html" title="enum class in tagalong.units">VelocityUnits</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
 <div class="block">Velocity units enum identifiers.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/math/WpilibUtils.html" title="class in tagalong.math">WpilibUtils</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="tagalong/math/WpilibUtils.html" title="class in tagalong.math">WpilibUtils</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Utility functions for interacting with WPI Lib classes</div>
 </div>
 </div>
