@@ -59,86 +59,89 @@
 <span class="source-line-no">046</span><span id="line-46">   * @param rootX                         sim root x coordinate</span>
 <span class="source-line-no">047</span><span id="line-47">   * @param rootY                         sim root y coordinate</span>
 <span class="source-line-no">048</span><span id="line-48">   * @param simNumLigaments               number of simulated ligaments used</span>
-<span class="source-line-no">049</span><span id="line-49">   * @param rollerMOI                     moment of inertia for the roller</span>
-<span class="source-line-no">050</span><span id="line-50">   */</span>
-<span class="source-line-no">051</span><span id="line-51">  public FlywheelConf(</span>
-<span class="source-line-no">052</span><span id="line-52">      String name,</span>
-<span class="source-line-no">053</span><span id="line-53">      Motors[] motorTypes,</span>
-<span class="source-line-no">054</span><span id="line-54">      int[] motorDeviceIDs,</span>
-<span class="source-line-no">055</span><span id="line-55">      String[] motorCanBus,</span>
-<span class="source-line-no">056</span><span id="line-56">      InvertedValue[] motorDirection,</span>
-<span class="source-line-no">057</span><span id="line-57">      NeutralModeValue[] motorEnabledBrakeMode,</span>
-<span class="source-line-no">058</span><span id="line-58">      NeutralModeValue[] motorDisabledBrakeMode,</span>
-<span class="source-line-no">059</span><span id="line-59">      int[][] gearRatio,</span>
-<span class="source-line-no">060</span><span id="line-60">      DistanceUnits trapezoidalLengthUnit,</span>
-<span class="source-line-no">061</span><span id="line-61">      VelocityUnits trapezoidalVelocityUnit,</span>
-<span class="source-line-no">062</span><span id="line-62">      double trapezoidalLimitsVelocity,</span>
-<span class="source-line-no">063</span><span id="line-63">      AccelerationUnits trapezoidalAccelerationUnit,</span>
-<span class="source-line-no">064</span><span id="line-64">      double trapezoidalLimitsAcceleration,</span>
-<span class="source-line-no">065</span><span id="line-65">      DistanceUnits defaultTolerancesUnit,</span>
-<span class="source-line-no">066</span><span id="line-66">      double defaultLowerTolerance,</span>
-<span class="source-line-no">067</span><span id="line-67">      double defaultUpperTolerance,</span>
-<span class="source-line-no">068</span><span id="line-68">      FeedforwardConstants feedForward,</span>
-<span class="source-line-no">069</span><span id="line-69">      FeedforwardConstants simFeedForward,</span>
-<span class="source-line-no">070</span><span id="line-70">      CurrentLimitsConfigs currentLimitsConfigs,</span>
-<span class="source-line-no">071</span><span id="line-71">      PIDSGVAConstants slot0,</span>
-<span class="source-line-no">072</span><span id="line-72">      PIDSGVAConstants slot1,</span>
-<span class="source-line-no">073</span><span id="line-73">      PIDSGVAConstants slot2,</span>
-<span class="source-line-no">074</span><span id="line-74">      PIDSGVAConstants simSlot0,</span>
-<span class="source-line-no">075</span><span id="line-75">      PIDSGVAConstants simSlot1,</span>
-<span class="source-line-no">076</span><span id="line-76">      PIDSGVAConstants simSlot2,</span>
-<span class="source-line-no">077</span><span id="line-77">      double mech2dDim,</span>
-<span class="source-line-no">078</span><span id="line-78">      String rootName,</span>
-<span class="source-line-no">079</span><span id="line-79">      double rootX,</span>
-<span class="source-line-no">080</span><span id="line-80">      double rootY,</span>
-<span class="source-line-no">081</span><span id="line-81">      int simNumLigaments,</span>
-<span class="source-line-no">082</span><span id="line-82">      double rollerMOI</span>
-<span class="source-line-no">083</span><span id="line-83"></span>
-<span class="source-line-no">084</span><span id="line-84">  ) {</span>
-<span class="source-line-no">085</span><span id="line-85">    super(</span>
-<span class="source-line-no">086</span><span id="line-86">        name,</span>
-<span class="source-line-no">087</span><span id="line-87">        motorTypes,</span>
-<span class="source-line-no">088</span><span id="line-88">        motorDeviceIDs,</span>
-<span class="source-line-no">089</span><span id="line-89">        motorCanBus,</span>
-<span class="source-line-no">090</span><span id="line-90">        motorDirection,</span>
-<span class="source-line-no">091</span><span id="line-91">        motorEnabledBrakeMode,</span>
-<span class="source-line-no">092</span><span id="line-92">        motorDisabledBrakeMode,</span>
-<span class="source-line-no">093</span><span id="line-93">        gearRatio,</span>
-<span class="source-line-no">094</span><span id="line-94">        trapezoidalLengthUnit,</span>
-<span class="source-line-no">095</span><span id="line-95">        VelocityUnits.ROTATIONS_PER_SECOND,</span>
-<span class="source-line-no">096</span><span id="line-96">        trapezoidalVelocityUnit.convertX(</span>
-<span class="source-line-no">097</span><span id="line-97">            trapezoidalLimitsVelocity, VelocityUnits.ROTATIONS_PER_SECOND</span>
-<span class="source-line-no">098</span><span id="line-98">        ),</span>
-<span class="source-line-no">099</span><span id="line-99">        AccelerationUnits.ROTATIONS_PER_SECOND2,</span>
-<span class="source-line-no">100</span><span id="line-100">        trapezoidalAccelerationUnit.convertX(</span>
-<span class="source-line-no">101</span><span id="line-101">            trapezoidalLimitsAcceleration, AccelerationUnits.ROTATIONS_PER_SECOND2</span>
-<span class="source-line-no">102</span><span id="line-102">        ),</span>
-<span class="source-line-no">103</span><span id="line-103">        DistanceUnits.ROTATION,</span>
-<span class="source-line-no">104</span><span id="line-104">        defaultTolerancesUnit.convertX(defaultLowerTolerance, DistanceUnits.ROTATION),</span>
-<span class="source-line-no">105</span><span id="line-105">        defaultTolerancesUnit.convertX(defaultUpperTolerance, DistanceUnits.ROTATION),</span>
-<span class="source-line-no">106</span><span id="line-106">        feedForward,</span>
-<span class="source-line-no">107</span><span id="line-107">        simFeedForward,</span>
-<span class="source-line-no">108</span><span id="line-108">        currentLimitsConfigs,</span>
-<span class="source-line-no">109</span><span id="line-109">        slot0,</span>
-<span class="source-line-no">110</span><span id="line-110">        slot1,</span>
-<span class="source-line-no">111</span><span id="line-111">        slot2,</span>
-<span class="source-line-no">112</span><span id="line-112">        simSlot0,</span>
-<span class="source-line-no">113</span><span id="line-113">        simSlot1,</span>
-<span class="source-line-no">114</span><span id="line-114">        simSlot2,</span>
-<span class="source-line-no">115</span><span id="line-115">        mech2dDim,</span>
-<span class="source-line-no">116</span><span id="line-116">        rootName,</span>
-<span class="source-line-no">117</span><span id="line-117">        rootX,</span>
-<span class="source-line-no">118</span><span id="line-118">        rootY,</span>
-<span class="source-line-no">119</span><span id="line-119">        simNumLigaments,</span>
-<span class="source-line-no">120</span><span id="line-120">        rollerMOI</span>
-<span class="source-line-no">121</span><span id="line-121">    );</span>
-<span class="source-line-no">122</span><span id="line-122"></span>
-<span class="source-line-no">123</span><span id="line-123">    for (int i = 0; i &lt; numMotors; i++) {</span>
-<span class="source-line-no">124</span><span id="line-124">      motorConfig[i].MotorOutput.PeakReverseDutyCycle = 0.0;</span>
-<span class="source-line-no">125</span><span id="line-125">      motorConfig[i].Voltage.PeakReverseVoltage = 0.0;</span>
-<span class="source-line-no">126</span><span id="line-126">    }</span>
-<span class="source-line-no">127</span><span id="line-127">  }</span>
-<span class="source-line-no">128</span><span id="line-128">}</span>
+<span class="source-line-no">049</span><span id="line-49">   * @param ligamentsLength               length of simulated ligaments</span>
+<span class="source-line-no">050</span><span id="line-50">   * @param rollerMOI                     moment of inertia for the roller</span>
+<span class="source-line-no">051</span><span id="line-51">   */</span>
+<span class="source-line-no">052</span><span id="line-52">  public FlywheelConf(</span>
+<span class="source-line-no">053</span><span id="line-53">      String name,</span>
+<span class="source-line-no">054</span><span id="line-54">      Motors[] motorTypes,</span>
+<span class="source-line-no">055</span><span id="line-55">      int[] motorDeviceIDs,</span>
+<span class="source-line-no">056</span><span id="line-56">      String[] motorCanBus,</span>
+<span class="source-line-no">057</span><span id="line-57">      InvertedValue[] motorDirection,</span>
+<span class="source-line-no">058</span><span id="line-58">      NeutralModeValue[] motorEnabledBrakeMode,</span>
+<span class="source-line-no">059</span><span id="line-59">      NeutralModeValue[] motorDisabledBrakeMode,</span>
+<span class="source-line-no">060</span><span id="line-60">      int[][] gearRatio,</span>
+<span class="source-line-no">061</span><span id="line-61">      DistanceUnits trapezoidalLengthUnit,</span>
+<span class="source-line-no">062</span><span id="line-62">      VelocityUnits trapezoidalVelocityUnit,</span>
+<span class="source-line-no">063</span><span id="line-63">      double trapezoidalLimitsVelocity,</span>
+<span class="source-line-no">064</span><span id="line-64">      AccelerationUnits trapezoidalAccelerationUnit,</span>
+<span class="source-line-no">065</span><span id="line-65">      double trapezoidalLimitsAcceleration,</span>
+<span class="source-line-no">066</span><span id="line-66">      DistanceUnits defaultTolerancesUnit,</span>
+<span class="source-line-no">067</span><span id="line-67">      double defaultLowerTolerance,</span>
+<span class="source-line-no">068</span><span id="line-68">      double defaultUpperTolerance,</span>
+<span class="source-line-no">069</span><span id="line-69">      FeedforwardConstants feedForward,</span>
+<span class="source-line-no">070</span><span id="line-70">      FeedforwardConstants simFeedForward,</span>
+<span class="source-line-no">071</span><span id="line-71">      CurrentLimitsConfigs currentLimitsConfigs,</span>
+<span class="source-line-no">072</span><span id="line-72">      PIDSGVAConstants slot0,</span>
+<span class="source-line-no">073</span><span id="line-73">      PIDSGVAConstants slot1,</span>
+<span class="source-line-no">074</span><span id="line-74">      PIDSGVAConstants slot2,</span>
+<span class="source-line-no">075</span><span id="line-75">      PIDSGVAConstants simSlot0,</span>
+<span class="source-line-no">076</span><span id="line-76">      PIDSGVAConstants simSlot1,</span>
+<span class="source-line-no">077</span><span id="line-77">      PIDSGVAConstants simSlot2,</span>
+<span class="source-line-no">078</span><span id="line-78">      double mech2dDim,</span>
+<span class="source-line-no">079</span><span id="line-79">      String rootName,</span>
+<span class="source-line-no">080</span><span id="line-80">      double rootX,</span>
+<span class="source-line-no">081</span><span id="line-81">      double rootY,</span>
+<span class="source-line-no">082</span><span id="line-82">      int simNumLigaments,</span>
+<span class="source-line-no">083</span><span id="line-83">      double ligamentsLength,</span>
+<span class="source-line-no">084</span><span id="line-84">      double rollerMOI</span>
+<span class="source-line-no">085</span><span id="line-85"></span>
+<span class="source-line-no">086</span><span id="line-86">  ) {</span>
+<span class="source-line-no">087</span><span id="line-87">    super(</span>
+<span class="source-line-no">088</span><span id="line-88">        name,</span>
+<span class="source-line-no">089</span><span id="line-89">        motorTypes,</span>
+<span class="source-line-no">090</span><span id="line-90">        motorDeviceIDs,</span>
+<span class="source-line-no">091</span><span id="line-91">        motorCanBus,</span>
+<span class="source-line-no">092</span><span id="line-92">        motorDirection,</span>
+<span class="source-line-no">093</span><span id="line-93">        motorEnabledBrakeMode,</span>
+<span class="source-line-no">094</span><span id="line-94">        motorDisabledBrakeMode,</span>
+<span class="source-line-no">095</span><span id="line-95">        gearRatio,</span>
+<span class="source-line-no">096</span><span id="line-96">        trapezoidalLengthUnit,</span>
+<span class="source-line-no">097</span><span id="line-97">        VelocityUnits.ROTATIONS_PER_SECOND,</span>
+<span class="source-line-no">098</span><span id="line-98">        trapezoidalVelocityUnit.convertX(</span>
+<span class="source-line-no">099</span><span id="line-99">            trapezoidalLimitsVelocity, VelocityUnits.ROTATIONS_PER_SECOND</span>
+<span class="source-line-no">100</span><span id="line-100">        ),</span>
+<span class="source-line-no">101</span><span id="line-101">        AccelerationUnits.ROTATIONS_PER_SECOND2,</span>
+<span class="source-line-no">102</span><span id="line-102">        trapezoidalAccelerationUnit.convertX(</span>
+<span class="source-line-no">103</span><span id="line-103">            trapezoidalLimitsAcceleration, AccelerationUnits.ROTATIONS_PER_SECOND2</span>
+<span class="source-line-no">104</span><span id="line-104">        ),</span>
+<span class="source-line-no">105</span><span id="line-105">        DistanceUnits.ROTATION,</span>
+<span class="source-line-no">106</span><span id="line-106">        defaultTolerancesUnit.convertX(defaultLowerTolerance, DistanceUnits.ROTATION),</span>
+<span class="source-line-no">107</span><span id="line-107">        defaultTolerancesUnit.convertX(defaultUpperTolerance, DistanceUnits.ROTATION),</span>
+<span class="source-line-no">108</span><span id="line-108">        feedForward,</span>
+<span class="source-line-no">109</span><span id="line-109">        simFeedForward,</span>
+<span class="source-line-no">110</span><span id="line-110">        currentLimitsConfigs,</span>
+<span class="source-line-no">111</span><span id="line-111">        slot0,</span>
+<span class="source-line-no">112</span><span id="line-112">        slot1,</span>
+<span class="source-line-no">113</span><span id="line-113">        slot2,</span>
+<span class="source-line-no">114</span><span id="line-114">        simSlot0,</span>
+<span class="source-line-no">115</span><span id="line-115">        simSlot1,</span>
+<span class="source-line-no">116</span><span id="line-116">        simSlot2,</span>
+<span class="source-line-no">117</span><span id="line-117">        mech2dDim,</span>
+<span class="source-line-no">118</span><span id="line-118">        rootName,</span>
+<span class="source-line-no">119</span><span id="line-119">        rootX,</span>
+<span class="source-line-no">120</span><span id="line-120">        rootY,</span>
+<span class="source-line-no">121</span><span id="line-121">        simNumLigaments,</span>
+<span class="source-line-no">122</span><span id="line-122">        ligamentsLength,</span>
+<span class="source-line-no">123</span><span id="line-123">        rollerMOI</span>
+<span class="source-line-no">124</span><span id="line-124">    );</span>
+<span class="source-line-no">125</span><span id="line-125"></span>
+<span class="source-line-no">126</span><span id="line-126">    for (int i = 0; i &lt; numMotors; i++) {</span>
+<span class="source-line-no">127</span><span id="line-127">      motorConfig[i].MotorOutput.PeakReverseDutyCycle = 0.0;</span>
+<span class="source-line-no">128</span><span id="line-128">      motorConfig[i].Voltage.PeakReverseVoltage = 0.0;</span>
+<span class="source-line-no">129</span><span id="line-129">    }</span>
+<span class="source-line-no">130</span><span id="line-130">  }</span>
+<span class="source-line-no">131</span><span id="line-131">}</span>
 
 
 
